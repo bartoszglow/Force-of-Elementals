@@ -45,6 +45,13 @@ module.exports = function(grunt) {
 			    src: 'index.html',
 			    dest: 'build/',
 			    flatten: false
+			},
+			assets: {
+			    expand: true,
+			    cwd: 'app/',
+			    src: 'assets/*',
+			    dest: 'build/',
+			    flatten: false
 			}
 		},
 		compress: {
