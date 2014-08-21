@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 		    },
 		    js: {
 		        src: 'app/js/*.js',
-		        dest: 'build/js/build.js'
+		        dest: 'build/js/build.min.js'
 		    }
 	    },
 		watch: {
@@ -35,6 +35,15 @@ module.exports = function(grunt) {
 			    dest: 'build/',
 			    flatten: false
 			}
+		},
+		compress: {
+			main: {
+				options: 
+				{
+      				archive: 'Force\ of\ Elementals.zip'
+				},
+				src: ['app/*'],
+			}
 		}
 	});
 
@@ -42,8 +51,10 @@ module.exports = function(grunt) {
 	  grunt.loadNpmTasks('grunt-contrib-uglify');
 	  grunt.loadNpmTasks('grunt-contrib-watch');
 	  grunt.loadNpmTasks('grunt-contrib-copy');
+	  grunt.loadNpmTasks('grunt-contrib-compress');
 
 
 	  // Default task(s).
-	  grunt.registerTask('default', ['copy', 'uglify', 'watch']);
+	  grunt.registerTask('default', ['uglify', 'copy', 'watch']);
+	  grunt.registerTask('build', ['uglify', 'copy', 'compress']);
 };
