@@ -18,33 +18,23 @@ VAR = {
 G = {
 	init:function(){
 
-		G.canvas = document.createElement('canvas');				
+		G.canvas_bg = document.createElement('canvas');		//canvas dla otocznie //background
+		G.ctx_bg = G.canvas_bg.getContext('2d');
+
+		G.canvas = document.createElement('canvas');					//cavas do gry
 		G.ctx = G.canvas.getContext('2d');
 
+
 		G.layout();
-		window.addEventListener('resize', G.layout, false);		
+		//window.addEventListener('resize', G.layout, false);		
+		document.body.appendChild(G.canvas_bg);
 		document.body.appendChild(G.canvas);
 		//
+		new Board();
 		new T(200, 100, 'water', 1);
 		new T(200, 300, 'fire', 1);
 		new T(200, 400, 'earth', 1);
 		new T(200, 200, 'air', 1);
-		new T(250, 100, 'water', 2);
-		new T(250, 300, 'fire', 2);
-		new T(250, 400, 'earth', 2);
-		new T(250, 200, 'air', 2);
-		new T(300, 100, 'water', 3);
-		new T(300, 300, 'fire', 3);
-		new T(300, 400, 'earth', 3);
-		new T(300, 200, 'air', 3);
-		new T(350, 100, 'water', 4);
-		new T(350, 300, 'fire', 4);
-		new T(350, 400, 'earth', 4);
-		new T(350, 200, 'air', 4);
-		new T(400, 100, 'water', 5);
-		new T(400, 300, 'fire', 5);
-		new T(400, 400, 'earth', 5);
-		new T(400, 200, 'air', 5);
 		//
 		G.animationLoop();
 	},
@@ -61,6 +51,8 @@ G = {
 		VAR.W = Math.round(window.innerWidth);
 		VAR.H = Math.round(window.innerHeight);
 
+		G.canvas_bg.width = VAR.W;
+		G.canvas_bg.height = VAR.H;
 		G.canvas.width = VAR.W;
 		G.canvas.height = VAR.H;
 
@@ -69,6 +61,10 @@ G = {
 		G.ctx.mozImageSmoothingEnabled = false;
 		G.ctx.oImageSmoothingEnabled = false;
 		G.ctx.webkitImageSmoothingEnabled = false;
+		G.ctx_bg.imageSmoothingEnabled = false;
+		G.ctx_bg.mozImageSmoothingEnabled = false;
+		G.ctx_bg.oImageSmoothingEnabled = false;
+		G.ctx_bg.webkitImageSmoothingEnabled = false;
 
 
 	},
