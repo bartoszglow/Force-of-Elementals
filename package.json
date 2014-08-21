@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/joinee/Force-of-Elementals",
   "dependencies": {
-    "grunt": "^0.4.5"
+    "grunt": "^0.4.5",
+    "grunt-express": "~1.2.1",
+    "grunt-open": "~0.2.3",
+    "matchdep": "~0.3.0",
+    "connect-livereload": "^0.4.0"
   },
   "devDependencies": {
     "grunt-contrib-uglify": "^0.5.1",
