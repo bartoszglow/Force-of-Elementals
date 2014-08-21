@@ -1,0 +1,24 @@
+{
+  "name": "Force-of-Elementals",
+  "version": "0.0.0",
+  "description": "Force of Elementals - strategy game",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joinee/Force-of-Elementals.git"
+  },
+  "author": "Bartosz Glowacki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joinee/Force-of-Elementals/issues"
+  },
+  "homepage": "https://github.com/joinee/Force-of-Elementals",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-concat": "^0.5.0"
+  }
+}
