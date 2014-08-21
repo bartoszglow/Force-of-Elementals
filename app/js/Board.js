@@ -29,21 +29,26 @@ function Board(){
 	
 }
 Board.prototype.draw = function(){
-	for(var i=0; i<this.b.length; i++){
-		// 
-		for(var j=0; j<this.b[i].length; j++){
-			//
-			G.ctx_bg.drawImage(
-				G.sprite,
-				5*this.b[i][j].FXmod,
-				53,
-				5,
-				5,
-				j*50,
-				i*50,
-				50,
-				50
-			);
+	for(var x=0; x<2; x++){
+		for(var y=0; y<2; y++){
+			console.log(x + ' ' + y)
+			for(var i=0; i<this.b.length; i++){
+				// 
+				for(var j=0; j<this.b[i].length; j++){
+					//
+					G.ctx_bg.drawImage(
+						G.sprite,
+						20*this.b[i][j].FXmod,
+						53,
+						20,
+						20,
+						j*20*VAR.sc+x*20*VAR.sc/2,
+						i*20*VAR.sc+y*20*VAR.sc/2,
+						20*VAR.sc/2,
+						20*VAR.sc/2
+					);
+				}
+			}
 		}
 	}
 }

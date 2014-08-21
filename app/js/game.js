@@ -31,10 +31,10 @@ G = {
 		document.body.appendChild(G.canvas);
 		//
 		new Board();
-		new T(200, 100, 'water', 1);
-		new T(200, 300, 'fire', 1);
-		new T(200, 400, 'earth', 1);
-		new T(200, 200, 'air', 1);
+		new T(160, 280, 'water', 3);
+		new T(160, 80, 'earth', 5);
+		new T(320, 240, 'air', 2);
+		new T(160, 120, 'fire', 1);
 		//
 		G.animationLoop();
 	},

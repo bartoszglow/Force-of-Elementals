@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 		    },
 		    js: {
 		        src: ['app/js/game.js', 'app/js/Tower.js', 'app/js/Board.js'],
-		        dest: 'build/js/build.min.js'
+		        dest: 'build/build.min.js'
 		    }
 	    },
 		express: {
@@ -48,10 +48,9 @@ module.exports = function(grunt) {
 			},
 			assets: {
 			    expand: true,
-			    cwd: 'app/',
-			    src: 'assets/*',
+			    src: 'app/assets/*',
 			    dest: 'build/',
-			    flatten: false
+			    flatten: true
 			}
 		},
 		compress: {

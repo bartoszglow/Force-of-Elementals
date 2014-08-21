@@ -28,24 +28,24 @@ function T(x, y, type, lvl){
 T.prototype.draw = function(x, y) { 
 	//Rysowanie podstawy działa
 	G.ctx.fillStyle = "white";
-	G.ctx.fillRect(x, y, 21*VAR.sc, 21*VAR.sc);
+	G.ctx.fillRect(x, y, 20*VAR.sc, 20*VAR.sc);
 	G.ctx.fillStyle = "rgba("+this.r+","+this.g+","+this.b+","+this.TLvl*0.2+")";
-	G.ctx.fillRect(x, y, 21*VAR.sc, 21*VAR.sc);
+	G.ctx.fillRect(x, y, 20*VAR.sc, 20*VAR.sc);
 	G.ctx.drawImage(
 		G.sprite, 
 		0,
 		0,
-		21,
-		21,
+		20,
+		20,
 		x,
 		y,
-		21*VAR.sc,
-		21*VAR.sc
+		20*VAR.sc,
+		20*VAR.sc
 	);
 
 	//Rysowanie działa uwzgledniając kąt
 	G.ctx.save(); 
-	G.ctx.translate(x+10.5*VAR.sc, y+10.5*VAR.sc);
+	G.ctx.translate(x+10*VAR.sc, y+10*VAR.sc);
 	G.ctx.rotate(this.round * VAR.rad);
 	this.round+=this.SR;
 	G.ctx.drawImage(
