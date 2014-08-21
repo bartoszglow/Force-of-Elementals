@@ -5,6 +5,6 @@ var cos = function(test) {
 	return test2;
 
 
-
 	// TEST COMMENT
 }
+	console.log('try');
