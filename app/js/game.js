@@ -26,15 +26,15 @@ G = {
 
 
 		G.layout();
-		//window.addEventListener('resize', G.layout, false);		
+		window.addEventListener('click', B.mouse, false);		
 		document.body.appendChild(G.canvas_bg);
 		document.body.appendChild(G.canvas);
 		//
-		new Board();
-		new T(160, 280, 'water', 3);
-		new T(160, 80, 'earth', 5);
-		new T(320, 240, 'air', 2);
-		new T(160, 120, 'fire', 1);
+		Map = new B();
+		new T(4, 4, 'water', 3);
+		new T(1, 8, 'earth', 5);
+		new T(3, 2, 'air', 2);
+		new T(1, 6, 'fire', 1);
 		//
 		G.animationLoop();
 	},
@@ -48,8 +48,8 @@ G = {
 	},
 
 	layout:function(ev){
-		VAR.W = Math.round(window.innerWidth);
-		VAR.H = Math.round(window.innerHeight);
+		VAR.W = 400*VAR.sc;
+		VAR.H = 400*VAR.sc;
 
 		G.canvas_bg.width = VAR.W;
 		G.canvas_bg.height = VAR.H;

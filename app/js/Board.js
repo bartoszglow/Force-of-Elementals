@@ -1,7 +1,7 @@
-Board.templates = [
+B.templates = [
 	[
 		'            W   ',
-		'   WDDDDDDDDW   ',
+		'   DDDDDDDDDW   ',
 		'   W            ',
 		'   W            ',
 		'   W            ',
@@ -13,25 +13,25 @@ Board.templates = [
 		'            W   '
 	],
 ];
-Board.elements = {
-	'grass':{FXmod:0},
-	'W':{FXmod:1},
-	'A':{FXmod:1},
-	'S':{FXmod:1},
-	'D':{FXmod:1},
+B.elements = {
+	'grass':{FXmod:0, type:'G'},
+	'W':{FXmod:1, 	  type:'W'},
+	'A':{FXmod:1, 	  type:'A'},
+	'S':{FXmod:1,	  type:'S'},
+	'D':{FXmod:1,  	  type:'D'},
 
 };
-function Board(){
+function B(){
 	//
-	this.parse(Board.templates[VAR.rand(0,Board.templates.length-1)]);
+	this.parse(B.templates[VAR.rand(0,B.templates.length-1)]);
 	this.draw();
+	this.test = 10;
 	// 
 	
 }
-Board.prototype.draw = function(){
+B.prototype.draw = function(){
 	for(var x=0; x<2; x++){
 		for(var y=0; y<2; y++){
-			console.log(x + ' ' + y)
 			for(var i=0; i<this.b.length; i++){
 				// 
 				for(var j=0; j<this.b[i].length; j++){
@@ -53,13 +53,17 @@ Board.prototype.draw = function(){
 	}
 }
 
-Board.prototype.parse = function(arr){
+B.prototype.parse = function(arr){
 	this.b = [];
 	for(var i=0; i<arr.length; i++){
 		this.b.push([]);
 		for(var j=0; j<arr[i].length; j++){
-			this.b[i].push(Board.elements[arr[i].charAt(j)==' ' ? 'grass' : arr[i].charAt(j)]);
+			this.b[i].push(B.elements[arr[i].charAt(j)==' ' ? 'grass' : arr[i].charAt(j)]);
 		}
 	}
-	console.log(this.b)
+}
+B.mouse = function(e){
+	B.mx = Math.floor(e.offsetX/(20*VAR.sc));
+	B.my = Math.floor(e.offsetY/(20*VAR.sc));
+	console.log('click: ' + B.mx + '/' + B.my + ' type:' + Map.b[B.my][B.mx].type);
 }

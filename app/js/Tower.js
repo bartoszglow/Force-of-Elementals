@@ -12,8 +12,8 @@ T.type = {
 function T(x, y, type, lvl){
 	T.count++;
 	T.all[T.count] = this;
-	this.x = x;
-	this.y = y;
+	this.x = x*VAR.sc*20;
+	this.y = y*VAR.sc*20;
 	this.TLvl = lvl;
 	this.round = 0;
 	
@@ -23,27 +23,27 @@ function T(x, y, type, lvl){
 	this.r = T.type[this.type].r;
 	this.g = T.type[this.type].g;
 	this.b = T.type[this.type].b;
-}
 
-T.prototype.draw = function(x, y) { 
 	//Rysowanie podstawy działa
-	G.ctx.fillStyle = "white";
-	G.ctx.fillRect(x, y, 20*VAR.sc, 20*VAR.sc);
-	G.ctx.fillStyle = "rgba("+this.r+","+this.g+","+this.b+","+this.TLvl*0.2+")";
-	G.ctx.fillRect(x, y, 20*VAR.sc, 20*VAR.sc);
-	G.ctx.drawImage(
+	G.ctx_bg.fillStyle = "white";
+	G.ctx_bg.fillRect(this.x, this.y, 20*VAR.sc, 20*VAR.sc);
+	G.ctx_bg.fillStyle = "rgba("+this.r+","+this.g+","+this.b+","+this.TLvl*0.2+")";
+	G.ctx_bg.fillRect(this.x, this.y, 20*VAR.sc, 20*VAR.sc);
+	G.ctx_bg.drawImage(
 		G.sprite, 
 		0,
 		0,
 		20,
 		20,
-		x,
-		y,
+		this.x,
+		this.y,
 		20*VAR.sc,
 		20*VAR.sc
 	);
+	}
 
-	//Rysowanie działa uwzgledniając kąt
+T.prototype.draw = function(x, y) { 
+	//Rysowanie działka uwzgledniając kąt
 	G.ctx.save(); 
 	G.ctx.translate(x+10*VAR.sc, y+10*VAR.sc);
 	G.ctx.rotate(this.round * VAR.rad);
