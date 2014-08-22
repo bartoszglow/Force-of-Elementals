@@ -68,6 +68,9 @@ T.DrawT = function(){
 		
 	}
 }
+T.Build = function(x, y, type){
+	new T(x, y, type);
+}
 
 
 

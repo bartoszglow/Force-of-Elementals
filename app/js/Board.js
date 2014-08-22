@@ -66,4 +66,5 @@ B.mouse = function(e){
 	B.mx = Math.floor(e.offsetX/(20*VAR.sc));
 	B.my = Math.floor(e.offsetY/(20*VAR.sc));
 	console.log('click: ' + B.mx + '/' + B.my + ' type:' + Map.b[B.my][B.mx].type);
+	G.ctx_bg.fillRect(B.mx*20*VAR.sc, B.my*20*VAR.sc, 20*VAR.sc, 20*VAR.sc);
 }
