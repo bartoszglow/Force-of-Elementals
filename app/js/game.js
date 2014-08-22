@@ -1,6 +1,6 @@
 window.onload = function(){
 	G.sprite = new Image();
-	G.sprite.src = 'assets/sprite.gif';
+	G.sprite.src = 'sprite.gif';
 	G.sprite.onload = G.init;
 }
 VAR = {
