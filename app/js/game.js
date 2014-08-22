@@ -17,16 +17,14 @@ VAR = {
 }
 G = {
 	init:function(){
-
 		G.canvas_bg = document.createElement('canvas');		//canvas dla otocznie //background
 		G.ctx_bg = G.canvas_bg.getContext('2d');
 
 		G.canvas = document.createElement('canvas');					//cavas do gry
 		G.ctx = G.canvas.getContext('2d');
 
-
 		G.layout();
-		window.addEventListener('click', B.mouse, false);		
+		G.canvas.addEventListener('click', B.mouse, false);		
 		document.body.appendChild(G.canvas_bg);
 		document.body.appendChild(G.canvas);
 		//
@@ -55,7 +53,6 @@ G = {
 		G.canvas_bg.height = VAR.H;
 		G.canvas.width = VAR.W;
 		G.canvas.height = VAR.H;
-
 
 		G.ctx.imageSmoothingEnabled = false;
 		G.ctx.mozImageSmoothingEnabled = false;
