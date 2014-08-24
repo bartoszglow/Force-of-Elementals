@@ -3,7 +3,8 @@ function E(V, x, y, type, lvl){
 	this.V = V;
 	this.types = {
 		'zombie':{ground:0, speed: 5, life:10, FX:0, FY:21, FXS:17, FYS:12, Fcount:[0], frameRate:0},
-		'human':{ground:0, speed: 8, life:5, FX:18, FY:22, FXS:5, FYS:9, Fcount:[0,1], frameRate:5},
+		'human':{ground:0, speed: 8, life:5, FX:18, FY:22, FXS:5, FYS:9, Fcount:[0,1], frameRate:4},
+		'dragon':{ground:1, speed: 5, life:20, FX:0, FY:33, FXS:20, FYS:19, Fcount:[0,1], frameRate:8},
 	};
 	this.type = type;
 
@@ -61,8 +62,8 @@ E.prototype.draw = function(){
 		this.FYS,
 		-this.FXS,
 		-this.FYS,
-		this.FXS*V.sc*2,
-		this.FYS*V.sc*2
+		this.FXS*V.sc,
+		this.FYS*V.sc
 	);
 	V.ctx.restore(); 
 

@@ -60,6 +60,7 @@ var game = (function () {
 		Board = new B(V);
 		Board.addEnemy(100, 100, 'human', 1);
 		Board.addEnemy(200, 200, 'zombie', 1);
+		Board.addEnemy(150, 150, 'dragon', 1);
 		// Board.addTower(1, 1, 'fire', 3);
 		// Board.addTower(4, 3, 'water', 1);
 		// Board.addTower(5, 7, 'air', 2);
