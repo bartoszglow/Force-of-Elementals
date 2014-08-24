@@ -3,18 +3,18 @@ function B(V){
 	this.V = V;
 	this.templates = [
 		[
-			'            W    ',
-			'            W    ',
-			'   DDDDDDDDDW    ',
-			'   W             ',
-			'   W             ',
-			'   W             ',
-			'   W   SAAAAA    ',
-			'   W   S    W    ',
-			'   W   S    W    ',
-			'   WAAAA    W    ',
-			'            W    ',
-			'            W    '
+			'            W   ',
+			'            W   ',
+			'   DDDDDDDDDW   ',
+			'   W            ',
+			'   W            ',
+			'   W            ',
+			'   W   SAAAAA   ',
+			'   W   S    W   ',
+			'   W   S    W   ',
+			'   WAAAA    W   ',
+			'            W   ',
+			'            W   '
 		],
 	];
 	this.elements = {
@@ -26,10 +26,14 @@ function B(V){
 	};
 	//main arr included grass and path
 	this.b = []; 
+<<<<<<< HEAD
 
 	this.Enemies = [];
 	this.Enemies.push({x: 100, y: 100});
 	this.Bullets = [];
+=======
+	this.Enemy = [];
+>>>>>>> c21e93c89698bfd736137d502c8fd6fff1c2bbe5
 	this.Towers = new Array(16);
 	for (var i = 0; i < 16; i++) {
 		this.Towers[i] = new Array(12);
@@ -43,6 +47,10 @@ B.prototype.addTower = function(x, y, type, lvl){
 	this.Towers[x][y] = new T(this.V, x, y, type, lvl);
 	this.Towers[x][y].draw(x, y);
 };
+B.prototype.addEnemy = function(x, y, type, lvl){
+	this.Enemy[this.Enemy.length] = new E(this.V, x, y, type, lvl);
+	this.Enemy[this.Enemy.length-1].draw();
+};
 
 B.prototype.draw = function(){
 	for (var i = 0; i < 16; i++) {	   	
@@ -54,6 +62,10 @@ B.prototype.draw = function(){
 	    	}
 	    }
 	 }
+	 for(var i=0; i<this.Enemy.length; i++){
+	 	this.Enemy[i].draw();
+	 }
+	 
 };
 
 B.prototype.drawBg = function(){
