@@ -58,7 +58,9 @@ var game = (function () {
 	this.create = function(){
 
 		Board = new B(V);
-		Board.addEnemy(240, 220, 'human', 1);
+		Board.addEnemy(240, 225, 'fireElemental', 1);
+		Board.addEnemy(240, 220, 'waterElemental', 1);
+		Board.addEnemy(240, 215, 'human', 1);
 		Board.addEnemy(240, 200, 'zombie', 1);
 		Board.addEnemy(240, 210, 'dragon', 1);
 		Board.addTower(1, 1, 'fire', 3);

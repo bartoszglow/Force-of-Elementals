@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 		        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
 		    },
 		    js: {
-		        src: ['app/js/game.js', 'app/js/Tower.js', 'app/js/Board.js'],
+		        src: ['app/js/game.js', 'app/js/Tower.js', 'app/js/Board.js', 'app/js/Enemy.js'],
 		        dest: 'build/build.min.js'
 		    }
 	    },
