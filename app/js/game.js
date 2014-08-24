@@ -6,7 +6,7 @@ window.onload = function(){
 
 var game = (function () {
 	this.V = {
-		fps:30,
+		fps:60,
 		W:0,
 		H:0,
 		sc:2, //scale
@@ -58,14 +58,14 @@ var game = (function () {
 	this.create = function(){
 
 		Board = new B(V);
-		Board.addEnemy(100, 100, 'human', 1);
-		Board.addEnemy(200, 200, 'zombie', 1);
-		Board.addEnemy(150, 150, 'dragon', 1);
-		// Board.addTower(1, 1, 'fire', 3);
-		// Board.addTower(4, 3, 'water', 1);
-		// Board.addTower(5, 7, 'air', 2);
-		// Board.addTower(9, 8, 'earth', 3);
-		// Board.addTower(10, 8, 'earth', 1);
+		Board.addEnemy(240, 220, 'human', 1);
+		Board.addEnemy(240, 200, 'zombie', 1);
+		Board.addEnemy(240, 210, 'dragon', 1);
+		Board.addTower(1, 1, 'fire', 3);
+		Board.addTower(4, 3, 'water', 1);
+		Board.addTower(5, 7, 'air', 2);
+		Board.addTower(9, 8, 'earth', 3);
+
 		animationLoop();
 	}
 	this.animationLoop = function(time){
