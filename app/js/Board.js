@@ -26,14 +26,14 @@ function B(V){
 	};
 	//main arr included grass and path
 	this.b = []; 
-	//this.Towers = this.b;
+
+	this.Enemies = [];
+	this.Enemies.push({x: 100, y: 100});
+	this.Bullets = [];
 	this.Towers = new Array(16);
-	  for (var i = 0; i < 16; i++) {
-	    this.Towers[i] = new Array(12);
-	    for(var j=0; j<12; j++){
-	    	//this.Towers[i][j] = {};
-	    }
-	  }
+	for (var i = 0; i < 16; i++) {
+		this.Towers[i] = new Array(12);
+	}
 	this.parse(this.templates[0]);
 	
 	this.drawBg();	
@@ -48,7 +48,9 @@ B.prototype.draw = function(){
 	for (var i = 0; i < 16; i++) {	   	
 	    for(var j=0; j<12; j++){
 	    	if(this.Towers[i][j]){
-	    		this.Towers[i][j].draw();
+	    		if(this.Towers[i][j].draw(this.Enemies)) {
+	    			console.log('t');
+	    		}
 	    	}
 	    }
 	 }

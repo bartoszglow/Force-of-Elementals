@@ -2,10 +2,10 @@
 function T(V, x, y, type, lvl){
 	this.V = V;
 	this.types = {
-		'air':{  FXmod: 3, SR: 9, r:100, g:150, b:250, dmg:1},
-		'earth':{FXmod: 2, SR: 1, r:020, g:255, b:020, dmg:1},
-		'fire':{ FXmod: 1, SR: 3, r:255, g:090, b:020, dmg:1},
-		'water':{FXmod: 0, SR: 5, r:020, g:090, b:255, dmg:1}
+		'air':  {FXmod: 3, SR: 9, r:100, g:150, b:250, dmg:1, range: 2},
+		'earth':{FXmod: 2, SR: 1, r:020, g:255, b:020, dmg:1, range: 2},
+		'fire': {FXmod: 1, SR: 3, r:255, g:090, b:020, dmg:1, range: 2},
+		'water':{FXmod: 0, SR: 5, r:020, g:090, b:255, dmg:1, range: 2}
 	//SR - speed rotate, r-red, g-green, b-blue
 	};
 	this.x = x*V.sc*20;
@@ -19,6 +19,7 @@ function T(V, x, y, type, lvl){
 	this.r = this.types[this.type].r;
 	this.g = this.types[this.type].g;
 	this.b = this.types[this.type].b;
+	this.range = this.types[this.type].range;
 
 	//Rysowanie podstawy działa
 	V.ctx_bg.fillStyle = "rgba("+this.r+","+this.g+","+this.b+","+this.TLvl*0.2+")";
@@ -36,7 +37,7 @@ function T(V, x, y, type, lvl){
 	);
 };
 
-T.prototype.draw = function(x, y) { 
+T.prototype.draw = function(E) { 
 	//Rysowanie działka uwzgledniając kąt
 
 	V.ctx.save(); 
@@ -55,15 +56,22 @@ T.prototype.draw = function(x, y) {
 		21*V.sc
 	);
 	V.ctx.restore(); 
+
+	return this.shoot(E);
 };
 
-T.DrawT = function(){
-	for(t in T.all){
-		T.all[t].draw(T.all[t].x, T.all[t].y);
-		
-	};
+T.prototype.shoot = function(E) { 
+	for(var e in E) {	
+		var r = this.range*20*V.sc;
+		console.log(this.x, this.y, r);
+		if(this.x + r > E[e].x && this.x - r < E[e].x) {
+			if(this.y + r > E[e].y && this.y - r < E[e].y) {
+				return true;
+			}
+		}
+	}
+	return false;
 };
-
 
 
 
