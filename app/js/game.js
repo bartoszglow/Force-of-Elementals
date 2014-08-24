@@ -38,8 +38,8 @@ var game = (function () {
 		setTimeout(create, 100);
 	};
 	this.layout = function(canvas, canvas_bg){
-		V.W = 400*V.sc;
-		V.H = 400*V.sc;
+		V.W = 320*V.sc;
+		V.H = 240*V.sc;
 
 		canvas_bg.width = V.W;
 		canvas_bg.height = V.H;
@@ -58,7 +58,11 @@ var game = (function () {
 	this.create = function(){
 
 		Board = new B(V);
-		Board.addTower(1, 1, 'fire');
+		Board.addTower(1, 1, 'fire', 3);
+		Board.addTower(4, 3, 'water', 1);
+		Board.addTower(5, 7, 'air', 2);
+		Board.addTower(9, 8, 'earth', 3);
+		Board.addTower(10, 8, 'earth', 1);
 		animationLoop();
 	}
 	this.animationLoop = function(time){

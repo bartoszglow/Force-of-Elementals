@@ -4,8 +4,8 @@ function T(V, x, y, type, lvl){
 	this.types = {
 		'air':{  FXmod: 3, SR: 9, r:100, g:150, b:250, dmg:1},
 		'earth':{FXmod: 2, SR: 1, r:020, g:255, b:020, dmg:1},
-		'fire':{ FXmod: 1, SR: 3, r:255, g:020, b:020, dmg:1},
-		'water':{FXmod: 0, SR: 5, r:020, g:020, b:255, dmg:1}
+		'fire':{ FXmod: 1, SR: 3, r:255, g:090, b:020, dmg:1},
+		'water':{FXmod: 0, SR: 5, r:020, g:090, b:255, dmg:1}
 	//SR - speed rotate, r-red, g-green, b-blue
 	};
 	this.x = x*V.sc*20;
@@ -21,10 +21,8 @@ function T(V, x, y, type, lvl){
 	this.b = this.types[this.type].b;
 
 	//Rysowanie podstawy działa
-	V.ctx_bg.fillStyle = "white";
-	V.ctx_bg.fillRect(this.x, this.y, 20*V.sc, 20*V.sc);
 	V.ctx_bg.fillStyle = "rgba("+this.r+","+this.g+","+this.b+","+this.TLvl*0.2+")";
-	V.ctx_bg.fillRect(this.x, this.y, 20*V.sc, 20*V.sc);
+	V.ctx_bg.fillRect(this.x+1*V.sc, this.y+1*V.sc, 18*V.sc, 18*V.sc);
 	V.ctx_bg.drawImage(
 		V.sprite, 
 		0,
