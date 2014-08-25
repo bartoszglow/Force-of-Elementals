@@ -4,9 +4,10 @@ function E(V, x, y, type, lvl){
 	this.types = {
 		'zombie':{ground:1, speed: 0.4, life:10, rise:1, FX:0,  FY:21, FXS:17, FYS:12, Fcount:[0],   frameRate:0, Frotate:0},
 		'human':{ ground:1, speed: 1.2, life:5,  rise:1, FX:18, FY:22, FXS:5,  FYS:9,  Fcount:[0,1], frameRate:4, Frotate:0},
-		'dragon':{ground:0, speed: 1,   life:20, rise:1, FX:0,  FY:33, FXS:25, FYS:19, Fcount:[0,1], frameRate:8, Frotate:90},
-		'waterElemental':{ ground:1, speed: 1.3, life:2,  rise:1.5, FX:30, FY:23, FXS:6,  FYS:7,  Fcount:[0,1], frameRate:3, Frotate:0},
-		'fireElemental':{  ground:1, speed: 0.9, life:2,  rise:1, FX:42, FY:22, FXS:4,  FYS:10, Fcount:[0,1], frameRate:3, Frotate:0},
+		'dragon':{ground:0, speed: 0.8,   life:20, rise:1, FX:0,  FY:33, FXS:25, FYS:19, Fcount:[0,1], frameRate:8, Frotate:90},
+		'man':{ ground:1, speed: 0.7, life:2,  rise:1, FX:45, FY:21, FXS:8,  FYS:14,  Fcount:[0,1], frameRate:7, Frotate:90},
+		'knight':{  ground:1, speed: 0.6, life:2,  rise:1, FX:45, FY:48, FXS:15,  FYS:15, Fcount:[0], frameRate:0, Frotate:-90},
+		'worm':{  ground:1, speed: 0.9, life:2,  rise:1, FX:29, FY:22, FXS:14,  FYS:9, Fcount:[0], frameRate:0, Frotate:180},
 	};
 	this.type = type;
 
@@ -79,9 +80,11 @@ E.prototype.move = function(arr){
 
 
 E.prototype.draw = function(){
-
 	//Create hp bar
-	V.ctx.fillStyle = 'rgba(250,10,10,0.7)';
+	alert("Hello! I am an alert box!!");
+	V.ctx.fillStyle = 'rgba(250,10,10,0.5)';
+	V.ctx.fillRect(this.x-(this.FXS/3*V.sc*this.rise),this.y-(this.FYS*V.sc*this.rise),V.sc*10,1*V.sc);
+	V.ctx.fillStyle = 'rgba(0,240,100,0.9)';
 	V.ctx.fillRect(this.x-(this.FXS/3*V.sc*this.rise),this.y-(this.FYS*V.sc*this.rise),this.hp/this.life*V.sc*10,1*V.sc);
 	//Income actual frame
 	if(this.frame < this.Fcount.length-1 && this.fRa >= this.fR){
