@@ -72,13 +72,10 @@ var game = (function () {
 		animationLoop();
 	}
 	this.animationLoop = function(time){
-
-		
-		//
-
 		requestAnimationFrame( animationLoop );
 		if(time-V.lastTime>=1000/V.fps){
 			V.lastTime = time;
+			
 				V.ctx.clearRect(0,0,V.W, V.H);
 				Board.draw();
 		};
