@@ -61,7 +61,7 @@ var game = (function () {
 		Board.addEnemy(240, 165, 'worm', 1);
 		Board.addEnemy(240, 185, 'man', 1);
 		Board.addEnemy(240, 230, 'knight', 1);
-		Board.addEnemy(240, 215, 'human', 1);
+		Board.addEnemy(240, 215, 'orc', 1);
 		Board.addEnemy(240, 200, 'zombie', 1);
 		Board.addEnemy(240, 210, 'dragon', 1);
 		Board.addTower(1, 1, 'fire', 3);
