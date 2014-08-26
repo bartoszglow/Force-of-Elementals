@@ -79,13 +79,14 @@ E.prototype.move = function(arr){
 	this.y = Math.round(this.y*10)/10;
 };
 
-
 E.prototype.draw = function(){
 	//Create hp bar
-	V.ctx.fillStyle = 'rgba(250,10,10,0.5)';
-	V.ctx.fillRect(this.x-(this.FXS/3*V.sc*this.rise),this.y-(this.FYS*V.sc*this.rise),V.sc*10,1*V.sc);
-	V.ctx.fillStyle = 'rgba(0,240,100,0.9)';
-	V.ctx.fillRect(this.x-(this.FXS/3*V.sc*this.rise),this.y-(this.FYS*V.sc*this.rise),this.hp/this.life*V.sc*10,1*V.sc);
+	if(this.hp < this.life){
+		V.ctx.fillStyle = 'rgba(250,10,10,0.5)';
+		V.ctx.fillRect(this.x-(this.FXS/3*V.sc*this.rise),this.y-(this.FYS*V.sc*this.rise),V.sc*10,1*V.sc);
+		V.ctx.fillStyle = 'rgba(0,240,100,0.9)';
+		V.ctx.fillRect(this.x-(this.FXS/3*V.sc*this.rise),this.y-(this.FYS*V.sc*this.rise),this.hp/this.life*V.sc*10,1*V.sc);
+	}
 	//Income actual frame
 	if(this.frame < this.Fcount.length-1 && this.fRa >= this.fR){
 		this.frame++;
