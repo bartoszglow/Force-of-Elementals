@@ -64,16 +64,26 @@ T.prototype.draw = function() {
 };
 
 T.prototype.shoot = function(enemy) { 
+	var killMe;
 	for(var i=0; i<enemy.length; i++){
 		this.sY=Math.round((this.y+10*V.sc)-enemy[i].y);
 		this.sX=Math.round((this.x+10*V.sc)-enemy[i].x);
 		this.aRange = Math.round(Math.sqrt(this.sX*this.sX+this.sY*this.sY))/V.sc;
 
 		if(this.aRange<=this.range){			
-			this.angle = Math.round(Math.atan2(this.sY,this.sX)/V.rad-90);
-			enemy[i].hp -= this.dmg*this.TLvl;
-			i += enemy.length;
+			if(this.aRange<=this.range){	
+				if(killMe) {
+					if(killMe.distance < enemy[i]) 
+						killMe = enemy[i];
+				} else {
+					killMe = enemy[i];
+				}
+			}
 		}
+	}
+	if(killMe) {
+		this.angle = Math.round(Math.atan2(this.sY,this.sX)/V.rad-90);
+		killMe.hp -= this.dmg*this.TLvl;
 	}
 };
 
