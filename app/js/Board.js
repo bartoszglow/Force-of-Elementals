@@ -48,22 +48,33 @@ B.prototype.addEnemy = function(x, y, type, lvl){
 	this.Enemy[this.Enemy.length] = new E(this.V, x, y, type, lvl);
 	this.Enemy[this.Enemy.length-1].draw();
 };
+B.prototype.delete = function(arr,arrIndex){
+	return arr.slice(0,arrIndex).concat(arr.slice(arrIndex + 1));
+};
 
 B.prototype.draw = function(){
 	for (var i = 0; i < 16; i++) {	   	
 	    for(var j=0; j<12; j++){
 	    	if(this.Towers[i][j]){
-	    		if(this.Towers[i][j].draw(this.Enemies)) {
-	    			console.log('t');
-	    		}
+	    		this.Towers[i][j].draw();
+	    		this.Towers[i][j].shoot(this.Enemy);		
+	    	
 	    	}
 	    }
+	 }
+
+	 for(var i=0; i<this.Enemy.length; i++){
+	 	if(this.Enemy[i].hp <= 0){
+	 		console.log(this.Enemy[i].type + ' was killed!');
+	 		this.Enemy = this.delete(this.Enemy, i);
+	 		if(this.Enemy.length==0){
+	 			break;}
+	 	}
 	 }
 	 for(var i=0; i<this.Enemy.length; i++){
 	 	this.Enemy[i].move(this.b);
 	 	this.Enemy[i].draw();
 	 }
-	 
 };
 
 B.prototype.drawBg = function(){

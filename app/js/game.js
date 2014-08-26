@@ -6,7 +6,7 @@ window.onload = function(){
 
 var game = (function () {
 	this.V = {
-		fps:60,
+		fps:30,
 		W:0,
 		H:0,
 		sc:2, //scale
@@ -58,16 +58,16 @@ var game = (function () {
 	this.create = function(){
 
 		Board = new B(V);
-		Board.addEnemy(240, 165, 'worm', 1);
-		Board.addEnemy(240, 185, 'man', 1);
-		Board.addEnemy(240, 230, 'knight', 1);
-		Board.addEnemy(240, 215, 'orc', 1);
-		Board.addEnemy(240, 200, 'zombie', 1);
-		Board.addEnemy(240, 210, 'dragon', 1);
-		Board.addTower(1, 1, 'fire', 3);
-		Board.addTower(4, 3, 'water', 1);
-		Board.addTower(5, 7, 'air', 2);
-		Board.addTower(9, 8, 'earth', 3);
+		Board.addEnemy(240, 165, 'worm', 15);
+		Board.addEnemy(240, 175, 'man', 15);
+		Board.addEnemy(240, 230, 'knight', 15);
+		Board.addEnemy(240, 215, 'orc', 15);
+		Board.addEnemy(240, 200, 'zombie', 15);
+		Board.addEnemy(240, 210, 'dragon', 20);
+		Board.addTower(2, 1, 'fire', 2);
+		Board.addTower(9, 7, 'water', 1);
+		Board.addTower(5, 7, 'air', 1);
+		Board.addTower(9, 5, 'earth', 2);
 
 		animationLoop();
 	}
@@ -75,7 +75,7 @@ var game = (function () {
 		requestAnimationFrame( animationLoop );
 		if(time-V.lastTime>=1000/V.fps){
 			V.lastTime = time;
-			
+
 				V.ctx.clearRect(0,0,V.W, V.H);
 				Board.draw();
 		};
