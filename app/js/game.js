@@ -6,7 +6,7 @@ window.onload = function(){
 
 var game = (function () {
 	this.V = {
-		fps:20,
+		fps:60,
 		W:0,
 		H:0,
 		sc:2, //scale
@@ -39,7 +39,7 @@ var game = (function () {
 		layout(canvas, canvas_bg, canvas_hit);		
 		document.body.appendChild(canvas_bg);
 		document.body.appendChild(canvas);
-		document.body.appendChild(canvas_hit);
+		//document.body.appendChild(canvas_hit);
 		//		
 		setTimeout(create, 100);
 	};
@@ -75,7 +75,7 @@ var game = (function () {
 		Board.addTower(2, 1, 'fire', 2);
 		Board.addTower(9, 7, 'water', 1);
 		Board.addTower(5, 7, 'air', 1);
-		Board.addTower(9, 5, 'earth', 2);
+		Board.addTower(9, 5, 'earth', 1);
 
 		animationLoop();
 	}

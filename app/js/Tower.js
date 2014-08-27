@@ -2,16 +2,16 @@
 function T(V, x, y, type, lvl){
 	this.V = V;
 	this.types = {
-		'air':  {FXmod: 3, reloaded: 20, r:100, g:150, b:250, dmg:8, range: 70},
-		'earth':{FXmod: 2, reloaded: 10, r:020, g:255, b:020, dmg:3, range: 120},
-		'fire': {FXmod: 1, reloaded: 30, r:255, g:090, b:020, dmg:10, range: 50},
-		'water':{FXmod: 0, reloaded: 40, r:020, g:090, b:255, dmg:6, range: 100}
+		'air':  {FXmod: 3, reloaded: 20, r:100, g:150, b:250, range: 70},
+		'earth':{FXmod: 2, reloaded: 10, r:020, g:255, b:020, range: 90},
+		'fire': {FXmod: 1, reloaded: 40, r:255, g:090, b:020, range: 50},
+		'water':{FXmod: 0, reloaded: 20, r:020, g:090, b:255, range: 80}
 	//SR - speed rotate, r-red, g-green, b-blue
 	};
 	this.x = x*V.sc*20;
 	this.y = y*V.sc*20;
 	this.TLvl = lvl | 1;
-	this.angle = 0; 				//zmienic
+	this.angle = 0;
 	
 	this.type = type;
 	this.FXmod = this.types[this.type].FXmod;
@@ -20,7 +20,6 @@ function T(V, x, y, type, lvl){
 	this.r = this.types[this.type].r;
 	this.g = this.types[this.type].g;
 	this.b = this.types[this.type].b;
-	this.dmg = this.types[this.type].dmg*this.TLvl;
 	this.range = this.types[this.type].range;
 	this.aRange =0;
 	this.a=0;
@@ -65,7 +64,7 @@ T.prototype.draw = function() {
 
 T.prototype.shoot = function(enemy) { 
 	var killMe;
-	var sY, sX, tX, tY;
+	var sY, sX;
 
 	for(var i=0; i<enemy.length; i++){
 		this.sY=Math.round((this.y+10*V.sc)-enemy[i].y);
@@ -82,8 +81,6 @@ T.prototype.shoot = function(enemy) {
 				killMe = i;
 				sY = this.sY;
 				sX = this.sX;
-				tX = enemy[i].x;
-				tY = enemy[i].y;
 			}
 		}
 	}
@@ -91,8 +88,7 @@ T.prototype.shoot = function(enemy) {
 		this.angle = Math.round(Math.atan2(sY,sX)/V.rad-90);
 		if(this.aReloaded >= this.reloaded){
 			this.aReloaded=0;
-			enemy[killMe].hp -= this.dmg;
-			return {ty:tY, tx:tX, a:this.angle, d:this.aRange};
+			return true;
 		}
 		this.aReloaded++;
 	}

@@ -7,7 +7,7 @@ function E(V, x, y, type, lvl){
 		'dragon':{ground:0, speed: 0.9,   life:150, rise:0.9, FX:0,  FY:33, FXS:25, FYS:19, Fcount:[0,1], frameRate:16, Frotate:90},
 		'man':{ ground:1, speed: 0.9, life:50,  rise:1, FX:45, FY:21, FXS:8,  FYS:14,  Fcount:[0,1], frameRate:10, Frotate:90},
 		'knight':{  ground:1, speed: 0.6, life:200,  rise:0.75, FX:45, FY:48, FXS:15,  FYS:15, Fcount:[0], frameRate:0, Frotate:-90},
-		'worm':{  ground:1, speed: 1.1, life:40,  rise:1, FX:29, FY:22, FXS:14,  FYS:9, Fcount:[0], frameRate:0, Frotate:180},
+		'worm':{  ground:1, speed: 1.3, life:40,  rise:1, FX:29, FY:22, FXS:14,  FYS:9, Fcount:[0], frameRate:0, Frotate:180},
 	};
 	this.type = type;
 
@@ -37,17 +37,6 @@ function E(V, x, y, type, lvl){
 	this.frame = 0;
 	this.fR = this.types[type].frameRate;
 	this.fRa = 0;
-};
-
-E.prototype.hitTest = function(){
-	V.ctx_hit.fillStyle = 'rgba(255,0,0,0.5)';
-	
-	// if(V.ctx_hit.getImageData(this.x,this.y,1,1).data[1]!=0){
-	// 	this.hp-=20;
-	// 	V.ctx_hit.clearRect(0, 0, V.W, V.H);
-	// };
-	
-	V.ctx_hit.fillRect(this.x-10,this.y-10,20,20);
 };
 
 E.prototype.move = function(arr){
@@ -92,7 +81,6 @@ E.prototype.move = function(arr){
 };
 
 E.prototype.draw = function(){
-	this.hitTest();
 	this.distance += this.speed; 
 	//Create hp bar
 	if(this.hp < this.life){
@@ -128,4 +116,30 @@ E.prototype.draw = function(){
 		this.FYS*V.sc*this.rise
 	);
 	V.ctx.restore(); 
+};
+E.prototype.hit = function(x,y){
+	if(this.x-this.FXS*V.sc/2<x && this.x+this.FXS*V.sc/2>x && this.y-this.FYS*V.sc/2<y && this.y+this.FYS*V.sc/2>y){
+		V.ctx_hit.save(); 
+		V.ctx_hit.translate(this.x, this.y);
+		V.ctx_hit.rotate((this.rotate+this.Frotate) * V.rad);
+		V.ctx_hit.drawImage(
+			V.sprite,
+			this.FX+this.Fcount[this.frame]*this.FXS,
+			this.FY,
+			this.FXS,
+			this.FYS,
+			-this.FXS,
+			-this.FYS,
+			this.FXS*V.sc*this.rise,
+			this.FYS*V.sc*this.rise
+		);
+		V.ctx_hit.restore(); 
+
+		if(V.ctx_hit.getImageData(this.x,this.y,1,1).data[0]!=0){
+			console.log(this.type);
+			return true
+		}
+	}
+	return false
+	
 };
