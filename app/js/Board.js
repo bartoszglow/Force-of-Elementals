@@ -57,23 +57,39 @@ B.prototype.draw = function(){
 	    for(var j=0; j<12; j++){
 	    	if(this.Towers[i][j]){
 	    		this.Towers[i][j].draw();
-	    		this.Towers[i][j].shoot(this.Enemy);		
-	    	
+	    		var tmd;
+	    		if(tmd = this.Towers[i][j].shoot(this.Enemy)){
+	    			this.Bullets[this.Bullets.length] = new Bullet(this.V, this.Towers[i][j].x, this.Towers[i][j].y, tmd.a, this.Towers[i][j].type, tmd.tx, tmd.ty, tmd.d);
+	    		}
 	    	}
 	    }
 	 }
-
+	 //Create Bullet
+	 for(var i=0; i<this.Bullets.length; i++){
+	 	if(this.Bullets[i].draw()){
+	 		this.Bullets = this.delete(this.Bullets, i);
+	 		if(this.Bullets.length==0){
+	 			break;
+	 		}
+	 	}
+	 }
+	 V.ctx_hit.clearRect(0,0,V.W, V.H);
 	 for(var i=0; i<this.Enemy.length; i++){
+	 	if(this.Enemy[i].hp > 0){
+	 	this.Enemy[i].move(this.b);
+	 	this.Enemy[i].draw();
+	 	}
 	 	if(this.Enemy[i].hp <= 0){
 	 		console.log(this.Enemy[i].type + ' was killed!');
 	 		this.Enemy = this.delete(this.Enemy, i);
 	 		if(this.Enemy.length==0){
-	 			break;}
+	 			break;
+	 		}
+	 		if(this.Enemy.length>1){
+	 			this.Enemy[i].move(this.b);
+	 			this.Enemy[i].draw();
+	 		}
 	 	}
-	 }
-	 for(var i=0; i<this.Enemy.length; i++){
-	 	this.Enemy[i].move(this.b);
-	 	this.Enemy[i].draw();
 	 }
 };
 

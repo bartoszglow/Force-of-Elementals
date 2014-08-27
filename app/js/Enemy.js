@@ -2,12 +2,12 @@
 function E(V, x, y, type, lvl){
 	this.V = V;
 	this.types = {
-		'zombie':{ground:1, speed: 0.6, life:100, rise:0.75, FX:0,  FY:21, FXS:17, FYS:12, Fcount:[0],   frameRate:0, Frotate:0},
-		'orc':{ ground:1, speed: 1.2, life:20,  rise:1, FX:18, FY:22, FXS:5,  FYS:9,  Fcount:[0,1], frameRate:4, Frotate:0},
-		'dragon':{ground:0, speed: 0.8,   life:150, rise:0.9, FX:0,  FY:33, FXS:25, FYS:19, Fcount:[0,1], frameRate:8, Frotate:90},
-		'man':{ ground:1, speed: 0.7, life:50,  rise:1, FX:45, FY:21, FXS:8,  FYS:14,  Fcount:[0,1], frameRate:5, Frotate:90},
+		'zombie':{ground:1, speed: 0.4, life:100, rise:0.75, FX:0,  FY:21, FXS:17, FYS:12, Fcount:[0],   frameRate:0, Frotate:0},
+		'orc':{ ground:1, speed: 1.2, life:20,  rise:1, FX:18, FY:22, FXS:5,  FYS:9,  Fcount:[0,1], frameRate:8, Frotate:0},
+		'dragon':{ground:0, speed: 0.9,   life:150, rise:0.9, FX:0,  FY:33, FXS:25, FYS:19, Fcount:[0,1], frameRate:16, Frotate:90},
+		'man':{ ground:1, speed: 0.9, life:50,  rise:1, FX:45, FY:21, FXS:8,  FYS:14,  Fcount:[0,1], frameRate:10, Frotate:90},
 		'knight':{  ground:1, speed: 0.6, life:200,  rise:0.75, FX:45, FY:48, FXS:15,  FYS:15, Fcount:[0], frameRate:0, Frotate:-90},
-		'worm':{  ground:1, speed: 1.2, life:40,  rise:1, FX:29, FY:22, FXS:14,  FYS:9, Fcount:[0], frameRate:0, Frotate:180},
+		'worm':{  ground:1, speed: 1.1, life:40,  rise:1, FX:29, FY:22, FXS:14,  FYS:9, Fcount:[0], frameRate:0, Frotate:180},
 	};
 	this.type = type;
 
@@ -27,6 +27,7 @@ function E(V, x, y, type, lvl){
 	this.FYS = this.types[type].FYS;
 	this.Fcount = this.types[type].Fcount;
 	this.Frotate = this.types[type].Frotate;
+	this.distance=0;
 
 	// Coordinates relative to the center of mob, rotate count 0=left;
 	this.x = (x+this.FXS/2)*V.sc;
@@ -37,6 +38,18 @@ function E(V, x, y, type, lvl){
 	this.fR = this.types[type].frameRate;
 	this.fRa = 0;
 };
+
+E.prototype.hitTest = function(){
+	V.ctx_hit.fillStyle = 'rgba(255,0,0,0.5)';
+	
+	// if(V.ctx_hit.getImageData(this.x,this.y,1,1).data[1]!=0){
+	// 	this.hp-=20;
+	// 	V.ctx_hit.clearRect(0, 0, V.W, V.H);
+	// };
+	
+	V.ctx_hit.fillRect(this.x-10,this.y-10,20,20);
+};
+
 E.prototype.move = function(arr){
 	//calculate coordinate on array
 	this.bx =  Math.floor(this.x/(20*V.sc));
@@ -46,40 +59,41 @@ E.prototype.move = function(arr){
 	if(arr[this.by][this.bx].type == 'W'){
 		this.rotate==-360 ? this.rotate=0 : this.rotate;
 		if(this.rotate!=90 && this.rotate<90 ){
-			this.rotate+=5;
+			this.rotate+=2;
 		}else if(this.rotate!=90){
-			this.rotate-=5;
+			this.rotate-=2;
 		}
 	}else if(arr[this.by][this.bx].type == 'S'){
 		this.rotate==180 ? this.rotate=-180 : this.rotate;
 		if(this.rotate!=-90 && this.rotate<-90 ){
-			this.rotate+=5;
+			this.rotate+=2;
 		}else if(this.rotate!=-90){
-			this.rotate-=5;
+			this.rotate-=2;
 		}
 	}else if(arr[this.by][this.bx].type == 'A'){//
 		this.rotate==-270 ? this.rotate=-90 : this.rotate;
 		if(this.rotate!=0  && this.rotate<0 ){
-			this.rotate+=5;
+			this.rotate+=2;
 		}else if(this.rotate!=0){
-			this.rotate-=5;
+			this.rotate-=2;
 		}
 	}else if(arr[this.by][this.bx].type == 'D'){
 		this.rotate==-90 ? this.rotate=270 : this.rotate;
 		if(this.rotate!=180 && this.rotate<180 ){
-			this.rotate+=5;
+			this.rotate+=2;
 		}else if(this.rotate!=180){
-			this.rotate-=5;
+			this.rotate-=2;
 		}
 	}
 	//calculate speed relative to angle
-	this.x += Math.round((Math.sin(V.rad*(this.rotate-90))*this.speed)*10)/10;
-	this.y -= Math.round((Math.cos(V.rad*(this.rotate-90))*this.speed)*10)/10;
-	this.x = Math.round(this.x*10)/10;
-	this.y = Math.round(this.y*10)/10;
+	this.x += Math.round((Math.sin(V.rad*(this.rotate-90))*this.speed)*10)/20;
+	this.y -= Math.round((Math.cos(V.rad*(this.rotate-90))*this.speed)*10)/20;
+
 };
 
 E.prototype.draw = function(){
+	this.hitTest();
+	this.distance += this.speed; 
 	//Create hp bar
 	if(this.hp < this.life){
 		V.ctx.fillStyle = 'rgba(250,10,10,0.5)';

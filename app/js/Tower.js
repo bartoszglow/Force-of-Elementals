@@ -2,10 +2,10 @@
 function T(V, x, y, type, lvl){
 	this.V = V;
 	this.types = {
-		'air':  {FXmod: 3, SR: 9, r:100, g:150, b:250, dmg:2, range: 70},
-		'earth':{FXmod: 2, SR: 1, r:020, g:255, b:020, dmg:1, range: 120},
-		'fire': {FXmod: 1, SR: 3, r:255, g:090, b:020, dmg:5, range: 50},
-		'water':{FXmod: 0, SR: 5, r:020, g:090, b:255, dmg:1.5, range: 100}
+		'air':  {FXmod: 3, reloaded: 20, r:100, g:150, b:250, dmg:8, range: 70},
+		'earth':{FXmod: 2, reloaded: 10, r:020, g:255, b:020, dmg:3, range: 120},
+		'fire': {FXmod: 1, reloaded: 30, r:255, g:090, b:020, dmg:10, range: 50},
+		'water':{FXmod: 0, reloaded: 40, r:020, g:090, b:255, dmg:6, range: 100}
 	//SR - speed rotate, r-red, g-green, b-blue
 	};
 	this.x = x*V.sc*20;
@@ -15,7 +15,8 @@ function T(V, x, y, type, lvl){
 	
 	this.type = type;
 	this.FXmod = this.types[this.type].FXmod;
-	this.SR = this.types[this.type].SR;
+	this.reloaded = this.types[this.type].reloaded;
+	this.aReloaded = 0;
 	this.r = this.types[this.type].r;
 	this.g = this.types[this.type].g;
 	this.b = this.types[this.type].b;
@@ -60,30 +61,40 @@ T.prototype.draw = function() {
 		21*V.sc
 	);
 	V.ctx.restore(); 
-
 };
 
 T.prototype.shoot = function(enemy) { 
 	var killMe;
+	var sY, sX, tX, tY;
+
 	for(var i=0; i<enemy.length; i++){
 		this.sY=Math.round((this.y+10*V.sc)-enemy[i].y);
 		this.sX=Math.round((this.x+10*V.sc)-enemy[i].x);
 		this.aRange = Math.round(Math.sqrt(this.sX*this.sX+this.sY*this.sY))/V.sc;
-
-		if(this.aRange<=this.range){			
-			if(this.aRange<=this.range){	
-				if(killMe) {
-					if(killMe.distance < enemy[i]) 
-						killMe = enemy[i];
-				} else {
-					killMe = enemy[i];
+		if(this.aRange<=this.range){	
+			if(killMe > -1) {
+				if(enemy[killMe].distance < enemy[i].distance){ 
+					killMe = i;
+					sY = this.sY;
+					sX = this.sX;
 				}
+			} else {
+				killMe = i;
+				sY = this.sY;
+				sX = this.sX;
+				tX = enemy[i].x;
+				tY = enemy[i].y;
 			}
 		}
 	}
-	if(killMe) {
-		this.angle = Math.round(Math.atan2(this.sY,this.sX)/V.rad-90);
-		killMe.hp -= this.dmg*this.TLvl;
+	if(killMe>-1) {
+		this.angle = Math.round(Math.atan2(sY,sX)/V.rad-90);
+		if(this.aReloaded >= this.reloaded){
+			this.aReloaded=0;
+			enemy[killMe].hp -= this.dmg;
+			return {ty:tY, tx:tX, a:this.angle, d:this.aRange};
+		}
+		this.aReloaded++;
 	}
 };
 
