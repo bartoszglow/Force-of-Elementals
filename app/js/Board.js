@@ -72,7 +72,6 @@ B.prototype.draw = function(){
 	 	this.Enemy[i].draw();
 	 	}
 	 	if(this.Enemy[i].hp <= 0){
-	 		console.log(this.Enemy[i].type + ' was killed!');
 	 		this.Enemy = this.delete(this.Enemy, i);
 
 	 		if(this.Enemy[i]){
@@ -85,12 +84,20 @@ B.prototype.draw = function(){
  		this.Bullets[i].draw();
  		for(var j=0; j<this.Enemy.length; j++){
  			if(this.Enemy[j].hit(this.Bullets[i].ax, this.Bullets[i].ay)){
-
  				this.Enemy[j].hp -= this.Bullets[i].dmg;
 				this.Bullets = this.delete(this.Bullets, i);
-				break;
-			}
+				break;}
+
+				//Misses shoot
+				if(this.Bullets[i].timeLife<=0){
+					this.Bullets = this.delete(this.Bullets, i);
+				}		
  		}	
+	 }
+
+	 if(this.Enemy.length==0){
+	 	this.Bullets = []
+
 	 }
 };
 

@@ -41,6 +41,12 @@ var game = (function () {
 		document.body.appendChild(canvas);
 		//document.body.appendChild(canvas_hit);
 		//		
+
+		var context = new AudioContext();
+
+
+
+
 		setTimeout(create, 100);
 	};
 	this.layout = function(canvas, canvas_bg, canvas_hit){
@@ -74,8 +80,8 @@ var game = (function () {
 
 		Board.addTower(2, 1, 'fire', 2);
 		Board.addTower(9, 7, 'water', 1);
-		Board.addTower(5, 7, 'air', 1);
-		Board.addTower(9, 5, 'earth', 1);
+		Board.addTower(5, 7, 'air', 2);
+		Board.addTower(9, 5, 'earth', 2);
 
 		animationLoop();
 	}
@@ -85,7 +91,6 @@ var game = (function () {
 			V.lastTime = time;
 
 				V.ctx.clearRect(0,0,V.W, V.H);
-				
 				Board.draw();
 		};
 	};

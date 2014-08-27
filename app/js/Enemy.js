@@ -135,10 +135,9 @@ E.prototype.hit = function(x,y){
 		);
 		V.ctx_hit.restore(); 
 
-		if(V.ctx_hit.getImageData(this.x,this.y,1,1).data[0]!=0){
-			console.log(this.type);
+		//if(V.ctx_hit.getImageData(this.x,this.y,1,1).data[0]!=0){
 			return true
-		}
+		//}
 	}
 	return false
 	
