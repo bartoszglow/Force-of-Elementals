@@ -57,9 +57,18 @@ B.prototype.draw = function(){
 	    for(var j=0; j<12; j++){
 	    	if(this.Towers[i][j]){
 	    		this.Towers[i][j].draw();
+
 	    		if(this.Towers[i][j].shoot(this.Enemy)){
-	    			this.Bullets[this.Bullets.length] = new Bullet(this.V, this.Towers[i][j].x, this.Towers[i][j].y,  this.Towers[i][j].angle, this.Towers[i][j].type, this.Towers[i][j].TLvl);
+	    			if(this.Towers[i][j].type == 'air'){
+	    				for(var n=0; n<24; n++){
+	    				this.Bullets[this.Bullets.length] = new Bullet(this.V, this.Towers[i][j].type, this.Towers[i][j].TLvl, this.Towers[i][j].x, this.Towers[i][j].y,  15*n);
+	    				}
+	    			}
+	    			else{
+	    			this.Bullets[this.Bullets.length] = new Bullet(this.V, this.Towers[i][j].type, this.Towers[i][j].TLvl, this.Towers[i][j].x, this.Towers[i][j].y,  this.Towers[i][j].angle);
+	    			}
 	    		}
+	    		
 	    	}
 	    }
 	 }
@@ -83,15 +92,15 @@ B.prototype.draw = function(){
  	 for(var i=0; i<this.Bullets.length; i++){
  		this.Bullets[i].draw();
  		for(var j=0; j<this.Enemy.length; j++){
- 			if(this.Enemy[j].hit(this.Bullets[i].ax, this.Bullets[i].ay)){
- 				this.Enemy[j].hp -= this.Bullets[i].dmg;
+ 			if(this.Bullets[i].timeLife<=0){
+ 				//Misses shoot
 				this.Bullets = this.delete(this.Bullets, i);
-				break;}
-
-				//Misses shoot
-				if(this.Bullets[i].timeLife<=0){
-					this.Bullets = this.delete(this.Bullets, i);
-				}		
+				break;
+			}else if(this.Enemy[j].hit(this.Bullets[i].ax, this.Bullets[i].ay)){
+ 			this.Enemy[j].hp -= this.Bullets[i].dmg;
+			this.Bullets = this.delete(this.Bullets, i);
+			break;}
+									
  		}	
 	 }
 

@@ -2,11 +2,10 @@
 function T(V, x, y, type, lvl){
 	this.V = V;
 	this.types = {
-		'air':  {FXmod: 3, reloaded: 20, r:100, g:150, b:250, range: 70},
-		'earth':{FXmod: 2, reloaded: 10, r:020, g:255, b:020, range: 90},
-		'fire': {FXmod: 1, reloaded: 40, r:255, g:090, b:020, range: 50},
-		'water':{FXmod: 0, reloaded: 20, r:020, g:090, b:255, range: 80}
-	//SR - speed rotate, r-red, g-green, b-blue
+		'air':  {reloaded: 30, r:100, g:150, b:250, range: 40, FX:32,  FY:0, FXS:15, FYS:15, RX:7.5, RY:7.5, AR:3},
+		'earth':{reloaded: 10, r:020, g:255, b:020, range: 90, FX:32,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0},
+		'fire': {reloaded: 25, r:255, g:090, b:020, range: 80, FX:25,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0},
+		'water':{reloaded: 1,  r:020, g:090, b:255, range: 60, FX:18,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0}
 	};
 	this.x = x*V.sc*20;
 	this.y = y*V.sc*20;
@@ -14,16 +13,21 @@ function T(V, x, y, type, lvl){
 	this.angle = 0;
 	
 	this.type = type;
-	this.FXmod = this.types[this.type].FXmod;
 	this.reloaded = this.types[this.type].reloaded;
-	this.aReloaded = 0;
+	this.aReloaded = this.reloaded;
 	this.r = this.types[this.type].r;
 	this.g = this.types[this.type].g;
 	this.b = this.types[this.type].b;
 	this.range = this.types[this.type].range;
 	this.aRange =0;
-	this.a=0;
-	this.d=0;
+	this.FX = this.types[type].FX;
+	this.FY = this.types[type].FY;
+	this.FXS = this.types[type].FXS;
+	this.FYS = this.types[type].FYS;
+	this.RX = this.types[type].RX;
+	this.RY = this.types[type].RY;
+	this.AR = this.types[type].AR; //auto rotate
+	this.aAR = 0;
 
 	//Rysowanie podstawy działa
 	V.ctx_bg.fillStyle = "rgba("+this.r+","+this.g+","+this.b+","+this.TLvl*0.2+")";
@@ -32,12 +36,12 @@ function T(V, x, y, type, lvl){
 		V.sprite,
 		0,
 		0,
-		20,
-		20,
-		this.x,
-		this.y,
-		20*V.sc,
-		20*V.sc
+		18,
+		18,
+		this.x+1*V.sc,
+		this.y+1*V.sc,
+		18*V.sc,
+		18*V.sc
 	);
 };
 
@@ -50,14 +54,14 @@ T.prototype.draw = function() {
 	//this.angle+=this.SR;
 	V.ctx.drawImage(
 		V.sprite, 
-		21+7*this.FXmod, 		
-		0,
-		7, 		
-		21,		
-		-3.5*V.sc,
-		-17.5*V.sc,
-		7*V.sc,
-		21*V.sc
+		this.FX, 		
+		this.FY,
+		this.FXS, 		
+		this.FYS,		
+		-this.RX*V.sc,
+		-this.RY*V.sc,
+		this.FXS*V.sc,
+		this.FYS*V.sc
 	);
 	V.ctx.restore(); 
 };
@@ -84,8 +88,15 @@ T.prototype.shoot = function(enemy) {
 			}
 		}
 	}
+
+	if(this.AR){
+		this.angle+=this.AR+Math.abs(this.aAR);
+		this.aAR > 10 ? this.aAR-=0.2 : (this.aAR > 0 ? this.aAR-=0.1 : this.aAR);
+
+	}
+
 	if(killMe>-1) {
-		this.angle = Math.round(Math.atan2(sY,sX)/V.rad-90);
+		this.AR ? this.aAR+=0.2 : this.angle = Math.round(Math.atan2(sY,sX)/V.rad-90);
 		if(this.aReloaded >= this.reloaded){
 			this.aReloaded=0;
 			return true;

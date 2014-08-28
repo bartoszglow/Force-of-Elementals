@@ -70,18 +70,18 @@ var game = (function () {
 	};
 	this.create = function(){
 		Board = new B(V);
-		Board.addEnemy(240, 230, 'worm', 2);
-		Board.addEnemy(240, 230, 'man', 2);
-		Board.addEnemy(240, 230, 'knight', 2);
-		Board.addEnemy(240, 230, 'orc', 2);
-		Board.addEnemy(240, 230, 'zombie', 2);
-		Board.addEnemy(240, 230, 'dragon', 2);
+		Board.addEnemy(240, 230, 'worm', 5);
+		Board.addEnemy(240, 230, 'man', 5);
+		Board.addEnemy(240, 230, 'knight', 5);
+		Board.addEnemy(240, 230, 'orc', 5);
+		Board.addEnemy(240, 230, 'zombie', 5);
+		Board.addEnemy(240, 230, 'dragon', 5);
 
 
-		Board.addTower(2, 1, 'fire', 2);
-		Board.addTower(9, 7, 'water', 1);
-		Board.addTower(5, 7, 'air', 2);
-		Board.addTower(9, 5, 'earth', 2);
+		Board.addTower(9, 5, 'fire', 2);
+		Board.addTower(9, 7, 'water', 2);
+		Board.addTower(8, 7, 'air', 2);
+		//Board.addTower(9, 5, 'earth', 2);
 
 		animationLoop();
 	}
