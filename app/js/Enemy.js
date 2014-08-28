@@ -4,9 +4,9 @@ function E(V, x, y, type, lvl){
 	this.types = {
 		'zombie':{ground:1, speed: 0.4, life:100, rise:0.75, FX:0,  FY:21, FXS:17, FYS:12, Fcount:[0],   frameRate:0, Frotate:0},
 		'orc':{ ground:1, speed: 1.2, life:20,  rise:1, FX:18, FY:22, FXS:5,  FYS:9,  Fcount:[0,1], frameRate:8, Frotate:0},
-		'dragon':{ground:0, speed: 0.9,   life:150, rise:0.9, FX:0,  FY:33, FXS:25, FYS:19, Fcount:[0,1], frameRate:16, Frotate:90},
-		'man':{ ground:1, speed: 0.9, life:50,  rise:1, FX:45, FY:21, FXS:8,  FYS:14,  Fcount:[0,1], frameRate:10, Frotate:90},
-		'knight':{  ground:1, speed: 0.6, life:200,  rise:0.75, FX:45, FY:48, FXS:15,  FYS:15, Fcount:[0], frameRate:0, Frotate:-90},
+		'dragon':{ground:0, speed: 1,   life:150, rise:0.9, FX:1,  FY:34, FXS:25, FYS:19, Fcount:[0,1], frameRate:16, Frotate:90},
+		'man':{ ground:1, speed: 0.9, life:50,  rise:1, FX:45, FY:19, FXS:8,  FYS:14,  Fcount:[0,1], frameRate:10, Frotate:90},
+		'knight':{  ground:1, speed: 0.6, life:200,  rise:0.75, FX:46, FY:47, FXS:15,  FYS:15, Fcount:[0], frameRate:0, Frotate:-90},
 		'worm':{  ground:1, speed: 1.3, life:40,  rise:1, FX:29, FY:22, FXS:14,  FYS:9, Fcount:[0], frameRate:0, Frotate:180},
 	};
 	this.type = type;

@@ -6,7 +6,7 @@ function Bullet(V, type, lvl, x, y, a) {
 	this.types = {
 		'air':  {dmg:6, v:0.5, r:100, g:150, b:250, range:20},
 		'earth':{dmg:3, v:1, r:020, g:255, b:20, range:90},
-		'fire': {dmg:15, v:1, r:020, g:090, b:255, range:70},
+		'fire': {dmg:15, v:1, r:255, g:090, b:020, range:70},
 		'water':{dmg:1, v:0.5, r:020, g:090, b:255, range:50}
 
 	
@@ -44,7 +44,7 @@ Bullet.prototype.draw = function(){
 		this.ay -= Math.cos(this.a*V.rad)*V.sc*4*this.v;
 		
 		V.ctx.beginPath();
-		V.ctx.arc(this.ax,this.ay,2,0,2*Math.PI);
+		V.ctx.arc(this.ax,this.ay,6,0,2*Math.PI);
 		V.ctx.fill();
 	}else if(this.type=='air'){
 		this.ax += Math.sin(this.a*V.rad)*V.sc*4*this.v;

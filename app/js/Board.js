@@ -103,7 +103,6 @@ B.prototype.draw = function(){
 									
  		}	
 	 }
-
 	 if(this.Enemy.length==0){
 	 	this.Bullets = []
 

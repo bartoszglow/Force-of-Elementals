@@ -81,7 +81,11 @@ var game = (function () {
 		Board.addTower(9, 5, 'fire', 2);
 		Board.addTower(9, 7, 'water', 2);
 		Board.addTower(8, 7, 'air', 2);
-		//Board.addTower(9, 5, 'earth', 2);
+		Board.addTower(11, 6, 'earth', 5);
+		Board.addTower(10, 6, 'earth', 4);
+		Board.addTower(9, 6, 'earth', 3);
+		Board.addTower(8, 6, 'earth', 2);
+		Board.addTower(7, 6, 'earth', 1);
 
 		animationLoop();
 	}
