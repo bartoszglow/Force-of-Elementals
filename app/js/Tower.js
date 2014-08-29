@@ -76,10 +76,10 @@ T.prototype.draw = function() {
 		this.FY,
 		this.FXS, 		
 		this.FYS,		
-		-this.RX*V.sc,
-		-this.RY*V.sc,
-		this.FXS*V.sc,
-		this.FYS*V.sc
+		-this.RX*V.sc*(0.8+this.TLvl/20),
+		-this.RY*V.sc*(0.8+this.TLvl/20),
+		this.FXS*V.sc*(0.8+this.TLvl/20),
+		this.FYS*V.sc*(0.8+this.TLvl/20)
 	);
 	V.ctx.restore(); 
 };

@@ -74,17 +74,17 @@ var game = (function () {
 		Board.addEnemy(240, 230, 'dragon', 5);
 
 
-		Board.addTower(9, 5, 'fire', 2);
-		Board.addTower(9, 7, 'water', 2);
-		Board.addTower(8, 7, 'air', 2);
-		Board.addTower(6, 5, 'fire', 2);
-		Board.addTower(6, 7, 'water', 2);
-		Board.addTower(6, 8, 'air', 2);
-		Board.addTower(4, 5, 'fire', 2);
-		Board.addTower(4, 7, 'water', 2);
-		Board.addTower(4, 8, 'air', 2);
-		Board.addTower(12, 8, 'earth',3);
-		Board.addTower(9, 6, 'earth', 2);
+		Board.addTower(9, 5, 'fire', 1);
+		Board.addTower(9, 7, 'water', 1);
+		Board.addTower(8, 7, 'air', 1);
+		Board.addTower(6, 5, 'fire', 3);
+		Board.addTower(6, 7, 'water', 3);
+		Board.addTower(6, 8, 'air', 3);
+		Board.addTower(4, 5, 'fire', 5);
+		Board.addTower(4, 7, 'water', 5);
+		Board.addTower(4, 8, 'air', 5);
+		Board.addTower(12, 8, 'earth',5);
+		Board.addTower(9, 6, 'earth', 1);
 		//Board.addTower(9, 6, 'earth', 3);
 		//Board.addTower(8, 6, 'earth', 2);
 		//Board.addTower(7, 6, 'earth', 1);
