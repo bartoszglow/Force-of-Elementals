@@ -16,7 +16,8 @@ var game = (function () {
 		sprite: {},
 		ctx: {},
 		ctx_bg: {},
-		ctx_hit: {},
+		//ctx_hit: {},
+		a: -600,
 		rand:function(min,max){
 			return Math.floor(Math.random()*(max-min+1))+min;
 		},
@@ -33,27 +34,22 @@ var game = (function () {
 		var canvas = document.createElement('canvas');				
 		V.ctx = canvas.getContext('2d');
 
-		var canvas_hit = document.createElement('canvas');				
-		V.ctx_hit = canvas_hit.getContext('2d');
+		//var canvas_hit = document.createElement('canvas');				
+		//V.ctx_hit = canvas_hit.getContext('2d');
 
-		layout(canvas, canvas_bg, canvas_hit);		
+		layout(canvas, canvas_bg);		
 		document.body.appendChild(canvas_bg);
 		document.body.appendChild(canvas);
 		//document.body.appendChild(canvas_hit);
 		//		
-
-		var context = new AudioContext();
-
-
-
 
 		setTimeout(create, 100);
 	};
 	this.layout = function(canvas, canvas_bg, canvas_hit){
 		V.W = 320*V.sc;
 		V.H = 240*V.sc;
-		canvas_hit.width = V.W;
-		canvas_hit.height = V.H;
+		//canvas_hit.width = V.W;
+		//canvas_hit.height = V.H;
 		canvas_bg.width = V.W;
 		canvas_bg.height = V.H;
 		canvas.width = V.W;
@@ -74,18 +70,24 @@ var game = (function () {
 		Board.addEnemy(240, 230, 'man', 5);
 		Board.addEnemy(240, 230, 'knight', 5);
 		Board.addEnemy(240, 230, 'orc', 5);
-		Board.addEnemy(240, 230, 'zombie', 5);
+		Board.addEnemy(240, 230, 'zombie', 10);
 		Board.addEnemy(240, 230, 'dragon', 5);
 
 
 		Board.addTower(9, 5, 'fire', 2);
 		Board.addTower(9, 7, 'water', 2);
 		Board.addTower(8, 7, 'air', 2);
-		Board.addTower(11, 6, 'earth', 5);
-		Board.addTower(10, 6, 'earth', 4);
-		Board.addTower(9, 6, 'earth', 3);
-		Board.addTower(8, 6, 'earth', 2);
-		Board.addTower(7, 6, 'earth', 1);
+		Board.addTower(6, 5, 'fire', 2);
+		Board.addTower(6, 7, 'water', 2);
+		Board.addTower(6, 8, 'air', 2);
+		Board.addTower(4, 5, 'fire', 2);
+		Board.addTower(4, 7, 'water', 2);
+		Board.addTower(4, 8, 'air', 2);
+		//Board.addTower(12, 10, 'earth', 5);
+		//Board.addTower(10, 6, 'earth', 4);
+		//Board.addTower(9, 6, 'earth', 3);
+		//Board.addTower(8, 6, 'earth', 2);
+		//Board.addTower(7, 6, 'earth', 1);
 
 		animationLoop();
 	}
@@ -96,6 +98,11 @@ var game = (function () {
 
 				V.ctx.clearRect(0,0,V.W, V.H);
 				Board.draw();
+				if(V.a%60==1){
+					Board.addEnemy(240, 230, 'knight', 10);
+				}
+				V.a++;
+
 		};
 	};
 	return {

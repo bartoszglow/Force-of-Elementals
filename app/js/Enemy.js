@@ -18,6 +18,7 @@ function E(V, x, y, type, lvl){
 	// Ground/Air MoveSpeed Life RiseLargeEnemy XCordinateFrame YCordinateFrame XCorFrameSize YCorFrameSize NumberOfFrame RotateForFlipSprite
 	this.ground = this.types[type].ground;
 	this.speed = this.types[type].speed*V.sc;
+	this.aSpeed = this.speed;
 	this.life = this.types[type].life*this.ELvl;
 	this.hp = this.life;
 	this.rise = this.types[type].rise;
@@ -45,43 +46,49 @@ E.prototype.move = function(arr){
 	this.by =  Math.floor(this.y/(20*V.sc));
 
 	//set direction
-	if(arr[this.by][this.bx].type == 'W'){
-		this.rotate==-360 ? this.rotate=0 : this.rotate;
-		if(this.rotate!=90 && this.rotate<90 ){
-			this.rotate+=2;
-		}else if(this.rotate!=90){
-			this.rotate-=2;
-		}
-	}else if(arr[this.by][this.bx].type == 'S'){
-		this.rotate==180 ? this.rotate=-180 : this.rotate;
-		if(this.rotate!=-90 && this.rotate<-90 ){
-			this.rotate+=2;
-		}else if(this.rotate!=-90){
-			this.rotate-=2;
-		}
-	}else if(arr[this.by][this.bx].type == 'A'){//
-		this.rotate==-270 ? this.rotate=-90 : this.rotate;
-		if(this.rotate!=0  && this.rotate<0 ){
-			this.rotate+=2;
-		}else if(this.rotate!=0){
-			this.rotate-=2;
-		}
-	}else if(arr[this.by][this.bx].type == 'D'){
-		this.rotate==-90 ? this.rotate=270 : this.rotate;
-		if(this.rotate!=180 && this.rotate<180 ){
-			this.rotate+=2;
-		}else if(this.rotate!=180){
-			this.rotate-=2;
-		}
+	switch(arr[this.by][this.bx].type){
+		case 'W':
+			this.rotate==-360 ? this.rotate=0 : this.rotate;
+			if(this.rotate!=90 && this.rotate<90 ){
+				this.rotate+=2;
+			}else if(this.rotate!=90){
+				this.rotate-=2;
+			}
+			break;
+		case 'S':
+			this.rotate==180 ? this.rotate=-180 : this.rotate;
+			if(this.rotate!=-90 && this.rotate<-90 ){
+				this.rotate+=2;
+			}else if(this.rotate!=-90){
+				this.rotate-=2;
+			}
+			break;
+		case 'A'://
+			this.rotate==-270 ? this.rotate=-90 : this.rotate;
+			if(this.rotate!=0  && this.rotate<0 ){
+				this.rotate+=2;
+			}else if(this.rotate!=0){
+				this.rotate-=2;
+			}
+			break;
+		case 'D':
+			this.rotate==-90 ? this.rotate=270 : this.rotate;
+			if(this.rotate!=180 && this.rotate<180 ){
+				this.rotate+=2;
+			}else if(this.rotate!=180){
+				this.rotate-=2;
+			}
+			break;
 	}
 	//calculate speed relative to angle
-	this.x += Math.round((Math.sin(V.rad*(this.rotate-90))*this.speed)*10)/20;
-	this.y -= Math.round((Math.cos(V.rad*(this.rotate-90))*this.speed)*10)/20;
+	this.x += Math.round((Math.sin(V.rad*(this.rotate-90))*this.aSpeed)*10)/20;
+	this.y -= Math.round((Math.cos(V.rad*(this.rotate-90))*this.aSpeed)*10)/20;
+	this.distance += this.aSpeed;
+	this.aSpeed = this.speed;
 
 };
 
-E.prototype.draw = function(){
-	this.distance += this.speed; 
+E.prototype.draw = function(){ 
 	//Create hp bar
 	if(this.hp < this.life){
 		V.ctx.fillStyle = 'rgba(250,10,10,0.5)';
@@ -119,21 +126,21 @@ E.prototype.draw = function(){
 };
 E.prototype.hit = function(x,y){
 	if(this.x-this.FXS*V.sc/2<x && this.x+this.FXS*V.sc/2>x && this.y-this.FYS*V.sc/2<y && this.y+this.FYS*V.sc/2>y){
-		V.ctx_hit.save(); 
-		V.ctx_hit.translate(this.x, this.y);
-		V.ctx_hit.rotate((this.rotate+this.Frotate) * V.rad);
-		V.ctx_hit.drawImage(
-			V.sprite,
-			this.FX+this.Fcount[this.frame]*this.FXS,
-			this.FY,
-			this.FXS,
-			this.FYS,
-			-this.FXS,
-			-this.FYS,
-			this.FXS*V.sc*this.rise,
-			this.FYS*V.sc*this.rise
-		);
-		V.ctx_hit.restore(); 
+		// V.ctx_hit.save(); 
+		// V.ctx_hit.translate(this.x, this.y);
+		// V.ctx_hit.rotate((this.rotate+this.Frotate) * V.rad);
+		// V.ctx_hit.drawImage(
+		// 	V.sprite,
+		// 	this.FX+this.Fcount[this.frame]*this.FXS,
+		// 	this.FY,
+		// 	this.FXS,
+		// 	this.FYS,
+		// 	-this.FXS,
+		// 	-this.FYS,
+		// 	this.FXS*V.sc*this.rise,
+		// 	this.FYS*V.sc*this.rise
+		// );
+		// V.ctx_hit.restore(); 
 
 		//if(V.ctx_hit.getImageData(this.x,this.y,1,1).data[0]!=0){
 			return true

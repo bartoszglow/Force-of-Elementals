@@ -63,22 +63,36 @@ B.prototype.draw = function(){
 	    				for(var n=0; n<24; n++){
 	    				this.Bullets[this.Bullets.length] = new Bullet(this.V, this.Towers[i][j].type, this.Towers[i][j].TLvl, this.Towers[i][j].x, this.Towers[i][j].y,  15*n);
 	    				}
-	    			}
-	    			else{
+	    			}else{
 	    			this.Bullets[this.Bullets.length] = new Bullet(this.V, this.Towers[i][j].type, this.Towers[i][j].TLvl, this.Towers[i][j].x, this.Towers[i][j].y,  this.Towers[i][j].angle);
 	    			}
 	    		}
-	    		
 	    	}
 	    }
 	 }
 
 
-	 V.ctx_hit.clearRect(0,0,V.W, V.H);
+ 	 for(var i=0; i<this.Bullets.length; i++){
+ 		this.Bullets[i].draw();
+ 		for(var j=0; j<this.Enemy.length; j++){
+	 			if(this.Bullets[i].timeLife<=0){
+	 				//Misses shoot
+					this.Bullets = this.delete(this.Bullets, i);
+					break;
+				}else if(this.Enemy[j].hit(this.Bullets[i].ax, this.Bullets[i].ay)){
+
+	 			this.Enemy[j].hp -= this.Bullets[i].dmg;
+				this.Bullets = this.delete(this.Bullets, i);
+				break;}	
+ 		}	
+	 }
+	 
+	// V.ctx_hit.clearRect(0,0,V.W, V.H);
 	 for(var i=0; i<this.Enemy.length; i++){
 	 	if(this.Enemy[i].hp > 0){
 	 	this.Enemy[i].move(this.b);
 	 	this.Enemy[i].draw();
+
 	 	}
 	 	if(this.Enemy[i].hp <= 0){
 	 		this.Enemy = this.delete(this.Enemy, i);
@@ -88,20 +102,6 @@ B.prototype.draw = function(){
 	 			this.Enemy[i].draw();
 	 		}
 	 	}
-	 }
- 	 for(var i=0; i<this.Bullets.length; i++){
- 		this.Bullets[i].draw();
- 		for(var j=0; j<this.Enemy.length; j++){
- 			if(this.Bullets[i].timeLife<=0){
- 				//Misses shoot
-				this.Bullets = this.delete(this.Bullets, i);
-				break;
-			}else if(this.Enemy[j].hit(this.Bullets[i].ax, this.Bullets[i].ay)){
- 			this.Enemy[j].hp -= this.Bullets[i].dmg;
-			this.Bullets = this.delete(this.Bullets, i);
-			break;}
-									
- 		}	
 	 }
 	 if(this.Enemy.length==0){
 	 	this.Bullets = []

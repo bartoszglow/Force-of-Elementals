@@ -3,9 +3,9 @@ function T(V, x, y, type, lvl){
 	this.V = V;
 	this.types = {
 		'air':  {reloaded: 30, r:100, g:150, b:250, range: 40, FX:32,  FY:0, FXS:15, FYS:15, RX:7.5, RY:7.5, AR:3},
-		'earth':{reloaded: 10, r:140, g:255, b:20, range: 0, FX:47,  FY:0, FXS:14, FYS:14, RX:7, RY:7, AR:0},
+		'earth':{reloaded: 10, r:140, g:255, b:20, range: 10, FX:47,  FY:0, FXS:14, FYS:14, RX:7, RY:7, AR:0},
 		'fire': {reloaded: 25, r:255, g:090, b:020, range: 80, FX:25,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0},
-		'water':{reloaded: 1,  r:020, g:090, b:255, range: 60, FX:18,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0}
+		'water':{reloaded: 2,  r:020, g:090, b:255, range: 60, FX:18,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0}
 	};
 	this.x = x*V.sc*20;
 	this.y = y*V.sc*20;
@@ -67,11 +67,9 @@ function T(V, x, y, type, lvl){
 
 T.prototype.draw = function() { 
 	//Rysowanie działka uwzgledniając kąt
-	if(this.type!='earth'){
 	V.ctx.save(); 
 	V.ctx.translate(this.x+10*V.sc, this.y+10*V.sc);
 	V.ctx.rotate((this.angle) * V.rad);
-	//this.angle+=this.SR;
 	V.ctx.drawImage(
 		V.sprite, 
 		this.FX, 		
@@ -84,13 +82,11 @@ T.prototype.draw = function() {
 		this.FYS*V.sc
 	);
 	V.ctx.restore(); 
-	}
 };
 
 T.prototype.shoot = function(enemy) { 
 	var killMe;
 	var sY, sX;
-
 	for(var i=0; i<enemy.length; i++){
 		this.sY=Math.round((this.y+10*V.sc)-enemy[i].y);
 		this.sX=Math.round((this.x+10*V.sc)-enemy[i].x);
@@ -113,13 +109,12 @@ T.prototype.shoot = function(enemy) {
 	if(this.AR){
 		this.angle+=this.AR+Math.abs(this.aAR);
 		this.aAR > 10 ? this.aAR-=0.2 : (this.aAR > 0 ? this.aAR-=0.1 : this.aAR);
-
 	}
 
 	if(killMe>-1) {
 		this.AR ? this.aAR+=0.2 : this.angle = Math.round(Math.atan2(sY,sX)/V.rad-90);
 		if(this.aReloaded >= this.reloaded){
-			this.aReloaded=0;
+			this.aReloaded=0;		
 			return true;
 		}
 		this.aReloaded++;
