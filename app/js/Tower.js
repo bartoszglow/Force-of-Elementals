@@ -3,7 +3,7 @@ function T(V, x, y, type, lvl){
 	this.V = V;
 	this.types = {
 		'air':  {reloaded: 30, r:100, g:150, b:250, range: 40, FX:32,  FY:0, FXS:15, FYS:15, RX:7.5, RY:7.5, AR:3},
-		'earth':{reloaded: 10, r:140, g:255, b:20, range: 10, FX:47,  FY:0, FXS:14, FYS:14, RX:7, RY:7, AR:0},
+		'earth':{reloaded: 10, r:140, g:155, b:20, range: 10, FX:47,  FY:0, FXS:14, FYS:14, RX:7, RY:7, AR:2},
 		'fire': {reloaded: 25, r:255, g:090, b:020, range: 80, FX:25,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0},
 		'water':{reloaded: 2,  r:020, g:090, b:255, range: 60, FX:18,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0}
 	};
@@ -44,7 +44,7 @@ function T(V, x, y, type, lvl){
 			18*V.sc,
 			18*V.sc
 		);
-	}else{
+	}else{//Draw earth tower
 		for(var i=0; i<2; i++){
 			for(var j=0; j<2; j++){
 				V.ctx_bg.drawImage(
@@ -58,7 +58,7 @@ function T(V, x, y, type, lvl){
 					this.FXS*V.sc/2,
 					this.FYS*V.sc/2
 				);
-				V.ctx_bg.fillStyle = "rgba("+this.r+","+this.g+","+this.b+","+this.TLvl*0.1+")";
+				V.ctx_bg.fillStyle = "rgba("+this.r+","+this.g+","+this.b+","+this.TLvl*0.2+")";
 				V.ctx_bg.fillRect(this.x+4.5*V.sc+14*i*V.sc/2, this.y+4.5*V.sc+14*j*V.sc/2, this.FXS*V.sc/2-3*V.sc, this.FYS*V.sc/2-3*V.sc);
 			}
 		}

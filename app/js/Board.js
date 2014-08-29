@@ -86,11 +86,11 @@ B.prototype.draw = function(){
 				break;}	
  		}	
 	 }
-	 
+
 	// V.ctx_hit.clearRect(0,0,V.W, V.H);
 	 for(var i=0; i<this.Enemy.length; i++){
 	 	if(this.Enemy[i].hp > 0){
-	 	this.Enemy[i].move(this.b);
+	 	this.Enemy[i].move(this.b, this.Towers);
 	 	this.Enemy[i].draw();
 
 	 	}
@@ -98,7 +98,7 @@ B.prototype.draw = function(){
 	 		this.Enemy = this.delete(this.Enemy, i);
 
 	 		if(this.Enemy[i]){
-	 			this.Enemy[i].move(this.b);
+	 			this.Enemy[i].move(this.b, this.Towers);
 	 			this.Enemy[i].draw();
 	 		}
 	 	}

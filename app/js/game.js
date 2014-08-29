@@ -83,8 +83,8 @@ var game = (function () {
 		Board.addTower(4, 5, 'fire', 2);
 		Board.addTower(4, 7, 'water', 2);
 		Board.addTower(4, 8, 'air', 2);
-		//Board.addTower(12, 10, 'earth', 5);
-		//Board.addTower(10, 6, 'earth', 4);
+		Board.addTower(12, 8, 'earth',3);
+		Board.addTower(9, 6, 'earth', 2);
 		//Board.addTower(9, 6, 'earth', 3);
 		//Board.addTower(8, 6, 'earth', 2);
 		//Board.addTower(7, 6, 'earth', 1);

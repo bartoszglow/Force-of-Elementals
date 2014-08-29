@@ -58,9 +58,6 @@ Bullet.prototype.draw = function(){
 			V.ctx.fill();
 			break;
 		case 'earth':
-			this.speed = 1;
-			V.ctx.fillStyle = "rgba(180,130,25,0.5)";
-			V.ctx.fillRect(this.x,this.y,20*V.sc,20*V.sc)
 			break;
 	}
 }

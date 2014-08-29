@@ -40,13 +40,13 @@ function E(V, x, y, type, lvl){
 	this.fRa = 0;
 };
 
-E.prototype.move = function(arr){
+E.prototype.move = function(arrB, arrT){
 	//calculate coordinate on array
 	this.bx =  Math.floor(this.x/(20*V.sc));
 	this.by =  Math.floor(this.y/(20*V.sc));
 
 	//set direction
-	switch(arr[this.by][this.bx].type){
+	switch(arrB[this.by][this.bx].type){
 		case 'W':
 			this.rotate==-360 ? this.rotate=0 : this.rotate;
 			if(this.rotate!=90 && this.rotate<90 ){
@@ -80,6 +80,11 @@ E.prototype.move = function(arr){
 			}
 			break;
 	}
+		//earth tower
+		if(arrT[this.bx][this.by] && this.ground){
+			this.aSpeed=this.speed/(arrT[this.bx][this.by].TLvl+1);
+		}
+
 	//calculate speed relative to angle
 	this.x += Math.round((Math.sin(V.rad*(this.rotate-90))*this.aSpeed)*10)/20;
 	this.y -= Math.round((Math.cos(V.rad*(this.rotate-90))*this.aSpeed)*10)/20;
