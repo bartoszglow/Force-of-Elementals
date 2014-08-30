@@ -130,7 +130,7 @@ E.prototype.draw = function(){
 	V.ctx.restore(); 
 };
 E.prototype.hit = function(x,y){
-	if(this.x-this.FXS*V.sc/2<x && this.x+this.FXS*V.sc/2>x && this.y-this.FYS*V.sc/2<y && this.y+this.FYS*V.sc/2>y){
+	if(this.x-this.FXS*V.sc/3<x && this.x+this.FXS*V.sc/3>x && this.y-this.FYS*V.sc/3<y && this.y+this.FYS*V.sc/3>y){
 		// V.ctx_hit.save(); 
 		// V.ctx_hit.translate(this.x, this.y);
 		// V.ctx_hit.rotate((this.rotate+this.Frotate) * V.rad);

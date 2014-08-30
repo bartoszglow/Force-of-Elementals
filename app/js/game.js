@@ -45,7 +45,7 @@ var game = (function () {
 
 		setTimeout(create, 100);
 	};
-	this.layout = function(canvas, canvas_bg, canvas_hit){
+	this.layout = function(canvas, canvas_bg){
 		V.W = 320*V.sc;
 		V.H = 240*V.sc;
 		//canvas_hit.width = V.W;
@@ -83,8 +83,8 @@ var game = (function () {
 		Board.addTower(4, 5, 'fire', 5);
 		Board.addTower(4, 7, 'water', 5);
 		Board.addTower(4, 8, 'air', 5);
-		Board.addTower(12, 8, 'earth',5);
-		Board.addTower(9, 6, 'earth', 1);
+		Board.addTower(12, 8, 'earth',1);
+		Board.addTower(9, 6, 'earth', 3);
 		//Board.addTower(9, 6, 'earth', 3);
 		//Board.addTower(8, 6, 'earth', 2);
 		//Board.addTower(7, 6, 'earth', 1);
@@ -98,8 +98,8 @@ var game = (function () {
 
 				V.ctx.clearRect(0,0,V.W, V.H);
 				Board.draw();
-				if(V.a%60==1){
-					Board.addEnemy(240, 230, 'knight', 10);
+				if(V.a%120==1){
+					Board.addEnemy(240, 230, 'knight', 8);
 				}
 				V.a++;
 
