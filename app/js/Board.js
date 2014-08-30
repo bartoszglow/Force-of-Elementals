@@ -131,19 +131,18 @@ B.prototype.drawBg = function(){
 			}else{
 				V.ctx_bg.fillStyle = "#bebf6a";
 				V.ctx_bg.fillRect((j*20+2)*V.sc, (i*20+1)*V.sc, (20-3.5)*V.sc, (20-4)*V.sc);
-				for(var n=0;n<2;n++){
 					V.ctx_bg.drawImage(
 						V.sprite,
 						40,
-						63+n*20,
-						10,
+						83,
 						20,
-						j*40*V.sc/2+n*10*V.sc,
+						20,
+						j*40*V.sc/2,
 						i*40*V.sc/2,
-						20*V.sc/2,
+						40*V.sc/2,
 						40*V.sc/2
 					);
-				}
+				
 			}			
 		}
 	}
