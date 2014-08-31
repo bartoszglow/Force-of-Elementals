@@ -12,13 +12,17 @@ var game = (function () {
 		sc:2, //scale
 		score:50,
 		lifes:10,
-		rad:Math.PI/180, //radian
+		rad:Math.PI/180,
 		lastTime:0,
 		lastUpdate:-1,
 		sprite: {},
 		ctx: {},
 		ctx_bg: {},
 		//ctx_hit: {},
+		water:20,
+		fire:20,
+		earth:40,
+		air:40,
 		a: -600,
 		rand:function(min,max){
 			return Math.floor(Math.random()*(max-min+1))+min;
@@ -70,28 +74,12 @@ var game = (function () {
 		Menu = new M(V);
 		Board = new B(V);
 
-		Board.addEnemy(240, 230, 'worm', 5);
-		Board.addEnemy(240, 230, 'man', 5);
-		Board.addEnemy(240, 230, 'knight', 5);
-		Board.addEnemy(240, 230, 'orc', 5);
-		Board.addEnemy(240, 230, 'zombie', 10);
-		Board.addEnemy(240, 230, 'dragon', 5);
-
-
-		Board.addTower(9, 5, 'fire', 1);
-		Board.addTower(9, 7, 'water', 1);
-		Board.addTower(8, 7, 'air', 1);
-		Board.addTower(6, 5, 'fire', 3);
-		Board.addTower(6, 7, 'water', 3);
-		Board.addTower(6, 8, 'air', 3);
-		Board.addTower(4, 5, 'fire', 5);
-		Board.addTower(4, 7, 'water', 5);
-		Board.addTower(4, 8, 'air', 5);
-		Board.addTower(12, 8, 'earth',1);
-		Board.addTower(9, 6, 'earth', 3);
-		//Board.addTower(9, 6, 'earth', 3);
-		//Board.addTower(8, 6, 'earth', 2);
-		//Board.addTower(7, 6, 'earth', 1);
+		Board.addEnemy(240, 230, 'worm', 1);
+		Board.addEnemy(240, 230, 'man', 1);
+		Board.addEnemy(240, 230, 'knight', 1);
+		Board.addEnemy(240, 230, 'orc', 1);
+		Board.addEnemy(240, 230, 'zombie', 1);
+		Board.addEnemy(240, 230, 'dragon', 1);
 
 		animationLoop();
 	}
@@ -104,7 +92,7 @@ var game = (function () {
 				Board.draw();
 				Menu.fill();
 				if(V.a%120==1){
-					Board.addEnemy(240, 230, 'knight', 8);
+					Board.addEnemy(240, 230, 'knight', 1);
 				}
 				V.a++;
 
@@ -113,9 +101,8 @@ var game = (function () {
 	this.drop = function(what, xx, yy) {
 		var x = Math.floor(xx / (20 * V.sc));
 		var y = Math.floor(yy / (20 * V.sc));
-		console.log(what);
-		console.log(x);
-		console.log(y);
+
+		Board.addTower(x, y, what, 1);
 	};
 
 	return {
