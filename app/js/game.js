@@ -74,11 +74,12 @@ var game = (function () {
 		animationLoop();
 	}
 	this.waves = function(n){
-		//console.log(V.timer);
-		//console.log(n);
+		//Editor for creating waves
+		//case n == number of waves
+		//V.spawn.push('type', lvl, count_of_mobs, time_between_spawn);
 		
 			switch(n){
-				case 1: //typ,lvl,count,wait
+				case 1:
 					V.spawn.push('orc', 1, 4, 20);
 					V.spawn.push('man', 1, 2, 50);
 				break;
