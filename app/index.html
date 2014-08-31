@@ -40,13 +40,25 @@
 			}
 			.tower{
 				display: inline-block;
-				height: 40px;
-				width: 40px;
-				margin: 8px;
+				height: 30px;
+				width: 30px;
+				margin: 15px;
 			}
 			#water{
-				background: url('assets/sprite.gif') -120px -163px;
-				background-size: 400%;
+				background: url('assets/sprite.gif') -123px -193px;
+				background-size: 620%;
+			}
+			#fire{
+				background: url('assets/sprite.gif') -153px -193px;
+				background-size: 620%;
+			}
+			#air{
+				background: url('assets/sprite.gif') -123px -223px;
+				background-size: 620%;
+			}
+			#earth{
+				background: url('assets/sprite.gif') -154px -223px;
+				background-size: 620%;
 			}
 			.box{
 				margin: 0px;
@@ -95,9 +107,9 @@
 
 			<div>
 				<span class="tower" id="water" draggable="true" ondragstart="drag(event)"></span>
-				<span class="tower" id="water" draggable="true" ondragstart="drag(event)"></span>
-				<span class="tower" id="water" draggable="true" ondragstart="drag(event)"></span>
-				<span class="tower" id="water" draggable="true" ondragstart="drag(event)"></span>
+				<span class="tower" id="earth" draggable="true" ondragstart="drag(event)"></span>
+				<span class="tower" id="fire" draggable="true" ondragstart="drag(event)"></span>
+				<span class="tower" id="air" draggable="true" ondragstart="drag(event)"></span>
 			</div>
 
 
