@@ -83,6 +83,29 @@
 				margin: 0 auto;
 				margin-top: 5px;
 			}
+			.tower:hover:before {
+				position: absolute;
+				top:50px;
+				left:10px;
+				display: block;
+				width: 100px;
+				background-color: gray;
+				text-align: center;
+				padding: 10px;
+				z-index: 5;
+			}
+			#water:hover:before{
+				content: "power: 10 range: 10";
+			}
+			#air:hover:before{
+				content: "power: 5 range: 15";
+			}
+			#earth:hover:before{
+				content: "slowness range: 0";
+			}
+			#fire:hover:before{
+				content: "power: 20 range: 20";
+			}
 
 		</style>
 	</head>
