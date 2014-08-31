@@ -10,6 +10,8 @@ var game = (function () {
 		W:0,
 		H:0,
 		sc:2, //scale
+		score:50,
+		lifes:10,
 		rad:Math.PI/180, //radian
 		lastTime:0,
 		lastUpdate:-1,
@@ -65,7 +67,9 @@ var game = (function () {
 		V.ctx_bg.webkitImageSmoothingEnabled = false;
 	};
 	this.create = function(){
+		Menu = new M(V);
 		Board = new B(V);
+
 		Board.addEnemy(240, 230, 'worm', 5);
 		Board.addEnemy(240, 230, 'man', 5);
 		Board.addEnemy(240, 230, 'knight', 5);
@@ -98,6 +102,7 @@ var game = (function () {
 
 				V.ctx.clearRect(0,0,V.W, V.H);
 				Board.draw();
+				Menu.fill();
 				if(V.a%120==1){
 					Board.addEnemy(240, 230, 'knight', 8);
 				}
@@ -105,7 +110,6 @@ var game = (function () {
 
 		};
 	};
-
 	this.drop = function(what, xx, yy) {
 		var x = Math.floor(xx / (20 * V.sc));
 		var y = Math.floor(yy / (20 * V.sc));
@@ -118,5 +122,4 @@ var game = (function () {
 		init: init,
 		drop: drop,
 	}
-
 })();
