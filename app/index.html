@@ -14,6 +14,48 @@
 				top:100px;
 				left:calc(50% - 400px);
 			}
+			#menu{
+				position:absolute;
+				top:100px;
+				left:calc(50% + 240px);
+				background-color: white;
+				width: 160px;
+				height: 480px;
+				margin: 0px;
+			}
+			div{
+				margin: 10px;
+				position: relative;
+				width: 140px;
+			}
+			.text{
+				text-align: center;
+			}
+			img{
+				height: 40px;
+				width: 40px;
+			}
+			.tower{
+				display: inline-block;
+				height: 40px;
+				width: 40px;
+				margin: 8px;
+			}
+			#water{
+				background: url('assets/sprite.gif') -120px -163px;
+				background-size: 400%;
+			}
+			.box{
+				margin: 0px;
+				height: 480px;
+				width: 640px;
+				border: 1px solid gray;
+				z-index: 10;
+				position: absolute;
+				top:100px;
+				left:calc(50% - 400px);
+			}
+
 		</style>
 	</head>
 	<body>
@@ -22,5 +64,45 @@
 		<script src="js/Tower.js"></script>
 		<script src="js/Board.js"></script>
 		<script src="js/game.js"></script>
+
+		<div class="box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+		<div id="menu">
+			<div class="text">
+				Punkty:
+				<span id="points"> 0 </span>
+			</div>
+
+			<div>
+				<span class="tower" id="water" draggable="true" ondragstart="drag(event)"></span>
+			</div>
+
+			<ul>
+				<li>1</li>
+				<li>1</li>
+				<li>1</li>
+				<li>1</li>
+				<li>1</li>
+			</ul>
+
+			
+		</div>
+
+		<script>
+			function allowDrop(ev) {
+			    ev.preventDefault();
+			}
+
+			function drag(ev) {
+			    ev.dataTransfer.setData("tower", ev.target.id);
+			}
+
+			function drop(ev) {
+			    ev.preventDefault();
+    			var data = ev.dataTransfer.getData("tower");
+    			console.log(data);
+    			console.log(ev);
+			}
+		</script>
 	</body>
 </html>
