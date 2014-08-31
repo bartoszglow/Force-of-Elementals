@@ -24,11 +24,14 @@
 				margin: 0px;
 			}
 			div{
-				margin: 10px;
+				margin: 15px;
 				position: relative;
-				width: 140px;
+				width: 130px;
 			}
 			.text{
+				margin: 15px;
+				position: relative;
+				width: 130px;
 				text-align: center;
 			}
 			img{
@@ -55,6 +58,19 @@
 				top:100px;
 				left:calc(50% - 400px);
 			}
+			p {
+				margin:2px;
+			}
+			.buttons {
+				position: absolute;
+				bottom: 0;
+				width: 130px;
+			}
+			button {
+				display: block;
+				margin: 0 auto;
+				margin-top: 5px;
+			}
 
 		</style>
 	</head>
@@ -69,23 +85,40 @@
 
 		<div id="menu">
 			<div class="text">
-				Punkty:
+				Points:
 				<span id="points"> 0 </span>
+			</div>
+			<div class="text">
+				Lifes:
+				<span id="points"> 10 </span>
 			</div>
 
 			<div>
 				<span class="tower" id="water" draggable="true" ondragstart="drag(event)"></span>
+				<span class="tower" id="water" draggable="true" ondragstart="drag(event)"></span>
+				<span class="tower" id="water" draggable="true" ondragstart="drag(event)"></span>
+				<span class="tower" id="water" draggable="true" ondragstart="drag(event)"></span>
 			</div>
 
-			<ul>
-				<li>1</li>
-				<li>1</li>
-				<li>1</li>
-				<li>1</li>
-				<li>1</li>
-			</ul>
 
-			
+			<div class="text">
+				Next wave:
+				<p>(10)</p>
+
+				<p>dragon (10)</p>
+
+				<p>zombie (5)</p>
+
+				<p>cieniok (99999)</p>
+
+			</div>
+
+			<div class="buttons">	
+				<button>Start next wave</button>
+				<button>Speed up</button>
+				<button>Pause</button>
+				<button>exit</button>
+			</div>
 		</div>
 
 		<script>
