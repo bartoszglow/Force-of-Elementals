@@ -105,7 +105,18 @@ var game = (function () {
 
 		};
 	};
+
+	this.drop = function(what, xx, yy) {
+		var x = Math.floor(xx / (20 * V.sc));
+		var y = Math.floor(yy / (20 * V.sc));
+		console.log(what);
+		console.log(x);
+		console.log(y);
+	};
+
 	return {
-		init: init
+		init: init,
+		drop: drop,
 	}
+
 })();
