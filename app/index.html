@@ -111,10 +111,10 @@
 
 				<p>cieniok (99999)</p>
 
+				<button>Start next wave</button>
 			</div>
 
 			<div class="buttons">	
-				<button>Start next wave</button>
 				<button>Speed up</button>
 				<button>Pause</button>
 				<button>exit</button>
@@ -132,9 +132,7 @@
 
 			function drop(ev) {
 			    ev.preventDefault();
-    			var data = ev.dataTransfer.getData("tower");
-    			console.log(data);
-    			console.log(ev);
+			    game.drop(ev.dataTransfer.getData("tower"), ev.offsetX, ev.offsetY);
 			}
 		</script>
 	</body>
