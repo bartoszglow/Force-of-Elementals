@@ -38,6 +38,9 @@ function B(V){
 	this.parse(this.templates[0]);
 	
 	this.drawBg();	
+
+	this.waves = 0;
+	this.count = 0;
 };
 
 B.prototype.addTower = function(x, y, type, lvl){
@@ -61,9 +64,11 @@ if(!this.Towers[x][y] && V.score>=cost){
 	
 
 };
-B.prototype.addEnemy = function(x, y, type, lvl){
-	this.Enemy[this.Enemy.length] = new E(this.V, x, y, type, lvl);
-	this.Enemy[this.Enemy.length-1].draw();
+B.prototype.addEnemy = function(type, lvl){
+
+	this.Enemy[this.Enemy.length] = new E(this.V, 240, 230, type, lvl);
+	//this.Enemy[this.Enemy.length-1].draw();
+
 };
 B.prototype.delete = function(arr,arrIndex){
 	return arr.slice(0,arrIndex).concat(arr.slice(arrIndex + 1));
@@ -121,10 +126,34 @@ B.prototype.draw = function(){
 	 		}
 	 	}
 	 }
-	 if(this.Enemy.length==0){
-	 	this.Bullets = []
 
-	 }
+	
+	if(this.Enemy.length==0 && !V.spawn.length){
+	 	this.Bullets = [];
+	 	this.Enemy = [];	
+	 	this.waves++;
+	 	waves(this.waves);
+	}
+
+	V.timer++;
+	if(V.spawn.length>=1){
+
+		if(V.timer>V.spawn[3]){
+
+			if(V.spawn[2]==0){
+	
+				V.spawn = this.delete(V.spawn, 3);
+				V.spawn = this.delete(V.spawn, 2);
+				V.spawn = this.delete(V.spawn, 1);
+				V.spawn = this.delete(V.spawn, 0);
+			}else{
+				this.addEnemy(V.spawn[0], V.spawn[1]);
+				V.spawn[2]--;		
+			}
+			V.timer = 0;
+		}
+	}
+	
 };
 
 B.prototype.drawBg = function(){

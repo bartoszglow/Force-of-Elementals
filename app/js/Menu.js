@@ -29,7 +29,4 @@ function M(V){
 M.prototype.fill = function(){
 	document.getElementById("money").innerHTML = V.score;
 	document.getElementById("lifes").innerHTML = V.lifes;
-
-
-
 }
