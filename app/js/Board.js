@@ -95,6 +95,8 @@ B.prototype.draw = function(){
 
 	 	}
 	 	if(this.Enemy[i].hp <= 0){
+	 		V.score += this.Enemy[i].score;
+	 		console.log(V.score);
 	 		this.Enemy = this.delete(this.Enemy, i);
 
 	 		if(this.Enemy[i]){
