@@ -1,6 +1,7 @@
 function M(V){
 
 	this.buttons = document.getElementsByClassName("buttons")[0].getElementsByTagName("button");
+	this.wavesInfo = document.getElementById("waves").getElementsByTagName("p");
 
 	var fps = V.fps;
 	
@@ -24,9 +25,26 @@ function M(V){
 			V.fps=fps;
 		}
 	};
+	document.getElementById("waves").getElementsByTagName("button")[0].onclick = function(){
+
+		V.timer < 0 ? V.timer=0 : V.timer;
+	}
 
 }
 M.prototype.fill = function(){
 	document.getElementById("money").innerHTML = V.score;
 	document.getElementById("lifes").innerHTML = V.lifes;
+
+
+	//Counter time, info about enemies in waves
+	if(V.timer%60==0 && V.timer <= 0){
+		this.wavesInfo[0].innerHTML = '(' + -V.timer/60 + ')';
+
+		if(V.timer<0){
+			for(var i=0, j=1; i<V.spawn.length; i+=4, j++){	
+				this.wavesInfo[j].innerHTML = V.spawn[i] + '.... lvl: ' + V.spawn[i+1];
+				
+			}
+		}
+	}
 }

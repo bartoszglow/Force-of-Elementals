@@ -6,7 +6,7 @@ function Bullet(V, type, lvl, x, y, a) {
 	this.types = {
 		'air':  {dmg:6, v:0.5, r:100, g:150, b:250, range:20},
 		'earth':{dmg:2, v:1, r:020, g:255, b:20, range:0},
-		'fire': {dmg:15, v:1.5, r:255, g:090, b:020, range:80},
+		'fire': {dmg:15, v:1, r:255, g:090, b:020, range:80},
 		'water':{dmg:2, v:0.4, r:020, g:090, b:255, range:35}
 
 	

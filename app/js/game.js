@@ -81,7 +81,7 @@ var game = (function () {
 			switch(n){
 				case 1:
 					V.spawn.push('orc', 1, 4, 20);
-					V.spawn.push('man', 1, 2, 50);
+					V.spawn.push('man', 1, 4, 40);
 				break;
 				case 2:
 					V.spawn.push('man', 2, 4, 50);

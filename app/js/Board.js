@@ -131,15 +131,16 @@ B.prototype.draw = function(){
 	if(this.Enemy.length==0 && !V.spawn.length){
 	 	this.Bullets = [];
 	 	this.Enemy = [];	
+
+	 	V.timer=-600;
+	 	V.score += this.waves*10;
 	 	this.waves++;
 	 	waves(this.waves);
 	}
-
 	V.timer++;
 	if(V.spawn.length>=1){
 
 		if(V.timer>V.spawn[3]){
-
 			if(V.spawn[2]==0){
 	
 				V.spawn = this.delete(V.spawn, 3);
@@ -147,6 +148,7 @@ B.prototype.draw = function(){
 				V.spawn = this.delete(V.spawn, 1);
 				V.spawn = this.delete(V.spawn, 0);
 			}else{
+
 				this.addEnemy(V.spawn[0], V.spawn[1]);
 				V.spawn[2]--;		
 			}
