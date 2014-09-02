@@ -27,7 +27,7 @@ function M(V){
 	};
 	document.getElementById("waves").getElementsByTagName("button")[0].onclick = function(){
 
-		V.timer < 0 ? V.timer=0 : V.timer;
+		V.timer < -0 ? V.timer=-0 : V.timer;
 	}
 
 }
@@ -41,8 +41,8 @@ M.prototype.fill = function(){
 		this.wavesInfo[0].innerHTML = '(' + -V.timer/60 + ')';
 
 		if(V.timer<0){
-			for(var i=0, j=1; i<V.spawn.length; i+=4, j++){	
-				this.wavesInfo[j].innerHTML = V.spawn[i] + '.... lvl: ' + V.spawn[i+1];
+			for(var i=0, j=1; i<16; i+=4, j++){	
+				V.spawn.length<=i ? this.wavesInfo[j].innerHTML = ' ' : this.wavesInfo[j].innerHTML = V.spawn[i] + '.... lvl: ' + V.spawn[i+1];
 				
 			}
 		}

@@ -132,7 +132,7 @@ B.prototype.draw = function(){
 	 	this.Bullets = [];
 	 	this.Enemy = [];	
 
-	 	V.timer=-600;
+	 	V.timer=-541;
 	 	V.score += this.waves*10;
 	 	this.waves++;
 	 	waves(this.waves);

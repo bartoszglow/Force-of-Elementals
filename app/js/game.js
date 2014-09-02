@@ -6,7 +6,7 @@ window.onload = function(){
 
 var game = (function () {
 	this.V = {
-		fps:60,
+		fps:50,
 		W:0,
 		H:0,
 		sc:2, //scale
