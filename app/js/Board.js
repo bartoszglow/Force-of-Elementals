@@ -43,27 +43,33 @@ function B(V){
 	this.count = 0;
 };
 
-B.prototype.addTower = function(x, y, type, lvl){
+B.prototype.addTower = function(x, y, type, check, lvl){
 
-var cost = V[type];
-if(!this.Towers[x][y] && V.score>=cost){
-	if(type!='earth'){
-		if(this.b[y][x].type=='G'){
-			this.Towers[x][y] = new T(this.V, x, y, type, lvl);
-			this.Towers[x][y].draw(x, y);
-			V.score-=cost;
-		};
-	}else{
-		if(this.b[y][x].type!='G'){
-			this.Towers[x][y] = new T(this.V, x, y, type, lvl);
-			this.Towers[x][y].draw(x, y);
-			V.score-=cost;
-		};
+	var cost = V[type];
+	//console.log(x + ' ' + y)
+	if(!this.Towers[x][y] && V.score>=cost){
+		if(type!='earth'){
+			if(this.b[y][x].type=='G'){
+				if(check){
+					return true;
+				}
+				this.Towers[x][y] = new T(this.V, x, y, type, lvl);
+				this.Towers[x][y].draw(x, y);
+				V.score-=cost;
+			};
+		}else{
+			if(this.b[y][x].type!='G'){
+				if(check){
+					return true;
+				}
+				this.Towers[x][y] = new T(this.V, x, y, type, lvl);
+				this.Towers[x][y].draw(x, y);
+				V.score-=cost;
+			};
+		}
 	}
-}
-	
-
 };
+
 B.prototype.addEnemy = function(type, lvl){
 
 	this.Enemy[this.Enemy.length] = new E(this.V, 240, 230, type, lvl);

@@ -45,7 +45,7 @@
 				margin: 10px 0;
 			}
 			#water{
-				background: url('assets/sprite.gif') -123px -193px;
+				background: url('assets/sprite.gif') -122px -192px;
 				background-size: 620%;
 			}
 			#fire{
@@ -53,11 +53,11 @@
 				background-size: 620%;
 			}
 			#air{
-				background: url('assets/sprite.gif') -123px -223px;
+				background: url('assets/sprite.gif') -122px -223px;
 				background-size: 620%;
 			}
 			#earth{
-				background: url('assets/sprite.gif') -154px -223px;
+				background: url('assets/sprite.gif') -153px -223px;
 				background-size: 620%;
 			}
 			.box{
@@ -83,6 +83,7 @@
 				margin: 0 auto;
 				margin-top: 5px;
 			}
+
 			.tower:hover:before {
 				position: absolute;
 				top:50px;
@@ -105,6 +106,10 @@
 			}
 			#fire:hover:before{
 				content: "power: high range: large rate: slow";
+			}
+
+			.tower:active:before {
+				display: none;
 			}
 
 		</style>
@@ -137,7 +142,6 @@
 				<span class="tower" id="earth" draggable="true" ondragstart="drag(event)"></span>
 			</div>
 
-
 			<div id="waves" class="text">
 				Next wave:
 				<p>( )</p>
@@ -162,16 +166,21 @@
 
 		<script>
 			function allowDrop(ev) {
-			    ev.preventDefault();
+				
+				if(game.drop(ev.dataTransfer.getData("tower"), ev.offsetX, ev.offsetY, true)){
+			    	ev.preventDefault();
+				}
 			}
 
 			function drag(ev) {
+
 			    ev.dataTransfer.setData("tower", ev.target.id);
 			}
 
 			function drop(ev) {
 			    ev.preventDefault();
-			    game.drop(ev.dataTransfer.getData("tower"), ev.offsetX, ev.offsetY);
+			    game.drop(ev.dataTransfer.getData("tower"), ev.offsetX, ev.offsetY, false);
+
 			}
 		</script>
 	</body>

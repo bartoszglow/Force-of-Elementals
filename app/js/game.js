@@ -117,11 +117,12 @@ var game = (function () {
 				
 		};
 	};
-	this.drop = function(what, xx, yy) {
+	this.drop = function(what, xx, yy, check) {
 		var x = Math.floor(xx / (20 * V.sc));
 		var y = Math.floor(yy / (20 * V.sc));
 
-		Board.addTower(x, y, what, 1);
+		Board.addTower(x, y, what, check);
+		return Board.addTower(x, y, what, check);
 	};
 
 	return {
