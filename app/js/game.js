@@ -21,9 +21,9 @@ var game = (function () {
 		ctx_bg: {},
 		//ctx_hit: {},
 		water:20,
-		fire:20,
-		earth:40,
-		air:40,
+		fire:30,
+		earth:60,
+		air:50,
 		rand:function(min,max){
 			return Math.floor(Math.random()*(max-min+1))+min;
 		},
@@ -80,28 +80,40 @@ var game = (function () {
 		
 			switch(n){
 				case 1:
-					V.spawn.push('orc', 1, 4, 20);
-					V.spawn.push('man', 1, 4, 40);
+					V.spawn.push('orc', 1, 8, 25);
 				break;
 				case 2:
-					V.spawn.push('man', 2, 4, 50);
-					V.spawn.push('orc', 2, 2, 50);
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('man', 1, 4, 40);
 				break;
 				case 3:
-					V.spawn.push('knight', 1, 3, 100);
+					V.spawn.push('orc', 2, 10, 25);
 				break;
 				case 4:
-					V.spawn.push('orc', 1, 20, 30);
-					V.spawn.push('man', 2, 10, 30);
-					V.spawn.push('knight', 2, 2, 50);
+					V.spawn.push('man', 2, 10, 40);
+					V.spawn.push('knight', 3, 1, 40);
 				break;
 				case 5:
-					V.spawn.push('dragon', 3, 5, 100);
+					V.spawn.push('dragon', 2, 5, 50);
 				break;
 				case 6:
-					V.spawn.push('knight', 3, 10, 50);
-					V.spawn.push('dragon', 4, 10, 50);
+					V.spawn.push('orc', 4, 20, 25);
+					V.spawn.push('man', 5, 10, 35);
 				break;
+				case 7:
+					V.spawn.push('knight', 3, 8, 40);
+				break;
+				case 8:
+					V.spawn.push('knight', 4, 6, 40);
+				break;
+				case 9:
+					V.spawn.push('orc', 6, 20, 25);
+					V.spawn.push('dragon', 3, 8, 70);
+				break;
+				case 10:
+					V.spawn.push('zombie', 10, 3, 180);
+				break;
+
 		}
 
 

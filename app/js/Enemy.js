@@ -2,8 +2,8 @@
 function E(V, x, y, type, lvl){
 	this.V = V;
 	this.types = {
-		'zombie':{ground:1, speed: 0.4, life:100, score:2, rise:0.75, FX:0,  FY:21, FXS:17, FYS:12, Fcount:[0], frameRate:0, Frotate:0},
-		'orc':{ ground:1, speed: 1.2, life:20, score:1,  rise:1, FX:18, FY:22, FXS:5,  FYS:9,  Fcount:[0,1], frameRate:8, Frotate:0},
+		'zombie':{ground:1, speed: 0.4, life:300, score:2, rise:0.75, FX:0,  FY:21, FXS:17, FYS:12, Fcount:[0], frameRate:0, Frotate:0},
+		'orc':{ ground:1, speed: 1.1, life:20, score:1,  rise:1, FX:18, FY:22, FXS:5,  FYS:9,  Fcount:[0,1], frameRate:8, Frotate:0},
 		'dragon':{ground:0, speed: 1,   life:150, score:2, rise:0.9, FX:1,  FY:34, FXS:25, FYS:19, Fcount:[0,1], frameRate:16, Frotate:90},
 		'man':{ ground:1, speed: 0.9, life:50, score:1,  rise:1, FX:45, FY:19, FXS:8,  FYS:14,  Fcount:[0,1], frameRate:10, Frotate:90},
 		'knight':{  ground:1, speed: 0.6, life:200, score:2,  rise:0.75, FX:46, FY:47, FXS:15,  FYS:15, Fcount:[0], frameRate:0, Frotate:-90},
@@ -51,34 +51,39 @@ E.prototype.move = function(arrB, arrT){
 		case 'W':
 			this.rotate==-360 ? this.rotate=0 : this.rotate;
 			if(this.rotate!=90 && this.rotate<90 ){
-				this.rotate+=2;
+				this.rotate+=2.5;
 			}else if(this.rotate!=90){
-				this.rotate-=2;
+				this.rotate-=2.5;
 			}
 			break;
 		case 'S':
 			this.rotate==180 ? this.rotate=-180 : this.rotate;
 			if(this.rotate!=-90 && this.rotate<-90 ){
-				this.rotate+=2;
+				this.rotate+=2.5;
 			}else if(this.rotate!=-90){
-				this.rotate-=2;
+				this.rotate-=2.5;
 			}
 			break;
 		case 'A'://
 			this.rotate==-270 ? this.rotate=-90 : this.rotate;
 			if(this.rotate!=0  && this.rotate<0 ){
-				this.rotate+=2;
+				this.rotate+=2.5;
 			}else if(this.rotate!=0){
-				this.rotate-=2;
+				this.rotate-=2.5;
 			}
 			break;
 		case 'D':
 			this.rotate==-90 ? this.rotate=270 : this.rotate;
 			if(this.rotate!=180 && this.rotate<180 ){
-				this.rotate+=2;
+				this.rotate+=2.5;
 			}else if(this.rotate!=180){
-				this.rotate-=2;
+				this.rotate-=2.5;
 			}
+			break;
+		case 'X':
+			V.lifes--;
+			V.score -= this.score;
+			this.hp=0;
 			break;
 	}
 		//earth tower

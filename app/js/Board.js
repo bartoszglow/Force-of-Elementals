@@ -3,16 +3,16 @@ function B(V){
 	this.V = V;
 	this.templates = [
 		[
-			'   DDDDDDDDDDS  ',
-			'   W         S  ',
-			'   W  SAAAA  S  ',
-			'   W  S   W  S  ',
-			'   W  DS  WAAA  ',
-			'   W   S        ',
-			'   W   SAAAAA   ',
-			'   W   S    W   ',
-			'   W   S    W   ',
-			'   WAAAA    W   ',
+			'   X            ',
+			'   W            ',
+			'   W            ',
+			'   W  SAAAAAA   ',
+			'   W  S     W   ',
+			'   W  S     W   ',
+			'   W  DDDS  W   ',
+			'   W     S  W   ',
+			'   W     S  W   ',
+			'   WAAAAAA  W   ',
 			'            W   ',
 			'            W   '
 		],
@@ -23,6 +23,7 @@ function B(V){
 		'A':{FXmod:1, 	  type:'A'},
 		'S':{FXmod:1,	  type:'S'},
 		'D':{FXmod:1,  	  type:'D'},
+		'X':{FXmod:1,  	  type:'X'},
 	};
 	//main arr included grass and path
 	this.b = []; 
@@ -139,7 +140,7 @@ B.prototype.draw = function(){
 	 	this.Enemy = [];	
 
 	 	V.timer=-541;
-	 	V.score += this.waves*10;
+	 	V.score += this.waves*2;
 	 	this.waves++;
 	 	waves(this.waves);
 	}
