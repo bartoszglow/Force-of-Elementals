@@ -173,8 +173,9 @@
 			}
 
 			function drag(ev) {
-
-			    ev.dataTransfer.setData("tower", ev.target.id);
+				if(V.fps!=0){
+			    	ev.dataTransfer.setData("tower", ev.target.id);
+				}
 			}
 
 			function drop(ev) {
