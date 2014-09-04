@@ -45,15 +45,15 @@ function B(V){
 };
 
 B.prototype.addTower = function(x, y, type, check, lvl){
+		
+	var cost = V[type]*lvl;
 
-	var cost = V[type];
-	//console.log(x + ' ' + y)
 	if(!this.Towers[x][y] && V.score>=cost){
-		if(type!='earth'){
+		if(type!='Earth'){
 			if(this.b[y][x].type=='G'){
 				if(check){
 					return true;
-				}
+				}				
 				this.Towers[x][y] = new T(this.V, x, y, type, lvl);
 				this.Towers[x][y].draw(x, y);
 				V.score-=cost;
@@ -68,6 +68,8 @@ B.prototype.addTower = function(x, y, type, check, lvl){
 				V.score-=cost;
 			};
 		}
+	}else{
+		return false;
 	}
 };
 
@@ -212,9 +214,3 @@ B.prototype.parse = function(arr){
 		}
 	}
 }
-// B.mouse = function(e){
-// 	B.mx = Math.floor(e.offsetX/(20*VAR.sc));
-// 	B.my = Math.floor(e.offsetY/(20*VAR.sc));
-// 	console.log('click: ' + B.mx + '/' + B.my + ' type:' + Map.b[B.my][B.mx].type);
-// 	G.ctx_bg.fillRect(B.mx*20*VAR.sc, B.my*20*VAR.sc, 20*VAR.sc, 20*VAR.sc);
-// }

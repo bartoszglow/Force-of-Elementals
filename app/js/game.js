@@ -10,7 +10,7 @@ var game = (function () {
 		W:0,
 		H:0,
 		sc:2, //scale
-		score:50,
+		score:500,
 		lifes:10,
 		rad:Math.PI/180,
 		lastTime:0,
@@ -20,10 +20,10 @@ var game = (function () {
 		ctx: {},
 		ctx_bg: {},
 		//ctx_hit: {},
-		water:20,
-		fire:30,
-		earth:60,
-		air:50,
+		Water:20,
+		Fire:30,
+		Earth:60,
+		Air:50,
 		rand:function(min,max){
 			return Math.floor(Math.random()*(max-min+1))+min;
 		},
@@ -40,9 +40,12 @@ var game = (function () {
 		//var canvas_hit = document.createElement('canvas');				
 		//V.ctx_hit = canvas_hit.getContext('2d');
 
-		layout(canvas, canvas_bg);		
+		layout(canvas, canvas_bg);	
+
 		document.body.appendChild(canvas_bg);
 		document.body.appendChild(canvas);
+		
+		
 		//document.body.appendChild(canvas_hit);
 		//		
 
@@ -70,6 +73,7 @@ var game = (function () {
 	this.create = function(){
 		Menu = new M(V);
 		Board = new B(V);
+		document.getElementsByClassName("box")[0].addEventListener("mousedown", this.mouse, false);
 
 		animationLoop();
 	}
@@ -117,7 +121,7 @@ var game = (function () {
 		}
 
 
-	}
+	};
 	this.animationLoop = function(time){
 		requestAnimationFrame( animationLoop );
 		if(time-V.lastTime>=1000/V.fps){
@@ -133,8 +137,17 @@ var game = (function () {
 		var x = Math.floor(xx / (20 * V.sc));
 		var y = Math.floor(yy / (20 * V.sc));
 
-		Board.addTower(x, y, what, check);
-		return Board.addTower(x, y, what, check);
+		//Board.addTower(x, y, what, check, 1);
+		return Board.addTower(x, y, what, check, 1);
+	};
+	this.mouse = function(e){
+		var mx = Math.floor(e.offsetX/(20*V.sc));
+		var my = Math.floor(e.offsetY/(20*V.sc));
+
+		Menu.upgradeInfo.style.visibility = "hidden";
+		if(Board.Towers[mx][my]){
+			Menu.upgrade(mx, my, Board.Towers[mx][my].type, Board.Towers[mx][my].TLvl);
+		}
 	};
 
 	return {

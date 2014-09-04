@@ -2,6 +2,7 @@ function M(V){
 
 	this.buttons = document.getElementsByClassName("buttons")[0].getElementsByTagName("button");
 	this.wavesInfo = document.getElementById("waves").getElementsByTagName("p");
+	this.upgradeInfo = document.getElementById("upgrade");
 
 	var fps = V.fps;
 	
@@ -25,6 +26,8 @@ function M(V){
 			V.fps=fps;
 		}
 	};
+
+	//Start next wave button
 	document.getElementById("waves").getElementsByTagName("button")[0].onclick = function(){
 
 		V.timer < -0 ? V.timer=-0 : V.timer;
@@ -45,6 +48,22 @@ M.prototype.fill = function(){
 				V.spawn.length<=i ? this.wavesInfo[j].innerHTML = ' ' : this.wavesInfo[j].innerHTML = V.spawn[i] + '.... lvl: ' + V.spawn[i+1];
 				
 			}
+		}
+	}
+}
+M.prototype.upgrade = function(x, y, type, lvl){
+	var Tlvl = lvl + 1;
+	this.upgradeInfo.getElementsByTagName("p")[0].innerHTML = type + ' element';
+	this.upgradeInfo.getElementsByTagName("p")[1].innerHTML = 'Lvl ' + (lvl+1) + ' cost ' + (lvl+1)*V[type];
+	this.upgradeInfo.getElementsByTagName("p")[2].innerHTML = 'Return ' + lvl*V[type]/2;
+	this.upgradeInfo.style.visibility = "visible";
+
+	//Upgrade button
+	this.upgradeInfo.getElementsByTagName("button")[0].onclick = function(){
+
+		if(V.score>=(lvl+1)*V[type]){
+			delete Board.Towers[x][y];
+			Board.addTower(x, y, type, 0, Tlvl);
 		}
 	}
 }

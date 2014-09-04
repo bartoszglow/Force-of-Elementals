@@ -29,11 +29,23 @@
 				width: 140px;
 			}
 			.text{
+				visibility: visible;
 				margin: 15px;
 				position: relative;
 				width: 130px;
 				text-align: center;
 			}
+
+			/* Edit */
+			.texthidden{
+				visibility: hidden;
+				margin: 15px;
+				position: relative;
+				width: 130px;
+				text-align: center;
+			}
+			/* Edit */
+
 			img{
 				height: 40px;
 				width: 40px;
@@ -44,19 +56,19 @@
 				width: 30px;
 				margin: 10px 0;
 			}
-			#water{
+			#Water{
 				background: url('assets/sprite.gif') -122px -192px;
 				background-size: 620%;
 			}
-			#fire{
+			#Fire{
 				background: url('assets/sprite.gif') -153px -193px;
 				background-size: 620%;
 			}
-			#air{
+			#Air{
 				background: url('assets/sprite.gif') -122px -223px;
 				background-size: 620%;
 			}
-			#earth{
+			#Earth{
 				background: url('assets/sprite.gif') -153px -223px;
 				background-size: 620%;
 			}
@@ -95,22 +107,24 @@
 				padding: 10px;
 				z-index: 5;
 			}
-			#water:hover:before{
+			#Water:hover:before{
 				content: "cost : 20  power: low range: medium rate: fast";
 			}
-			#air:hover:before{
+			#Air:hover:before{
 				content: "cost : 50  power: multi range: short rate: medium";
 			}
-			#earth:hover:before{
+			#Earth:hover:before{
 				content: "cost : 60  slowness range: short";
 			}
-			#fire:hover:before{
+			#Fire:hover:before{
 				content: "cost : 30  power: high range: large rate: slow";
 			}
 
+			/* Edit  For tracking only one icon*/
 			.tower:active:before {
 				display: none;
 			}
+			/* Edit */
 
 		</style>
 	</head>
@@ -136,10 +150,10 @@
 			</div>
 
 			<div>
-				<span class="tower" id="water" draggable="true" ondragstart="drag(event)"></span>
-				<span class="tower" id="fire" draggable="true" ondragstart="drag(event)"></span>
-				<span class="tower" id="air" draggable="true" ondragstart="drag(event)"></span>
-				<span class="tower" id="earth" draggable="true" ondragstart="drag(event)"></span>
+				<span class="tower" id="Water" draggable="true" ondragstart="drag(event)"></span>
+				<span class="tower" id="Fire" draggable="true" ondragstart="drag(event)"></span>
+				<span class="tower" id="Air" draggable="true" ondragstart="drag(event)"></span>
+				<span class="tower" id="Earth" draggable="true" ondragstart="drag(event)"></span>
 			</div>
 
 			<div id="waves" class="text">
@@ -155,6 +169,15 @@
 				<p></p>
 
 				<button>Start next wave</button>
+			</div>
+
+
+			<div id="upgrade" class="texthidden">
+
+				<p></p>
+				<button>Upgrade<p>100</p></button>
+				<button>Sell<p>20</p></button>
+
 			</div>
 
 			<div class="buttons">	

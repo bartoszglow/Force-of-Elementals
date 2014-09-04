@@ -2,10 +2,10 @@
 function T(V, x, y, type, lvl){
 	this.V = V;
 	this.types = {
-		'air':  {reloaded: 30, r:100, g:150, b:250, range: 40, FX:32,  FY:0, FXS:15, FYS:15, RX:7.5, RY:7.5, AR:3},
-		'earth':{reloaded: 10, r:140, g:155, b:20, range: 10, FX:47,  FY:0, FXS:14, FYS:14, RX:7, RY:7, AR:2},
-		'fire': {reloaded: 25, r:255, g:090, b:020, range: 65, FX:25,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0},
-		'water':{reloaded: 2,  r:020, g:090, b:255, range: 45, FX:18,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0}
+		'Air':  {reloaded: 30, r:100, g:150, b:250, range: 40, FX:32,  FY:0, FXS:15, FYS:15, RX:7.5, RY:7.5, AR:3},
+		'Earth':{reloaded: 10, r:140, g:155, b:20, range: 10, FX:47,  FY:0, FXS:14, FYS:14, RX:7, RY:7, AR:2},
+		'Fire': {reloaded: 25, r:255, g:090, b:020, range: 65, FX:25,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0},
+		'Water':{reloaded: 2,  r:020, g:090, b:255, range: 45, FX:18,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0}
 	};
 	this.x = x*V.sc*20;
 	this.y = y*V.sc*20;
@@ -30,7 +30,7 @@ function T(V, x, y, type, lvl){
 	this.aAR = 0;
 
 	//Rysowanie podstawy działa
-	if(this.type!='earth'){
+	if(this.type!='Earth'){
 		V.ctx_bg.fillStyle = "rgba("+this.r+","+this.g+","+this.b+","+this.TLvl*0.2+")";
 		V.ctx_bg.fillRect(this.x+1*V.sc, this.y+1*V.sc, 18*V.sc, 18*V.sc);
 		V.ctx_bg.drawImage(

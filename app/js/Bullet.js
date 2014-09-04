@@ -4,10 +4,10 @@ function Bullet(V, type, lvl, x, y, a) {
 	this.V = V;
 
 	this.types = {
-		'air':  {dmg:6, v:0.5, r:100, g:150, b:250, range:20},
-		'earth':{dmg:2, v:1, r:020, g:255, b:20, range:0},
-		'fire': {dmg:15, v:1.2, r:255, g:090, b:020, range:60},
-		'water':{dmg:2, v:0.4, r:020, g:090, b:255, range:35}
+		'Air':  {dmg:6, v:0.5, r:100, g:150, b:250, range:20},
+		'Earth':{dmg:2, v:1, r:020, g:255, b:20, range:0},
+		'Fire': {dmg:15, v:1.2, r:255, g:090, b:020, range:60},
+		'Water':{dmg:2, v:0.4, r:020, g:090, b:255, range:35}
 
 	
 	};
@@ -33,7 +33,7 @@ Bullet.prototype.draw = function(){
 	//Draw on canvas bullet	
 	V.ctx.fillStyle = "rgba("+this.r+","+this.g+","+this.b+",0.8)";
 	switch(this.type){
-		case 'water':
+		case 'Water':
 			this.ax += Math.sin(this.a*V.rad)*V.sc*4*this.v;
 			this.ay -= Math.cos(this.a*V.rad)*V.sc*4*this.v;
 
@@ -41,7 +41,7 @@ Bullet.prototype.draw = function(){
 			V.ctx.arc(this.ax,this.ay,2*(0.4+this.lvl/6)*V.sc,0,2*Math.PI);
 			V.ctx.fill();
 			break;
-		case 'fire':
+		case 'Fire':
 			this.ax += Math.sin(this.a*V.rad)*V.sc*4*this.v;
 			this.ay -= Math.cos(this.a*V.rad)*V.sc*4*this.v;
 			
@@ -49,7 +49,7 @@ Bullet.prototype.draw = function(){
 			V.ctx.arc(this.ax,this.ay,3*(0.4+this.lvl/6)*V.sc,0,2*Math.PI);
 			V.ctx.fill();
 			break;
-		case 'air':
+		case 'Air':
 			this.ax += Math.sin(this.a*V.rad)*V.sc*4*this.v;
 			this.ay -= Math.cos(this.a*V.rad)*V.sc*4*this.v;
 
@@ -57,7 +57,7 @@ Bullet.prototype.draw = function(){
 			V.ctx.arc(this.ax,this.ay,2*(0.4+this.lvl/6)*V.sc,0,2*Math.PI);
 			V.ctx.fill();
 			break;
-		case 'earth':
+		case 'Earth':
 			break;
 	}
 }
