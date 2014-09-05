@@ -19,6 +19,7 @@ var game = (function () {
 		sprite: {},
 		ctx: {},
 		ctx_bg: {},
+		ctx_menu: {},
 		//ctx_hit: {},
 		Water:20,
 		Fire:30,
@@ -37,21 +38,31 @@ var game = (function () {
 		var canvas = document.createElement('canvas');				
 		V.ctx = canvas.getContext('2d');
 
+		var canvas_menu = document.createElement('canvas');				
+		V.ctx_menu = canvas.getContext('2d');
+
 		//var canvas_hit = document.createElement('canvas');				
 		//V.ctx_hit = canvas_hit.getContext('2d');
 
-		layout(canvas, canvas_bg);	
+		layout(canvas, canvas_bg, canvas_menu);	
 
+		document.getElementById("game").appendChild(canvas_menu);
 		document.getElementById("game").appendChild(canvas_bg);
-		document.getElementById("game").appendChild(canvas);
+		document.getElementById("main-menu").appendChild(canvas);
 		
+		MenuMap1 = new B(V, 0.2, V.ctx_menu, 1, 100,100);
+		MenuMap2 = new B(V, 0.2, V.ctx_menu, 1, 250,100);
+		MenuMap3 = new B(V, 0.2, V.ctx_menu, 1, 400,100);
+		MenuMap4 = new B(V, 0.2, V.ctx_menu, 1, 100,250);
+		MenuMap5 = new B(V, 0.2, V.ctx_menu, 1, 250,250);
+		MenuMap6 = new B(V, 0.2, V.ctx_menu, 1, 400,250);
 		
 		//document.body.appendChild(canvas_hit);
 		//		
 
 		setTimeout(create, 100);
 	};
-	this.layout = function(canvas, canvas_bg){
+	this.layout = function(canvas, canvas_bg, canvas_menu){
 		V.W = 320*V.sc;
 		V.H = 240*V.sc;
 		//canvas_hit.width = V.W;
@@ -60,6 +71,8 @@ var game = (function () {
 		canvas_bg.height = V.H;
 		canvas.width = V.W;
 		canvas.height = V.H;
+		canvas_menu.width = V.W;
+		canvas_menu.height = V.H;
 
 		V.ctx.imageSmoothingEnabled = false;
 		V.ctx.mozImageSmoothingEnabled = false;
@@ -72,7 +85,8 @@ var game = (function () {
 	};
 	this.create = function(){
 		Menu = new M(V);
-		Board = new B(V);
+		Board = new B(V, 1, V.ctx_bg, 0, 0,0);
+
 		document.getElementsByClassName("box")[0].addEventListener("mousedown", this.mouse, false);
 
 		animationLoop();
@@ -127,7 +141,7 @@ var game = (function () {
 		if(time-V.lastTime>=1000/V.fps){
 			V.lastTime = time;
 
-				V.ctx.clearRect(0,0,V.W, V.H);
+				//V.ctx.clearRect(0,0,V.W, V.H);
 				Board.draw();
 				Menu.fill();
 				

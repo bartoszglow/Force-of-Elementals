@@ -1,6 +1,11 @@
 
-function B(V){
+function B(V, size, cx, map, xx,yy){
 	this.V = V;
+	this.cx = cx;
+	this.xx = xx;
+	this.yy = yy;
+	this.map = map;
+	this.size = size;
 	this.templates = [
 		[
 			'   X            ',
@@ -15,6 +20,76 @@ function B(V){
 			'   WAAAAAA  W   ',
 			'            W   ',
 			'            W   '
+		],
+		[
+			'                ',
+			'                ',
+			'                ',
+			'      SAAAAAA   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      X     W   '
+		],
+		[
+			'                ',
+			'                ',
+			'                ',
+			'      SAAAAAA   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      X     W   '
+		],
+		[
+			'                ',
+			'                ',
+			'                ',
+			'      SAAAAAA   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      X     W   '
+		],
+		[
+			'                ',
+			'                ',
+			'                ',
+			'      SAAAAAA   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      X     W   '
+		],
+		[
+			'                ',
+			'                ',
+			'                ',
+			'      SAAAAAA   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      X     W   '
 		],
 	];
 	this.elements = {
@@ -36,7 +111,7 @@ function B(V){
 	for (var i = 0; i < 16; i++) {
 		this.Towers[i] = new Array(12);
 	}
-	this.parse(this.templates[0]);
+	this.parse(this.templates[map]);
 	
 	this.drawBg();	
 
@@ -171,33 +246,33 @@ B.prototype.drawBg = function(){
 		for(var j=0; j<this.b[i].length; j++){
 
 			if(this.b[i][j].type == 'G'){
-				V.ctx_bg.fillStyle = "#5fc148";
-				V.ctx_bg.fillRect((j*20+2)*V.sc, (i*20+1)*V.sc, (20-3.5)*V.sc, (20-4)*V.sc);
-				V.ctx_bg.drawImage(
+				this.cx.fillStyle = "#5fc148";
+				this.cx.fillRect((j*20+2)*V.sc*this.size+this.xx, (i*20+1)*V.sc*this.size+this.yy, (20-3.5)*V.sc*this.size, (20-4)*V.sc*this.size);
+				this.cx.drawImage(
 					V.sprite,
 					0,
 					53,
 					40,
 					50,
-					j*40*V.sc/2,
-					i*40*V.sc/2-5*V.sc,
-					40*V.sc/2,
-					50*V.sc/2
+					j*40*V.sc/2*this.size+this.xx,
+					(i*40*V.sc/2-5*V.sc)*this.size+this.yy,
+					40*V.sc/2*this.size,
+					50*V.sc/2*this.size
 				);
 
 			}else{
-				V.ctx_bg.fillStyle = "#bebf6a";
-				V.ctx_bg.fillRect((j*20+2)*V.sc, (i*20+1)*V.sc, (20-3.5)*V.sc, (20-4)*V.sc);
-					V.ctx_bg.drawImage(
+				this.cx.fillStyle = "#bebf6a";
+				this.cx.fillRect((j*20+2)*V.sc*this.size+this.xx, (i*20+1)*V.sc*this.size+this.yy, (20-3.5)*V.sc*this.size, (20-4)*V.sc*this.size);
+					this.cx.drawImage(
 						V.sprite,
 						40,
 						83,
 						20,
 						20,
-						j*40*V.sc/2,
-						i*40*V.sc/2,
-						40*V.sc/2,
-						40*V.sc/2
+						j*40*V.sc/2*this.size+this.xx,
+						i*40*V.sc/2*this.size+this.yy,
+						40*V.sc/2*this.size,
+						40*V.sc/2*this.size
 					);
 				
 			}			
