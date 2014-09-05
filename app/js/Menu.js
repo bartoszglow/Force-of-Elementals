@@ -45,7 +45,7 @@ M.prototype.fill = function(){
 
 		if(V.timer<0){
 			for(var i=0, j=1; i<16; i+=4, j++){	
-				V.spawn.length<=i ? this.wavesInfo[j].innerHTML = ' ' : this.wavesInfo[j].innerHTML = V.spawn[i] + '.... lvl: ' + V.spawn[i+1];
+				V.spawn.length<=i ? this.wavesInfo[j].innerHTML = ' ' : this.wavesInfo[j].innerHTML = V.spawn[i] + ' '+ V.spawn[i+2] +' &nbsp'+' lvl:' + V.spawn[i+1];
 				
 			}
 		}
@@ -53,10 +53,12 @@ M.prototype.fill = function(){
 }
 M.prototype.upgrade = function(x, y, type, lvl){
 	var Tlvl = lvl + 1;
+	this.upgradeInfo.getElementsByTagName("button")[0].style.background = '#88d98a';
+	this.upgradeInfo.getElementsByTagName("button")[1].style.background = '#d4745b';
 	this.upgradeInfo.getElementsByTagName("p")[0].innerHTML = type + ' element';
 	this.upgradeInfo.getElementsByTagName("p")[1].innerHTML = 'Lvl ' + (lvl+1) + ' cost ' + (lvl+1)*V[type] + '$';
 	lvl == 5 ? this.upgradeInfo.getElementsByTagName("p")[1].innerHTML = 'MAX' : lvl;
-	this.upgradeInfo.getElementsByTagName("p")[2].innerHTML = 'Return ' + lvl*V[type] +'$';
+	this.upgradeInfo.getElementsByTagName("p")[2].innerHTML = '&nbsp Return ' + lvl*V[type] +'$ &nbsp';
 	this.upgradeInfo.style.visibility = "visible";
 
 	//Upgrade button

@@ -13,7 +13,7 @@ function Bullet(V, type, lvl, x, y, a) {
 	};
 	this.type = type;
 	this.range = this.types[this.type].range;
-	this.dmg = this.types[this.type].dmg*lvl;
+	this.dmg = this.types[this.type].dmg*lvl*2;
 	this.lvl = lvl;
 	this.v = this.types[this.type].v;
 	this.r = this.types[this.type].r;
