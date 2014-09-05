@@ -25,7 +25,7 @@ function B(V){
 		'D':{FXmod:1,  	  type:'D'},
 		'X':{FXmod:1,  	  type:'X'},
 	};
-	//main arr included grass and path
+	//mAin arr included grass and path
 	this.b = []; 
 
 	this.Bullets = [];
@@ -75,7 +75,7 @@ B.prototype.addTower = function(x, y, type, check, lvl){
 
 B.prototype.addEnemy = function(type, lvl){
 
-	this.Enemy[this.Enemy.length] = new E(this.V, 240, 230, type, lvl);
+	this.Enemy[this.Enemy.length] = new E(this.V, 121*V.sc, 115*V.sc, type, lvl);
 	//this.Enemy[this.Enemy.length-1].draw();
 
 };
@@ -89,7 +89,7 @@ B.prototype.draw = function(){
 	    		this.Towers[i][j].draw();
 
 	    		if(this.Towers[i][j].shoot(this.Enemy)){
-	    			if(this.Towers[i][j].type == 'air'){
+	    			if(this.Towers[i][j].type == 'Air'){
 	    				for(var n=0; n<24; n++){
 	    				this.Bullets[this.Bullets.length] = new Bullet(this.V, this.Towers[i][j].type, this.Towers[i][j].TLvl, this.Towers[i][j].x, this.Towers[i][j].y,  15*n);
 	    				}
