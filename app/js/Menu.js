@@ -35,7 +35,7 @@ function M(V){
 
 }
 M.prototype.fill = function(){
-	document.getElementById("money").innerHTML = V.score;
+	document.getElementById("money").innerHTML = V.score+'$';
 	document.getElementById("lifes").innerHTML = V.lifes;
 
 
@@ -54,16 +54,26 @@ M.prototype.fill = function(){
 M.prototype.upgrade = function(x, y, type, lvl){
 	var Tlvl = lvl + 1;
 	this.upgradeInfo.getElementsByTagName("p")[0].innerHTML = type + ' element';
-	this.upgradeInfo.getElementsByTagName("p")[1].innerHTML = 'Lvl ' + (lvl+1) + ' cost ' + (lvl+1)*V[type];
-	this.upgradeInfo.getElementsByTagName("p")[2].innerHTML = 'Return ' + lvl*V[type]/2;
+	this.upgradeInfo.getElementsByTagName("p")[1].innerHTML = 'Lvl ' + (lvl+1) + ' cost ' + (lvl+1)*V[type] + '$';
+	lvl == 5 ? this.upgradeInfo.getElementsByTagName("p")[1].innerHTML = 'MAX' : lvl;
+	this.upgradeInfo.getElementsByTagName("p")[2].innerHTML = 'Return ' + lvl*V[type] +'$';
 	this.upgradeInfo.style.visibility = "visible";
+	console.log('start ' + lvl);
 
 	//Upgrade button
 	this.upgradeInfo.getElementsByTagName("button")[0].onclick = function(){
 
-		if(V.score>=(lvl+1)*V[type]){
+		if(V.score>=(lvl+1)*V[type] && lvl<5){
 			delete Board.Towers[x][y];
-			Board.addTower(x, y, type, 0, Tlvl);
+			Board.addTower(x, y, type, 0, (lvl+1));
+			Menu.upgradeInfo.style.visibility = "hidden";
 		}
+	}
+	this.upgradeInfo.getElementsByTagName("button")[1].onclick = function(){
+
+			delete Board.Towers[x][y];
+			Board.clearBlock(x,y);
+			V.score+=(lvl*V[type]);
+			Menu.upgradeInfo.style.visibility = "hidden";
 	}
 }

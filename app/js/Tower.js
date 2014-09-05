@@ -9,7 +9,7 @@ function T(V, x, y, type, lvl){
 	};
 	this.x = x*V.sc*20;
 	this.y = y*V.sc*20;
-	this.TLvl = lvl | 1;
+	this.TLvl = lvl;
 	this.angle = 0;
 	
 	this.type = type;

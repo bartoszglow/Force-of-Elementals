@@ -82,7 +82,6 @@ B.prototype.addEnemy = function(type, lvl){
 B.prototype.delete = function(arr,arrIndex){
 	return arr.slice(0,arrIndex).concat(arr.slice(arrIndex + 1));
 };
-
 B.prototype.draw = function(){
 	for (var i = 0; i < 16; i++) {	   	
 	    for(var j=0; j<12; j++){
@@ -213,4 +212,36 @@ B.prototype.parse = function(arr){
 			this.b[i].push(this.elements[arr[i].charAt(j)==' ' ? 'grass' : arr[i].charAt(j)]);
 		}
 	}
-}
+};
+
+B.prototype.clearBlock = function(x, y){
+	if(this.b[y][x].type=='G'){
+		V.ctx_bg.fillStyle = "#5fc148";
+		V.ctx_bg.fillRect((x*20+2)*V.sc, (y*20+1)*V.sc, (20-3.5)*V.sc, (20-4)*V.sc);
+		V.ctx_bg.drawImage(
+			V.sprite,
+			0,
+			53,
+			40,
+			50,
+			x*40*V.sc/2,
+			y*40*V.sc/2-5*V.sc,
+			40*V.sc/2,
+			50*V.sc/2
+		);
+	}else{
+		V.ctx_bg.fillStyle = "#bebf6a";
+		V.ctx_bg.fillRect((x*20+2)*V.sc, (y*20+1)*V.sc, (20-3.5)*V.sc, (20-4)*V.sc);
+			V.ctx_bg.drawImage(
+				V.sprite,
+				40,
+				83,
+				20,
+				20,
+				x*40*V.sc/2,
+				y*40*V.sc/2,
+				40*V.sc/2,
+				40*V.sc/2
+			);
+	}
+};
