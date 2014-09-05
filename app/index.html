@@ -127,6 +127,26 @@
 			}
 			/* Edit */
 
+			#main-menu{
+				position:absolute;
+				top:100px;
+				left:calc(50% - 400px);
+				width: 800px;
+				height: 482px;
+				background-color: rgba(100,100,100,0.7);
+				z-index: 999;
+				margin: 0px;
+				text-align: center;
+			}
+			#main-menu .row {
+				margin: 10px;
+
+			}
+			#main-menu .row span {
+				margin: 10px;
+			}
+
+
 		</style>
 	</head>
 	<body>
@@ -190,7 +210,27 @@
 
 		<span id="game"></span>
 
-		<span id="main-menu"></span>
+		<div id="main-menu">
+			<h1>Force of Elementals</h1>
+			<h2>Play</h2>
+			<p class="row">
+				<span class="level1"> level1 </span>
+				<span class="level2"> level2 </span>
+				<span class="level3"> level3 </span>
+			</p>
+			<p class="row">
+				<span class="level4"> level4 </span>
+				<span class="level5"> level5 </span>
+				<span class="level6"> level6 </span>
+			</p>
+			<p class="row">
+				<span class="level7"> level7 </span>
+				<span class="level8"> level8 </span>
+				<span class="level9"> level9 </span>
+			</p>
+			<h2>How to play</h2>
+			<h2>Authors</h2>
+		</div>
 
 		<script>
 			function allowDrop(ev) {
