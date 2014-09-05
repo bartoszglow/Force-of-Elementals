@@ -141,7 +141,7 @@ var game = (function () {
 		if(time-V.lastTime>=1000/V.fps){
 			V.lastTime = time;
 
-				//V.ctx.clearRect(0,0,V.W, V.H);
+				V.ctx.clearRect(0,0,V.W, V.H);
 				Board.draw();
 				Menu.fill();
 				
