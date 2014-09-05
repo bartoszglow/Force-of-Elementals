@@ -39,10 +39,13 @@ var game = (function () {
 		V.ctx = canvas.getContext('2d');
 
 		var canvas_menu = document.createElement('canvas');				
-		V.ctx_menu = canvas_menu.getContext('2d');
+		V.ctx_map1 = canvas_menu.getContext('2d');
+		V.ctx_map2 = canvas_menu.getContext('2d');
+		V.ctx_map3 = canvas_menu.getContext('2d');
+		V.ctx_map4 = canvas_menu.getContext('2d');
+		V.ctx_map5 = canvas_menu.getContext('2d');
+		V.ctx_map6 = canvas_menu.getContext('2d');
 
-		//var canvas_hit = document.createElement('canvas');				
-		//V.ctx_hit = canvas_hit.getContext('2d');
 
 		layout(canvas, canvas_bg, canvas_menu);	
 
@@ -51,16 +54,14 @@ var game = (function () {
 		document.getElementById("game").appendChild(canvas);
 		document.getElementById("main-menu").appendChild(canvas_menu);
 
-		MenuMap1 = new B(V, 0.2, V.ctx_menu, 1, 100,100);
-		MenuMap2 = new B(V, 0.2, V.ctx_menu, 1, 250,100);
-		MenuMap3 = new B(V, 0.2, V.ctx_menu, 1, 400,100);
-		MenuMap4 = new B(V, 0.2, V.ctx_menu, 1, 100,250);
-		MenuMap5 = new B(V, 0.2, V.ctx_menu, 1, 250,250);
-		MenuMap6 = new B(V, 0.2, V.ctx_menu, 1, 400,250);
 
-		
-		//document.body.appendChild(canvas_hit);
-		//		
+		MenuMap1 = new B(V, 0.2, V.ctx_map1, 1, 100,100);
+		MenuMap2 = new B(V, 0.2, V.ctx_map2, 1, 250,100);
+		MenuMap3 = new B(V, 0.2, V.ctx_map3, 1, 400,100);
+		MenuMap4 = new B(V, 0.2, V.ctx_map4, 1, 100,250);
+		MenuMap5 = new B(V, 0.2, V.ctx_map5, 1, 250,250);
+		MenuMap6 = new B(V, 0.2, V.ctx_map6, 1, 400,250);
+
 
 		setTimeout(create, 100);
 	};
