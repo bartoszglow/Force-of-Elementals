@@ -39,23 +39,25 @@ var game = (function () {
 		V.ctx = canvas.getContext('2d');
 
 		var canvas_menu = document.createElement('canvas');				
-		V.ctx_menu = canvas.getContext('2d');
+		V.ctx_menu = canvas_menu.getContext('2d');
 
 		//var canvas_hit = document.createElement('canvas');				
 		//V.ctx_hit = canvas_hit.getContext('2d');
 
 		layout(canvas, canvas_bg, canvas_menu);	
 
-		document.getElementById("game").appendChild(canvas_menu);
-		document.getElementById("game").appendChild(canvas_bg);
-		document.getElementById("main-menu").appendChild(canvas);
 		
+		document.getElementById("game").appendChild(canvas_bg);
+		document.getElementById("game").appendChild(canvas);
+		document.getElementById("main-menu").appendChild(canvas_menu);
+
 		MenuMap1 = new B(V, 0.2, V.ctx_menu, 1, 100,100);
 		MenuMap2 = new B(V, 0.2, V.ctx_menu, 1, 250,100);
 		MenuMap3 = new B(V, 0.2, V.ctx_menu, 1, 400,100);
 		MenuMap4 = new B(V, 0.2, V.ctx_menu, 1, 100,250);
 		MenuMap5 = new B(V, 0.2, V.ctx_menu, 1, 250,250);
 		MenuMap6 = new B(V, 0.2, V.ctx_menu, 1, 400,250);
+
 		
 		//document.body.appendChild(canvas_hit);
 		//		
