@@ -30,7 +30,7 @@ var game = (function () {
 	};
 	//this.Board = {};
 	this.init = function(){
-		
+
 		var canvas_bg = document.createElement('canvas');
 		V.ctx_bg = canvas_bg.getContext('2d');
 
@@ -42,8 +42,8 @@ var game = (function () {
 
 		layout(canvas, canvas_bg);	
 
-		document.body.appendChild(canvas_bg);
-		document.body.appendChild(canvas);
+		document.getElementById("game").appendChild(canvas_bg);
+		document.getElementById("game").appendChild(canvas);
 		
 		
 		//document.body.appendChild(canvas_hit);
