@@ -4,7 +4,22 @@ function B(V, size, cx, map){
 	this.cx = cx;
 	this.map = map;
 	this.size = size;
+	this.startPos = [];
 	this.templates = [
+		[
+			'       X        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'  DDDS W SAAA   ',
+			'  W  S W S  W   ',
+			'  W  DDWAA  W   ',
+			'  W         W   ',
+			'  WAAA   DDDW   ',
+			'     W   W      ',
+			'     W   W      ',
+			'     Y   Y      '
+		],
 		[
 			'   X            ',
 			'   W            ',
@@ -17,7 +32,7 @@ function B(V, size, cx, map){
 			'   W     S  W   ',
 			'   WAAAAAA  W   ',
 			'            W   ',
-			'            W   '
+			'            Y   '
 		],
 		[
 			'                ',
@@ -31,7 +46,7 @@ function B(V, size, cx, map){
 			'      S     W   ',
 			'      S     W   ',
 			'      S     W   ',
-			'      X     W   '
+			'      X     Y   '
 		],
 		[
 			'                ',
@@ -45,7 +60,7 @@ function B(V, size, cx, map){
 			'      S     W   ',
 			'      S     W   ',
 			'      S     W   ',
-			'      X     W   '
+			'      X     Y   '
 		],
 		[
 			'                ',
@@ -59,7 +74,7 @@ function B(V, size, cx, map){
 			'      S     W   ',
 			'      S     W   ',
 			'      S     W   ',
-			'      X     W   '
+			'      X     Y   '
 		],
 		[
 			'                ',
@@ -73,21 +88,7 @@ function B(V, size, cx, map){
 			'      S     W   ',
 			'      S     W   ',
 			'      S     W   ',
-			'      X     W   '
-		],
-		[
-			'                ',
-			'                ',
-			'                ',
-			'      SAAAAAA   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      X     W   '
+			'      X     Y   '
 		],
 	];
 	this.elements = {
@@ -97,6 +98,7 @@ function B(V, size, cx, map){
 		'S':{FXmod:1,	  type:'S'},
 		'D':{FXmod:1,  	  type:'D'},
 		'X':{FXmod:1,  	  type:'X'},
+		'Y':{FXmod:1,  	  type:'W'},
 	};
 	//mAin arr included grass and path
 	this.b = []; 
@@ -147,9 +149,8 @@ B.prototype.addTower = function(x, y, type, check, lvl){
 };
 
 B.prototype.addEnemy = function(type, lvl){
-
-	this.Enemy[this.Enemy.length] = new E(this.V, 121*V.sc, 115*V.sc, type, lvl);
-	//this.Enemy[this.Enemy.length-1].draw();
+	var pos = this.startPos[V.rand(0,this.startPos.length-1)];
+	this.Enemy[this.Enemy.length] = new E(this.V, pos.x*V.sc, pos.y*V.sc, type, lvl);
 
 };
 B.prototype.delete = function(arr,arrIndex){
@@ -214,7 +215,7 @@ B.prototype.draw = function(){
 	 	this.Enemy = [];	
 
 	 	V.timer=-541;
-	 	V.score += this.waves*2;
+	 	V.score += this.waves*10;
 	 	this.waves++;
 	 	waves(this.waves);
 	}
@@ -283,6 +284,9 @@ B.prototype.parse = function(arr){
 		this.b.push([]);
 		for(var j=0; j<arr[i].length; j++){
 			this.b[i].push(this.elements[arr[i].charAt(j)==' ' ? 'grass' : arr[i].charAt(j)]);
+			if(arr[i].charAt(j)=='Y'){
+				this.startPos.push({x:j*10+2, y:i*10+5});
+			}
 		}
 	}
 };

@@ -39,12 +39,8 @@ var game = (function () {
 		V.ctx = canvas.getContext('2d');
 
 
-
-
-
 		layout(canvas, canvas_bg);	
 
-		
 		document.getElementById("game").appendChild(canvas_bg);
 		document.getElementById("game").appendChild(canvas);
 		
@@ -64,7 +60,6 @@ var game = (function () {
 			V.canvas_map[i].height = V.H*0.2;
 
 			document.getElementById("main-menu").appendChild(V.canvas_map[i]);
-			console.log(V.canvas_map[i])
 			MenuMap1 = new B(V, 0.2, V.ctx_map[i], 1);
 		}
 	};
