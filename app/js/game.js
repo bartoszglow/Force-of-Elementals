@@ -145,7 +145,7 @@ var game = (function () {
 		var my = Math.floor(e.offsetY/(20*V.sc));
 
 		Menu.upgradeInfo.style.visibility = "hidden";
-		if(Board.Towers[mx][my]){
+		if(Board.Towers[mx][my] && V.fps!=0){
 			Menu.upgrade(mx, my, Board.Towers[mx][my].type, Board.Towers[mx][my].TLvl);
 		}
 	};

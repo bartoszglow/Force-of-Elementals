@@ -58,22 +58,23 @@ M.prototype.upgrade = function(x, y, type, lvl){
 	lvl == 5 ? this.upgradeInfo.getElementsByTagName("p")[1].innerHTML = 'MAX' : lvl;
 	this.upgradeInfo.getElementsByTagName("p")[2].innerHTML = 'Return ' + lvl*V[type] +'$';
 	this.upgradeInfo.style.visibility = "visible";
-	console.log('start ' + lvl);
 
 	//Upgrade button
 	this.upgradeInfo.getElementsByTagName("button")[0].onclick = function(){
 
-		if(V.score>=(lvl+1)*V[type] && lvl<5){
+		if(V.score>=(lvl+1)*V[type] && lvl<5 && V.fps!=0){
 			delete Board.Towers[x][y];
 			Board.addTower(x, y, type, 0, (lvl+1));
 			Menu.upgradeInfo.style.visibility = "hidden";
 		}
 	}
+	//Sell button
 	this.upgradeInfo.getElementsByTagName("button")[1].onclick = function(){
-
+		if(V.fps!=0){
 			delete Board.Towers[x][y];
 			Board.clearBlock(x,y);
 			V.score+=(lvl*V[type]);
 			Menu.upgradeInfo.style.visibility = "hidden";
+		}
 	}
 }
