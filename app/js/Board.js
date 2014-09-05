@@ -1,9 +1,7 @@
 
-function B(V, size, cx, map, xx,yy){
+function B(V, size, cx, map){
 	this.V = V;
 	this.cx = cx;
-	this.xx = xx;
-	this.yy = yy;
 	this.map = map;
 	this.size = size;
 	this.templates = [
@@ -247,30 +245,30 @@ B.prototype.drawBg = function(){
 
 			if(this.b[i][j].type == 'G'){
 				this.cx.fillStyle = "#5fc148";
-				this.cx.fillRect((j*20+2)*V.sc*this.size+this.xx, (i*20+1)*V.sc*this.size+this.yy, (20-3.5)*V.sc*this.size, (20-4)*V.sc*this.size);
+				this.cx.fillRect((j*20+2)*V.sc*this.size, (i*20+1)*V.sc*this.size, (20-3.5)*V.sc*this.size, (20-4)*V.sc*this.size);
 				this.cx.drawImage(
 					V.sprite,
 					0,
 					53,
 					40,
 					50,
-					j*40*V.sc/2*this.size+this.xx,
-					(i*40*V.sc/2-5*V.sc)*this.size+this.yy,
+					j*40*V.sc/2*this.size,
+					(i*40*V.sc/2-5*V.sc)*this.size,
 					40*V.sc/2*this.size,
 					50*V.sc/2*this.size
 				);
 
 			}else{
 				this.cx.fillStyle = "#bebf6a";
-				this.cx.fillRect((j*20+2)*V.sc*this.size+this.xx, (i*20+1)*V.sc*this.size+this.yy, (20-3.5)*V.sc*this.size, (20-4)*V.sc*this.size);
+				this.cx.fillRect((j*20+2)*V.sc*this.size, (i*20+1)*V.sc*this.size, (20-3.5)*V.sc*this.size, (20-4)*V.sc*this.size);
 					this.cx.drawImage(
 						V.sprite,
 						40,
 						83,
 						20,
 						20,
-						j*40*V.sc/2*this.size+this.xx,
-						i*40*V.sc/2*this.size+this.yy,
+						j*40*V.sc/2*this.size,
+						i*40*V.sc/2*this.size,
 						40*V.sc/2*this.size,
 						40*V.sc/2*this.size
 					);
