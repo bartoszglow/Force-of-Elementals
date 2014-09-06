@@ -60,9 +60,9 @@ var game = (function () {
 			V.canvas_map[i].width = V.W*0.2;
 			V.canvas_map[i].height = V.H*0.2;
 
-			document.getElementById("main-menu").getElementsByClassName("level"+(i+1))[0].appendChild(V.canvas_map[i]);
+			document.getElementById("level"+(i+1)).appendChild(V.canvas_map[i]);
 			V.MenuMap[i] = new B(V, 0.2, V.ctx_map[i], i);
-			document.getElementById("main-menu").getElementsByClassName("level"+(i+1))[0].addEventListener("mousedown", this.levelchoose, false);
+			document.getElementById("level"+(i+1)).addEventListener("mousedown", this.levelchoose, false);
 
 		}
 	};
