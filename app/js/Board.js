@@ -49,21 +49,21 @@ function B(V, size, cx, map){
 			'       YY       '
 		],
 		[
-			' Y      DDDS    ',
-			' S     WW  DS   ',
+			' V      DDDS    ',
+			' S     DW  DS   ',
 			' S     W    DS  ',
 			' S     W    DS  ',
 			' S     WA    S  ',
 			' S      W    S  ',
-			' S      W   SS  ',
-			' SDDDDDDW   SA  ',
+			' S      W   SA  ',
+			' DDDDDDDW   S   ',
 			' W          S   ',
 			' W          DS  ',
-			'YW           DDX',
+			'>W           DDX',
 			'                '
 		],
 		[
-			'     X       Y  ',
+			'     X       V  ',
 			'   DDW     R S  ',
 			'  DDWR  RSAARS  ',
 			'  W      S W S  ',
@@ -77,13 +77,13 @@ function B(V, size, cx, map){
 			'     R       Y  '
 		],
 		[
-			'   Y     Y      ',
+			'   V     V      ',
 			'   DS    DDS    ',
 			'    DS     DS   ',
 			'   DDDS     S   ',
 			'  DW  DS    S   ',
-			'YDWW   DS  SS   ',
-			'        DS SSSAY',
+			'>DWW   DS  SS   ',
+			'        DS SSSA<',
 			'         DDSSS  ',
 			'   SAAAA   SS   ',
 			'   S   W   SA   ',
@@ -97,8 +97,11 @@ function B(V, size, cx, map){
 		'A':{FXmod:1, 	  type:'A'},
 		'S':{FXmod:1,	  type:'S'},
 		'D':{FXmod:1,  	  type:'D'},
+		'>':{FXmod:1,  	  type:'>'},//right start
+		'<':{FXmod:1,  	  type:'<'},//left start
+		'V':{FXmod:1,  	  type:'V'},//down start
+		'Y':{FXmod:1,  	  type:'Y'},//up start
 		'X':{FXmod:1,  	  type:'X'},
-		'Y':{FXmod:1,  	  type:'W'},
 		'R':{FXmod:1,  	  type:'R'},
 	};
 	//mAin arr included grass and path
@@ -320,8 +323,8 @@ B.prototype.parse = function(arr){
 		this.b.push([]);
 		for(var j=0; j<arr[i].length; j++){
 			this.b[i].push(this.elements[arr[i].charAt(j)==' ' ? 'grass' : arr[i].charAt(j)]);
-			if(arr[i].charAt(j)=='Y'){
-				this.startPos.push({x:j*10+2, y:i*10+5});
+			if(arr[i].charAt(j)=='Y' || arr[i].charAt(j)=='V' || arr[i].charAt(j)=='<' || arr[i].charAt(j)=='>'){
+				this.startPos.push({x:j*10+3, y:i*10+5});
 			}
 		}
 	}
