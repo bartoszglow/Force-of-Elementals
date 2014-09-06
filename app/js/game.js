@@ -59,7 +59,7 @@ var game = (function () {
 			V.canvas_map[i].width = V.W*0.2;
 			V.canvas_map[i].height = V.H*0.2;
 
-			document.getElementById("main-menu").getElementsByTagName("span")[i].appendChild(V.canvas_map[i]);
+			document.getElementById("main-menu").getElementsByClassName("level"+(i+1))[0].appendChild(V.canvas_map[i]);
 			MenuMap1 = new B(V, 0.2, V.ctx_map[i], 1);
 		}
 	};
