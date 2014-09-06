@@ -218,9 +218,9 @@ B.prototype.draw = function(){
 	 	V.timer=-601;
 	 	
 	 	V.score += this.waves*10;
-	 	
-	 	waves(V.map, this.waves);
 	 	this.waves++;
+	 	waves(V.map, this.waves);
+	 	
 	}
 
 	V.timer++;
@@ -272,8 +272,8 @@ B.prototype.drawBg = function(){
 						34,
 						10,
 						10,
-						-10,
-						-10,
+						-10*this.size,
+						-10*this.size,
 						20*V.sc/2*this.size,
 						20*V.sc/2*this.size
 					);
