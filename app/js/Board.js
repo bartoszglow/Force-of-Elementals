@@ -108,6 +108,9 @@ function B(V, size, cx, map){
 
 	this.Enemy = [];
 
+	this.gold = {x:0, y:0}
+	this.Golds = new Array(V.lifes);
+
 	this.Towers = new Array(16);
 	for (var i = 0; i < 16; i++) {
 		this.Towers[i] = new Array(12);
@@ -115,6 +118,12 @@ function B(V, size, cx, map){
 	this.parse(this.templates[map]);
 	
 	this.drawBg();	
+	if(V.mainmenu==0){
+		for (var i = 0; i<this.Golds.length; i++){
+			this.Golds[i] = new G(this.V, this.gold.x, this.gold.y);
+			this.Golds[i].draw();
+		}
+	}
 
 	this.waves = 0;
 	this.count = 0;
@@ -294,7 +303,13 @@ B.prototype.drawBg = function(){
 						40*V.sc/2*this.size,
 						40*V.sc/2*this.size
 					);
-				
+				if(this.b[i][j].type == 'X'){
+					this.gold.x = j*40*V.sc/2;
+					this.gold.y = i*40*V.sc/2;
+					this.gold.i = i;
+					this.gold.j = j;
+
+				}
 			}			
 		}
 	}
@@ -311,7 +326,13 @@ B.prototype.parse = function(arr){
 		}
 	}
 };
-
+B.prototype.goldDraw = function(){
+	this.Golds = this.delete(this.Golds, 0);
+	this.clearBlock(this.gold.j,this.gold.i);
+	for (var i = 0; i<this.Golds.length; i++){
+		this.Golds[i].draw();
+	}
+}
 B.prototype.clearBlock = function(x, y){
 	if(this.b[y][x].type=='G'){
 		V.ctx_bg.fillStyle = "#5fc148";

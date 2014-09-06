@@ -84,6 +84,7 @@ E.prototype.move = function(arrB, arrT){
 			V.lifes--;
 			V.score -= this.score;
 			this.hp=0;
+			Board.goldDraw();
 			break;
 	}
 		//earth tower
