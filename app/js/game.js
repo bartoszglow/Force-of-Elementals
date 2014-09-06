@@ -293,8 +293,6 @@ var game = (function () {
 					Board.draw();
 					Menu.fill();
 
-
-
 				}else{
 					document.getElementById("main-menu").style.display = 'block';
 					if(V.timer%V.rand(50,150)==0){
@@ -316,14 +314,12 @@ var game = (function () {
 					}
 					V.ctx.clearRect(0,0,V.W, V.H);
 					Board.draw();
-				}
-				
+				}			
 		};
 	};
 	this.drop = function(what, xx, yy, check) {
 		var x = Math.floor(xx / (20 * V.sc));
 		var y = Math.floor(yy / (20 * V.sc));
-
 		
 		return Board.addTower(x, y, what, check, 1);
 	};
