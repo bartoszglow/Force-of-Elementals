@@ -89,9 +89,12 @@ var game = (function () {
 		V.ctx_bg.webkitImageSmoothingEnabled = false;
 	};
 	this.create = function(n){
+		V.fps=50;
+		V.timer=-601;
 		V.map=n;
 		V.mainmenu=0;
 		delete Board;
+		delete Menu;
 		Menu = new M(V);
 		Board = new B(V, 1, V.ctx_bg, V.map-1);
 
@@ -115,16 +118,16 @@ var game = (function () {
 				document.getElementById("level2").className == "level2" ? create(2) : V.map;
 				break;
 			case 'Level 3':
-				document.getElementById("level2").className == "level2" ? create(3) : V.map;
+				document.getElementById("level3").className == "level3" ? create(3) : V.map;
 				break;
 			case 'Level 4':
-				document.getElementById("level2").className == "level2" ? create(4) : V.map;
+				document.getElementById("level4").className == "level4" ? create(4) : V.map;
 				break;
 			case 'Level 5':
-				document.getElementById("level2").className == "level2" ? create(5) : V.map;
+				document.getElementById("level5").className == "level5" ? create(5) : V.map;
 				break;
 			case 'Level 6':
-				document.getElementById("level2").className == "level2" ? create(6) : V.map;
+				document.getElementById("level6").className == "level6" ? create(6) : V.map;
 				break;
 		}
 	};
@@ -291,6 +294,31 @@ var game = (function () {
 					Menu.fill();
 				}else{
 					document.getElementById("main-menu").style.display = 'block';
+					if(V.timer%V.rand(100,150)==0){
+						var n = V.rand(1,6);
+						switch(n){
+							case 1:
+							Board.addEnemy('orc', 2);
+							break;
+							case 2:
+							Board.addEnemy('worm', 2);
+							break;
+							case 3:
+							Board.addEnemy('man', 2);
+							break;
+							case 4:
+							Board.addEnemy('knight', 2);
+							break;
+							case 5:
+							Board.addEnemy('zombie', 2);
+							break;
+							case 6:
+							Board.addEnemy('dragon', 2);
+							break;
+						}
+					}
+					V.ctx.clearRect(0,0,V.W, V.H);
+					Board.draw();
 				}
 				
 		};

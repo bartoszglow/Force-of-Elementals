@@ -27,6 +27,11 @@ function M(V){
 		}
 	};
 
+	//Exit button
+	this.buttons[2].onclick = function(){
+		V.mainmenu=1;
+	};
+
 	//Start next wave button
 	document.getElementById("waves").getElementsByTagName("button")[0].onclick = function(){
 
