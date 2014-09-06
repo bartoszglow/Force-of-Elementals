@@ -261,18 +261,23 @@ B.prototype.drawBg = function(){
 					40*V.sc/2*this.size,
 					50*V.sc/2*this.size
 				);
+				
 				if(this.b[i][j].type == 'R'){
+					this.cx.save(); 
+					this.cx.translate((j*40+20)*V.sc/2*this.size, ((i*40+30)*V.sc/2-5*V.sc)*this.size);
+					this.cx.rotate(V.rand(-20,100) * V.rad);
 					this.cx.drawImage(
 						V.sprite,
 						51,
 						34,
 						10,
 						10,
-						(j*40*V.sc/2+5)*this.size,
-						(i*40*V.sc/2-5*V.sc+15)*this.size,
-						30*V.sc/2*this.size,
-						30*V.sc/2*this.size
+						-10,
+						-10,
+						20*V.sc/2*this.size,
+						20*V.sc/2*this.size
 					);
+					this.cx.restore(); 
 				}
 
 			}else{
