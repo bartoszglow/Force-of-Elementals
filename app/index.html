@@ -138,12 +138,13 @@
 				text-shadow: 0px 0px 10px rgba(255,255,255,1);
 				cursor: default;
 				font-size: 2.5em;
-				margin: 10px;
 			}
-			#main-menu h2{
+			#main-menu h2 {
 				z-index: 2000;
 				cursor: pointer;
 				text-shadow: 0px 0px 10px rgba(255,255,255,1);
+				width: 230px;
+				margin: 0.5em auto;
 			}
 			#main-menu h2 > div{
   				pointer-events: none;
@@ -151,6 +152,7 @@
 				transition: opacity .8s;
 				position: absolute;
 				top:0px;
+				left:0px;
 				width:70%;
 				max-height: 280px;
 				margin: 10%;
@@ -278,7 +280,7 @@
 
 		<span id="game"></span>
 
-		<div id="main-menu" style="display: block";>
+		<div id="main-menu">
 			<h1>Force of Elementals</h1>
 			<h2>Choose level:</h2>
 			<div class="row">
