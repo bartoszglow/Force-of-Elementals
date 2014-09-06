@@ -19,12 +19,12 @@ var game = (function () {
 		sprite: {},
 		ctx: {},
 		ctx_bg: {},
-		ctx_menu: {},
-		//ctx_hit: {},
 		Water:20,
 		Fire:30,
 		Earth:60,
 		Air:50,
+		canvas_map:[],
+		ctx_map:[],
 		rand:function(min,max){
 			return Math.floor(Math.random()*(max-min+1))+min;
 		},
@@ -38,32 +38,30 @@ var game = (function () {
 		var canvas = document.createElement('canvas');				
 		V.ctx = canvas.getContext('2d');
 
-		var canvas_menu = document.createElement('canvas');				
-		V.ctx_map1 = canvas_menu.getContext('2d');
-		V.ctx_map2 = canvas_menu.getContext('2d');
-		V.ctx_map3 = canvas_menu.getContext('2d');
-		V.ctx_map4 = canvas_menu.getContext('2d');
-		V.ctx_map5 = canvas_menu.getContext('2d');
-		V.ctx_map6 = canvas_menu.getContext('2d');
 
+		layout(canvas, canvas_bg);	
 
-		layout(canvas, canvas_bg, canvas_menu);	
-
-		
 		document.getElementById("game").appendChild(canvas_bg);
 		document.getElementById("game").appendChild(canvas);
-		document.getElementById("main-menu").appendChild(canvas_menu);
+		
 
-
-		MenuMap1 = new B(V, 0.2, V.ctx_map1, 1, 100,100);
-		MenuMap2 = new B(V, 0.2, V.ctx_map2, 1, 250,100);
-		MenuMap3 = new B(V, 0.2, V.ctx_map3, 1, 400,100);
-		MenuMap4 = new B(V, 0.2, V.ctx_map4, 1, 100,250);
-		MenuMap5 = new B(V, 0.2, V.ctx_map5, 1, 250,250);
-		MenuMap6 = new B(V, 0.2, V.ctx_map6, 1, 400,250);
-
-
+		mainmenu();
+		
 		setTimeout(create, 100);
+	};
+	this.mainmenu = function(){
+		for(var i=0; i<6; i++){
+			var a = String(i);
+
+			V.canvas_map[i] = document.createElement('canvas');				
+			V.ctx_map[i] = V.canvas_map[i].getContext('2d');
+
+			V.canvas_map[i].width = V.W*0.2;
+			V.canvas_map[i].height = V.H*0.2;
+
+			document.getElementById("main-menu").appendChild(V.canvas_map[i]);
+			MenuMap1 = new B(V, 0.2, V.ctx_map[i], 1);
+		}
 	};
 	this.layout = function(canvas, canvas_bg, canvas_menu){
 		V.W = 320*V.sc;
@@ -74,8 +72,6 @@ var game = (function () {
 		canvas_bg.height = V.H;
 		canvas.width = V.W;
 		canvas.height = V.H;
-		canvas_menu.width = V.W;
-		canvas_menu.height = V.H;
 
 		V.ctx.imageSmoothingEnabled = false;
 		V.ctx.mozImageSmoothingEnabled = false;
@@ -88,7 +84,7 @@ var game = (function () {
 	};
 	this.create = function(){
 		Menu = new M(V);
-		Board = new B(V, 1, V.ctx_bg, 0, 0,0);
+		Board = new B(V, 1, V.ctx_bg, 0);
 
 		document.getElementsByClassName("box")[0].addEventListener("mousedown", this.mouse, false);
 

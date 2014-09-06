@@ -1,12 +1,25 @@
 
-function B(V, size, cx, map, xx,yy){
+function B(V, size, cx, map){
 	this.V = V;
 	this.cx = cx;
-	this.xx = xx;
-	this.yy = yy;
 	this.map = map;
 	this.size = size;
+	this.startPos = [];
 	this.templates = [
+		[
+			'       X        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'  DDDS W SAAA   ',
+			'  W  S W S  W   ',
+			'  W  DDWAA  W   ',
+			'  W         W   ',
+			'  WAAA   DDDW   ',
+			'     W   W      ',
+			'     W   W      ',
+			'     Y   Y      '
+		],
 		[
 			'   X            ',
 			'   W            ',
@@ -19,7 +32,7 @@ function B(V, size, cx, map, xx,yy){
 			'   W     S  W   ',
 			'   WAAAAAA  W   ',
 			'            W   ',
-			'            W   '
+			'            Y   '
 		],
 		[
 			'                ',
@@ -33,7 +46,7 @@ function B(V, size, cx, map, xx,yy){
 			'      S     W   ',
 			'      S     W   ',
 			'      S     W   ',
-			'      X     W   '
+			'      X     Y   '
 		],
 		[
 			'                ',
@@ -47,7 +60,7 @@ function B(V, size, cx, map, xx,yy){
 			'      S     W   ',
 			'      S     W   ',
 			'      S     W   ',
-			'      X     W   '
+			'      X     Y   '
 		],
 		[
 			'                ',
@@ -61,7 +74,7 @@ function B(V, size, cx, map, xx,yy){
 			'      S     W   ',
 			'      S     W   ',
 			'      S     W   ',
-			'      X     W   '
+			'      X     Y   '
 		],
 		[
 			'                ',
@@ -75,21 +88,7 @@ function B(V, size, cx, map, xx,yy){
 			'      S     W   ',
 			'      S     W   ',
 			'      S     W   ',
-			'      X     W   '
-		],
-		[
-			'                ',
-			'                ',
-			'                ',
-			'      SAAAAAA   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      X     W   '
+			'      X     Y   '
 		],
 	];
 	this.elements = {
@@ -99,6 +98,7 @@ function B(V, size, cx, map, xx,yy){
 		'S':{FXmod:1,	  type:'S'},
 		'D':{FXmod:1,  	  type:'D'},
 		'X':{FXmod:1,  	  type:'X'},
+		'Y':{FXmod:1,  	  type:'W'},
 	};
 	//mAin arr included grass and path
 	this.b = []; 
@@ -149,9 +149,8 @@ B.prototype.addTower = function(x, y, type, check, lvl){
 };
 
 B.prototype.addEnemy = function(type, lvl){
-
-	this.Enemy[this.Enemy.length] = new E(this.V, 121*V.sc, 115*V.sc, type, lvl);
-	//this.Enemy[this.Enemy.length-1].draw();
+	var pos = this.startPos[V.rand(0,this.startPos.length-1)];
+	this.Enemy[this.Enemy.length] = new E(this.V, pos.x*V.sc, pos.y*V.sc, type, lvl);
 
 };
 B.prototype.delete = function(arr,arrIndex){
@@ -216,7 +215,7 @@ B.prototype.draw = function(){
 	 	this.Enemy = [];	
 
 	 	V.timer=-541;
-	 	V.score += this.waves*2;
+	 	V.score += this.waves*10;
 	 	this.waves++;
 	 	waves(this.waves);
 	}
@@ -247,30 +246,30 @@ B.prototype.drawBg = function(){
 
 			if(this.b[i][j].type == 'G'){
 				this.cx.fillStyle = "#5fc148";
-				this.cx.fillRect((j*20+2)*V.sc*this.size+this.xx, (i*20+1)*V.sc*this.size+this.yy, (20-3.5)*V.sc*this.size, (20-4)*V.sc*this.size);
+				this.cx.fillRect((j*20+2)*V.sc*this.size, (i*20+1)*V.sc*this.size, (20-3.5)*V.sc*this.size, (20-4)*V.sc*this.size);
 				this.cx.drawImage(
 					V.sprite,
 					0,
 					53,
 					40,
 					50,
-					j*40*V.sc/2*this.size+this.xx,
-					(i*40*V.sc/2-5*V.sc)*this.size+this.yy,
+					j*40*V.sc/2*this.size,
+					(i*40*V.sc/2-5*V.sc)*this.size,
 					40*V.sc/2*this.size,
 					50*V.sc/2*this.size
 				);
 
 			}else{
 				this.cx.fillStyle = "#bebf6a";
-				this.cx.fillRect((j*20+2)*V.sc*this.size+this.xx, (i*20+1)*V.sc*this.size+this.yy, (20-3.5)*V.sc*this.size, (20-4)*V.sc*this.size);
+				this.cx.fillRect((j*20+2)*V.sc*this.size, (i*20+1)*V.sc*this.size, (20-3.5)*V.sc*this.size, (20-4)*V.sc*this.size);
 					this.cx.drawImage(
 						V.sprite,
 						40,
 						83,
 						20,
 						20,
-						j*40*V.sc/2*this.size+this.xx,
-						i*40*V.sc/2*this.size+this.yy,
+						j*40*V.sc/2*this.size,
+						i*40*V.sc/2*this.size,
 						40*V.sc/2*this.size,
 						40*V.sc/2*this.size
 					);
@@ -285,6 +284,9 @@ B.prototype.parse = function(arr){
 		this.b.push([]);
 		for(var j=0; j<arr[i].length; j++){
 			this.b[i].push(this.elements[arr[i].charAt(j)==' ' ? 'grass' : arr[i].charAt(j)]);
+			if(arr[i].charAt(j)=='Y'){
+				this.startPos.push({x:j*10+2, y:i*10+5});
+			}
 		}
 	}
 };
