@@ -262,12 +262,17 @@ B.prototype.drawBg = function(){
 					50*V.sc/2*this.size
 				);
 				if(this.b[i][j].type == 'R'){
-					this.cx.fillStyle = "#ccccff";
-					this.cx.beginPath();
-					this.cx.arc(j*40*V.sc/2*this.size+10*V.sc*this.size, (i*40*V.sc/2-5*V.sc)*this.size+15*V.sc*this.size ,5*V.sc*this.size, 0 ,2*Math.PI);
-					this.cx.fill();
-					this.cx.closePath();
-
+					this.cx.drawImage(
+						V.sprite,
+						51,
+						34,
+						10,
+						10,
+						(j*40*V.sc/2+5)*this.size,
+						(i*40*V.sc/2-5*V.sc+15)*this.size,
+						30*V.sc/2*this.size,
+						30*V.sc/2*this.size
+					);
 				}
 
 			}else{
