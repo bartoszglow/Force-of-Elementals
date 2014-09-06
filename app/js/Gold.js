@@ -1,7 +1,7 @@
 function G(V, xx, yy){
-	this.x = V.rand(-5 , 5)*V.sc + xx+10*V.sc;
+	this.x = V.rand(-5 , 5)*V.sc + xx+7*V.sc;
 	this.y = V.rand(-5 , 5)*V.sc + yy+10*V.sc;
-	this.angle = V.rand(-40,40)
+	this.angle = V.rand(-20,20)
 }
 G.prototype.draw = function(){
 

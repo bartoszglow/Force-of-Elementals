@@ -144,6 +144,7 @@ var game = (function () {
 					V.score=90;
 					V.lifes=10;
 					V.countWaves=10;
+					Board.addGold();
 				break;
 				case 1:
 					V.spawn.push('orc', 1, 5, 25);

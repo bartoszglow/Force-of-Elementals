@@ -109,7 +109,7 @@ function B(V, size, cx, map){
 	this.Enemy = [];
 
 	this.gold = {x:0, y:0}
-	this.Golds = new Array(V.lifes);
+	this.Golds = [];
 
 	this.Towers = new Array(16);
 	for (var i = 0; i < 16; i++) {
@@ -117,13 +117,7 @@ function B(V, size, cx, map){
 	}
 	this.parse(this.templates[map]);
 	
-	this.drawBg();	
-	if(V.mainmenu==0){
-		for (var i = 0; i<this.Golds.length; i++){
-			this.Golds[i] = new G(this.V, this.gold.x, this.gold.y);
-			this.Golds[i].draw();
-		}
-	}
+	this.drawBg();
 
 	this.waves = 0;
 	this.count = 0;
@@ -162,6 +156,12 @@ B.prototype.addEnemy = function(type, lvl){
 	this.Enemy[this.Enemy.length] = new E(this.V, pos.x*V.sc, pos.y*V.sc, type, lvl);
 
 };
+B.prototype.addGold = function(){
+	for (var i = 0; i<V.lifes; i++){
+			this.Golds[i] = new G(this.V, this.gold.x, this.gold.y);
+			this.Golds[i].draw();
+		}
+}
 B.prototype.delete = function(arr,arrIndex){
 	return arr.slice(0,arrIndex).concat(arr.slice(arrIndex + 1));
 };
@@ -225,7 +225,7 @@ B.prototype.draw = function(){
 	 	this.Enemy = [];	
 
 	 	V.timer=-601;
-	 	
+	 	V.fps = 50;
 	 	V.score += this.waves*10;
 	 	this.waves++;
 	 	waves(V.map, this.waves);
