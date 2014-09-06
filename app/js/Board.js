@@ -7,18 +7,18 @@ function B(V, size, cx, map){
 	this.startPos = [];
 	this.templates = [
 		[
-			'       X        ',
-			'       W        ',
-			'       W        ',
-			'       W        ',
-			'  DDDS W SAAA   ',
-			'  W  S W S  W   ',
-			'  W  DDWAA  W   ',
-			'  W         W   ',
-			'  WAAA   DDDW   ',
-			'     W   W      ',
-			'     W   W      ',
-			'     Y   Y      '
+			'   X            ',
+			'   W            ',
+			'   W  SAAAAAA   ',
+			'   W  S     W   ',
+			'   W  DDS   W   ',
+			'   W    S   W   ',
+			'   W  SAA   W   ',
+			'   W  S     W   ',
+			'   W  DDS   W   ',
+			'   W    S   W   ',
+			'   WAAAAA   W   ',
+			'            Y   '		
 		],
 		[
 			'   X            ',
@@ -35,18 +35,18 @@ function B(V, size, cx, map){
 			'            Y   '
 		],
 		[
-			'         W      ',
-			'         W      ',
-			'         W      ',
-			'      SAAAAAA   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      X     Y   '
+			'       XX       ',
+			'       WW       ',
+			'       WW       ',
+			'       WW       ',
+			'     DDWWAA     ',
+			'     W    W     ',
+			'     W    W     ',
+			'     W    W     ',
+			'     WAADDW     ',
+			'       WW       ',
+			'       WW       ',
+			'       YY       '
 		],
 		[
 			'                ',
@@ -63,18 +63,18 @@ function B(V, size, cx, map){
 			'      X     Y   '
 		],
 		[
-			'     S          ',
-			'     S  SS      ',
-			'     S   S      ',
-			'      SAAAAAA   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      X     Y   '
+			'       X        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'  DDDS W SAAA   ',
+			'  W  S W S  W   ',
+			'  W  DDWAA  W   ',
+			'  W         W   ',
+			'  WAAA   DDDW   ',
+			'     W   W      ',
+			'     W   W      ',
+			'     Y   Y      '
 		],
 		[
 			'                ',

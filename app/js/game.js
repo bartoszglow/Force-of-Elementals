@@ -62,9 +62,33 @@ var game = (function () {
 
 			document.getElementById("main-menu").getElementsByClassName("level"+(i+1))[0].appendChild(V.canvas_map[i]);
 			V.MenuMap[i] = new B(V, 0.2, V.ctx_map[i], i);
+			document.getElementById("main-menu").getElementsByClassName("level"+(i+1))[0].addEventListener("mousedown", this.levelchoose, false);
 
 		}
 	};
+	this.levelchoose = function(e){
+		
+		switch(e.toElement.innerHTML){
+			case 'Level 1':
+				console.log('1');
+				break;
+			case 'Level 2':
+				console.log('2');
+				break;
+			case 'Level 3':
+				console.log('3');
+				break;
+			case 'Level 4':
+				console.log('4');
+				break;
+			case 'Level 5':
+				console.log('5');
+				break;
+			case 'Level 6':
+				console.log('6');
+				break;
+		}
+	}
 	this.layout = function(canvas, canvas_bg, canvas_menu){
 		V.W = 320*V.sc;
 		V.H = 240*V.sc;
