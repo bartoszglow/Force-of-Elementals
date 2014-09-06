@@ -25,8 +25,8 @@ function B(V, size, cx, map){
 			'   W            ',
 			'   W            ',
 			'   W  SAAAAAA   ',
-			'   W  S     W   ',
-			'   W  S     W   ',
+			'   W  S RRR W   ',
+			'   W  S RRR W   ',
 			'   W  DDDS  W   ',
 			'   W     S  W   ',
 			'   W     S  W   ',
@@ -40,9 +40,9 @@ function B(V, size, cx, map){
 			'       WW       ',
 			'       WW       ',
 			'     DDWWAA     ',
+			'     W RR W     ',
 			'     W    W     ',
-			'     W    W     ',
-			'     W    W     ',
+			'     W RR W     ',
 			'     WAADDW     ',
 			'       WW       ',
 			'       WW       ',
@@ -52,21 +52,21 @@ function B(V, size, cx, map){
 			'                ',
 			'                ',
 			'                ',
-			'      SAAAAAA   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      X     Y   '
+			'      DDDDDDS   ',
+			'      W     S   ',
+			'      W     S   ',
+			'      W     S   ',
+			'      W  XAAA   ',
+			'      W         ',
+			'      W         ',
+			'      W         ',
+			'      Y         '
 		],
 		[
 			'       X        ',
 			'       W        ',
-			'       W        ',
-			'       W        ',
+			'       W     R  ',
+			'   R   W        ',
 			'  DDDS W SAAA   ',
 			'  W  S W S  W   ',
 			'  W  DDWAA  W   ',
@@ -77,18 +77,18 @@ function B(V, size, cx, map){
 			'     Y   Y      '
 		],
 		[
-			'                ',
-			'                ',
-			'                ',
-			'      SAAAAAA   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      SDDDDDW   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      X     Y   '
+			'       X        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       Y        '
 		],
 	];
 	this.elements = {
@@ -123,7 +123,6 @@ function B(V, size, cx, map){
 B.prototype.addTower = function(x, y, type, check, lvl){
 		
 	var cost = V[type]*lvl;
-
 	if(!this.Towers[x][y] && V.score>=cost){
 		if(type!='Earth'){
 			if(this.b[y][x].type=='G'){
@@ -216,10 +215,13 @@ B.prototype.draw = function(){
 	 	this.Enemy = [];	
 
 	 	V.timer=-541;
+	 	
 	 	V.score += this.waves*10;
+	 	
+	 	waves(V.map, this.waves);
 	 	this.waves++;
-	 	waves(this.waves);
 	}
+
 	V.timer++;
 	if(V.spawn.length>=1){
 
@@ -238,7 +240,6 @@ B.prototype.draw = function(){
 			V.timer = 0;
 		}
 	}
-	
 };
 
 B.prototype.drawBg = function(){
