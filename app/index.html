@@ -173,7 +173,7 @@
 			}
 			#main-menu h2:hover > div article {
 				position: relative;
-				transition: all 5s;
+				transition: all 5s cubic-bezier(0.835, 0.005, 0.810, 1.025);
 				top: -250px;
 			}
 			#main-menu h2:hover > p {
@@ -286,14 +286,14 @@
 			<h1>Force of Elementals</h1>
 			<h2>Choose level:</h2>
 			<div class="row">
-				<span class="level1"> <span>Level 1</span> </span>
-				<span class="level2 hide"> <span>Level 2</span> </span>
-				<span class="level3 hide"> <span>Level 3</span> </span>
+				<span id="level1" class="level1"> <span>Level 1</span> </span>
+				<span id="level2" class="level2 hide"> <span>Level 2</span> </span>
+				<span id="level3" class="level3 hide"> <span>Level 3</span> </span>
 			</div>
 			<div class="row">
-				<span class="level4 hide"> <span>Level 4</span> </span>
-				<span class="level5 hide"> <span>Level 5</span> </span>
-				<span class="level6 hide"> <span>Level 6</span> </span>
+				<span id="level4" class="level4 hide"> <span>Level 4</span> </span>
+				<span id="level5" class="level5 hide"> <span>Level 5</span> </span>
+				<span id="level6" class="level6 hide"> <span>Level 6</span> </span>
 			</div>
 			<h2>
 				<p>How to play</p>
