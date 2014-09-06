@@ -17,6 +17,7 @@ var game = (function () {
 		timer:0,
 		map:0,
 		mainmenu:1,
+		countWaves:0,
 		spawn:[],
 		sprite: {},
 		ctx: {},
@@ -142,6 +143,7 @@ var game = (function () {
 				case 0:
 					V.score=90;
 					V.lifes=10;
+					V.countWaves=2;
 				break;
 				case 1:
 					V.spawn.push('orc', 1, 4, 25);
@@ -188,6 +190,7 @@ var game = (function () {
 				case 0:
 					V.score=40;
 					V.lifes=10;
+					V.countWaves=2;
 				break;
 				case 1:
 					V.spawn.push('orc', 1, 4, 25);
@@ -208,6 +211,7 @@ var game = (function () {
 				case 0:
 					V.score=400;
 					V.lifes=10;
+					V.countWaves=2;
 				break;
 				case 1:
 					V.spawn.push('dragon', 3, 4, 25);
@@ -228,6 +232,7 @@ var game = (function () {
 				case 0:
 					V.score=20;
 					V.lifes=10;
+					V.countWaves=2;
 				break;
 				case 1:
 					V.spawn.push('orc', 1, 6, 25);
@@ -247,6 +252,7 @@ var game = (function () {
 				case 0:
 					V.score=100;
 					V.lifes=10;
+					V.countWaves=2;
 				break;
 				case 1:
 					V.spawn.push('worm', 1, 4, 25);
@@ -267,6 +273,7 @@ var game = (function () {
 				case 0:
 					V.score=200;
 					V.lifes=10;
+					V.countWaves=2;
 				break;
 				case 1:
 					V.spawn.push('knight', 1, 4, 25);

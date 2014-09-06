@@ -46,7 +46,7 @@ M.prototype.fill = function(){
 
 	//Counter time, info about enemies in waves
 	if(V.timer%30==0 && V.timer <= 0){
-		this.wavesInfo[0].innerHTML = '(' + -V.timer/30 + ')';
+		this.wavesInfo[0].innerHTML = Board.waves-1 +'/'+V.countWaves + ' (' + -V.timer/30 + ')';
 
 		if(V.timer<0){
 			for(var i=0, j=1; i<16; i+=4, j++){	
