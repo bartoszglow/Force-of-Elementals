@@ -35,9 +35,37 @@ function B(V, size, cx, map){
 			'            Y   '
 		],
 		[
+			'         W      ',
+			'         W      ',
+			'         W      ',
+			'      SAAAAAA   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      X     Y   '
+		],
+		[
 			'                ',
 			'                ',
 			'                ',
+			'      SAAAAAA   ',
+			'      S     W   ',
+			'      S     W   ',
+			'   SSSS     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      S     W   ',
+			'      X     Y   '
+		],
+		[
+			'     S          ',
+			'     S  SS      ',
+			'     S   S      ',
 			'      SAAAAAA   ',
 			'      S     W   ',
 			'      S     W   ',
@@ -56,35 +84,7 @@ function B(V, size, cx, map){
 			'      S     W   ',
 			'      S     W   ',
 			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      X     Y   '
-		],
-		[
-			'                ',
-			'                ',
-			'                ',
-			'      SAAAAAA   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      X     Y   '
-		],
-		[
-			'                ',
-			'                ',
-			'                ',
-			'      SAAAAAA   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
+			'      SDDDDDW   ',
 			'      S     W   ',
 			'      S     W   ',
 			'      S     W   ',
@@ -214,7 +214,7 @@ B.prototype.draw = function(){
 	 	this.Bullets = [];
 	 	this.Enemy = [];	
 
-	 	V.timer=-1;
+	 	V.timer=-541;
 	 	V.score += this.waves*10;
 	 	this.waves++;
 	 	waves(this.waves);

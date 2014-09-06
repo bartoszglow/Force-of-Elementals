@@ -25,6 +25,7 @@ var game = (function () {
 		Air:50,
 		canvas_map:[],
 		ctx_map:[],
+		MenuMap:[],
 		rand:function(min,max){
 			return Math.floor(Math.random()*(max-min+1))+min;
 		},
@@ -60,7 +61,8 @@ var game = (function () {
 			V.canvas_map[i].height = V.H*0.2;
 
 			document.getElementById("main-menu").getElementsByClassName("level"+(i+1))[0].appendChild(V.canvas_map[i]);
-			MenuMap1 = new B(V, 0.2, V.ctx_map[i], 1);
+			V.MenuMap[i] = new B(V, 0.2, V.ctx_map[i], i);
+
 		}
 	};
 	this.layout = function(canvas, canvas_bg, canvas_menu){

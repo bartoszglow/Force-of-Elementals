@@ -45,7 +45,7 @@ M.prototype.fill = function(){
 
 		if(V.timer<0){
 			for(var i=0, j=1; i<16; i+=4, j++){	
-				V.spawn.length<=i ? this.wavesInfo[j].innerHTML = ' ' : this.wavesInfo[j].innerHTML = V.spawn[i] + ' '+ V.spawn[i+2] +' &nbsp'+' lvl:' + V.spawn[i+1];
+				V.spawn.length<=i ? this.wavesInfo[j].innerHTML = ' ' : this.wavesInfo[j].innerHTML = V.spawn[i] + ' '+ V.spawn[i+2];
 				
 			}
 		}
