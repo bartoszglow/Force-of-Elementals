@@ -292,29 +292,26 @@ var game = (function () {
 					V.ctx.clearRect(0,0,V.W, V.H);
 					Board.draw();
 					Menu.fill();
+
+
+
 				}else{
 					document.getElementById("main-menu").style.display = 'block';
-					if(V.timer%V.rand(100,150)==0){
-						var n = V.rand(1,6);
+					if(V.timer%V.rand(50,150)==0){
+						var n = V.rand(1,4);
 						switch(n){
 							case 1:
 							Board.addEnemy('orc', 2);
 							break;
 							case 2:
-							Board.addEnemy('worm', 2);
+							Board.addEnemy('orc', 2);
 							break;
-							case 3:
+							case 2:
 							Board.addEnemy('man', 2);
 							break;
-							case 4:
-							Board.addEnemy('knight', 2);
-							break;
-							case 5:
-							Board.addEnemy('zombie', 2);
-							break;
-							case 6:
+							case 3:
 							Board.addEnemy('dragon', 2);
-							break;
+							break;							
 						}
 					}
 					V.ctx.clearRect(0,0,V.W, V.H);

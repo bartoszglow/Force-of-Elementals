@@ -207,11 +207,11 @@ B.prototype.draw = function(){
 	 		}
 	 	}
 	 }
-	 if(V.lifes<=0){
+	 if(V.lifes<=0 && V.mainmenu==0){
 	 	V.mainmenu=1;
 	 }
 	
-	if(this.Enemy.length==0 && !V.spawn.length){
+	if(this.Enemy.length==0 && !V.spawn.length && V.mainmenu==0){
 	 	this.Bullets = [];
 	 	this.Enemy = [];	
 
@@ -224,7 +224,7 @@ B.prototype.draw = function(){
 	}
 
 	V.timer++;
-	if(V.spawn.length>=1){
+	if(V.spawn.length>=1 && V.mainmenu==0){
 
 		if(V.timer>V.spawn[3]){
 			if(V.spawn[2]==0){
