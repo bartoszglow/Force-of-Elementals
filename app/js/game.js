@@ -142,8 +142,9 @@ var game = (function () {
 			switch(lvl){
 				case 0:
 					V.score=90;
-					V.lifes=10;
+					V.lifes=5;
 					V.countWaves=2;
+					Board.addGold();
 				break;
 				case 1:
 					V.spawn.push('orc', 1, 4, 25);
