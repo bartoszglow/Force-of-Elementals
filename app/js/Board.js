@@ -191,7 +191,6 @@ B.prototype.draw = function(){
  		}	
 	 }
 
-	// V.ctx_hit.clearRect(0,0,V.W, V.H);
 	 for(var i=0; i<this.Enemy.length; i++){
 	 	if(this.Enemy[i].hp > 0){
 	 	this.Enemy[i].move(this.b, this.Towers);
@@ -208,13 +207,15 @@ B.prototype.draw = function(){
 	 		}
 	 	}
 	 }
-
+	 if(V.lifes<=0){
+	 	V.mainmenu=1;
+	 }
 	
 	if(this.Enemy.length==0 && !V.spawn.length){
 	 	this.Bullets = [];
 	 	this.Enemy = [];	
 
-	 	V.timer=-541;
+	 	V.timer=-601;
 	 	
 	 	V.score += this.waves*10;
 	 	
