@@ -272,8 +272,8 @@ B.prototype.drawBg = function(){
 						34,
 						10,
 						10,
-						-10,
-						-10,
+						-10*this.size,
+						-10*this.size,
 						20*V.sc/2*this.size,
 						20*V.sc/2*this.size
 					);

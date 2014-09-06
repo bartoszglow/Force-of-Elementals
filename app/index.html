@@ -20,14 +20,14 @@
 				top:100px;
 				left:calc(50% + 240px);
 				background-color: #cbe5e1;
-				width: 160px;
+				width: 165px;
 				height: 480px;
 				margin: 0px;
 			}
 			div{
 				margin: 10px;
 				position: relative;
-				width: 140px;
+				width: 150px;
 			}
 			.text{
 				visibility: visible;
@@ -52,7 +52,7 @@
 				display: inline-block;
 				height: 30px;
 				width: 30px;
-				margin: 10px 0;
+				margin: 5px 0;
 			}
 			#Water{
 				background: url('assets/sprite.gif') -122px -192px;
@@ -128,7 +128,7 @@
 				position:absolute;
 				top:100px;
 				left:calc(50% - 400px);
-				width: 800px;
+				width: 805px;
 				height: 482px;
 				background-color: rgba(100,100,100,0.7);
 				z-index: 999;
@@ -139,13 +139,12 @@
 				text-shadow: 0px 0px 10px rgba(255,255,255,1);
 				cursor: default;
 				font-size: 2.5em;
+				margin: 10px;
 			}
-			#main-menu h2 {
+			#main-menu h2{
 				z-index: 2000;
 				cursor: pointer;
 				text-shadow: 0px 0px 10px rgba(255,255,255,1);
-				width: 230px;
-				margin: 0.5em auto;
 			}
 			#main-menu h2 > div{
   				pointer-events: none;
@@ -153,7 +152,6 @@
 				transition: opacity .8s;
 				position: absolute;
 				top:0px;
-				left:0px;
 				width:70%;
 				max-height: 280px;
 				margin: 10%;
@@ -169,12 +167,11 @@
 				position: relative;
 				transition: all .8s cubic-bezier(0.995, 0.080, 1.000, -0.305);
 				top: 0px;
-				font-size: 20px;
 			}
 			#main-menu h2:hover > div article {
 				position: relative;
-				transition: all 15s cubic-bezier(0.755, -0.035, 0.880, 1.000);
-				top: -230px;
+				transition: all 5s cubic-bezier(0.835, 0.005, 0.810, 1.025);
+				top: -250px;
 			}
 			#main-menu h2:hover > p {
 				opacity: 0.7;
@@ -282,7 +279,7 @@
 
 		<span id="game"></span>
 
-		<div id="main-menu">
+		<div id="main-menu" style="display: block";>
 			<h1>Force of Elementals</h1>
 			<h2>Choose level:</h2>
 			<div class="row">
@@ -299,20 +296,14 @@
 				<p>How to play</p>
 				<div>
 					<article> 
-						<h2>How to play</h2> 
+						<h3>How to play</h3> 
 						<span>
-							<p>The goal of "Force of the Elementals" is to to stop enemies from stealing your gold.</p>
-							<br>
-							<p>Put Elemental Towers on the map, which will defend your treasure.</p>
-							<br>
-							<p>There are four types of Elementals:</p>
-							<ul>
-								<li>Fire, with a huge power.</li>
-								<li>Water, which has a graet rate.</li>
-								<li>Earth, that slow enemies.</li>
-								<li>Air, with a area range.</li>
-							</ul>
-							<p>Upgrade your Towers and go through waves of monsters to unlock new maps.</p>
+							The goal of tower defense games is to try to stop enemies from crossing a map.
+							Fire tower has a huge power.
+							Water tower has a graet rate.
+							Air tower has a area range.
+							Earth trap slowness enemies.
+							Go through waves of monsters to unlock new maps.
 						<span> 
 					</article>
 				</div>
@@ -321,7 +312,7 @@
 				<p>Authors</p>
 				<div>
 					<article> 
-						<h2>Authors</h2> 
+						<h3>Authors</h3> 
 						<span>
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit doloremque placeat distinctio dignissimos, id qui tenetur eum error soluta ab sapiente sunt unde eaque excepturi, quidem cum vel totam quibusdam.
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa vitae, odit quis alias eos possimus nobis iure obcaecati voluptatum quae? Voluptate totam excepturi corporis nobis dolore, numquam porro minus tempore.
