@@ -10,11 +10,13 @@ var game = (function () {
 		W:0,
 		H:0,
 		sc:2, //scale
-		score:500,
+		score:0,
 		lifes:10,
 		rad:Math.PI/180,
 		lastTime:0,
 		timer:0,
+		map:0,
+		mainmenu:1,
 		spawn:[],
 		sprite: {},
 		ctx: {},
@@ -47,8 +49,9 @@ var game = (function () {
 		
 
 		mainmenu();
-		
-		setTimeout(create, 100);
+		Board = new B(V, 1, V.ctx_bg, 0);
+
+		animationLoop();
 	};
 	this.mainmenu = function(){
 		for(var i=0; i<6; i++){
@@ -66,29 +69,6 @@ var game = (function () {
 
 		}
 	};
-	this.levelchoose = function(e){
-		
-		switch(e.toElement.innerHTML){
-			case 'Level 1':
-				console.log('1');
-				break;
-			case 'Level 2':
-				console.log('2');
-				break;
-			case 'Level 3':
-				console.log('3');
-				break;
-			case 'Level 4':
-				console.log('4');
-				break;
-			case 'Level 5':
-				console.log('5');
-				break;
-			case 'Level 6':
-				console.log('6');
-				break;
-		}
-	}
 	this.layout = function(canvas, canvas_bg, canvas_menu){
 		V.W = 320*V.sc;
 		V.H = 240*V.sc;
@@ -108,31 +88,65 @@ var game = (function () {
 		V.ctx_bg.oImageSmoothingEnabled = false;
 		V.ctx_bg.webkitImageSmoothingEnabled = false;
 	};
-	this.create = function(){
+	this.create = function(n){
+		V.map=n;
+		V.mainmenu=0;
+		delete Board;
 		Menu = new M(V);
-		Board = new B(V, 1, V.ctx_bg, 0);
+		Board = new B(V, 1, V.ctx_bg, V.map-1);
+
+		document.getElementById("main-menu").style.display = 'none';
+
+		this.waves(V.map, 0)
 
 		document.getElementsByClassName("box")[0].addEventListener("mousedown", this.mouse, false);
 
-		animationLoop();
-	}
-	this.waves = function(n){
+
+		
+	};
+
+	this.levelchoose = function(e){
+		//console.log(document.getElementById("main-menu").getElementsByClassName("level"+(1+1))[0].innerHTML)
+		switch(e.toElement.innerHTML){
+			case 'Level 1':
+				document.getElementById("level1").className == "level1" ? create(1) : V.map;
+				break;
+			case 'Level 2':
+				document.getElementById("level2").className == "level2" ? create(2) : V.map;
+				break;
+			case 'Level 3':
+				document.getElementById("level2").className == "level2" ? create(3) : V.map;
+				break;
+			case 'Level 4':
+				document.getElementById("level2").className == "level2" ? create(4) : V.map;
+				break;
+			case 'Level 5':
+				document.getElementById("level2").className == "level2" ? create(5) : V.map;
+				break;
+			case 'Level 6':
+				document.getElementById("level2").className == "level2" ? create(6) : V.map;
+				break;
+		}
+	};
+
+	this.waves = function(map, lvl){
 		//Editor for creating waves
 		//case n == number of waves
 		//V.spawn.push('type', lvl, count_of_mobs, time_between_spawn);
-		
-			switch(n){
+		switch(map){
+			case 1:
+			switch(lvl){
+				case 0:
+					V.score=90;
+					V.lifes=10;
+				break;
 				case 1:
 					V.spawn.push('orc', 1, 4, 25);
-					V.spawn.push('orc', 20, 4, 25);
-					V.spawn.push('dragon', 2, 2, 50);
-					V.spawn.push('dragon', 20, 2, 50);
 				break;
 				case 2:
-					V.spawn.push('orc', 1, 8, 25);
-					V.spawn.push('man', 1, 4, 40);
+					V.spawn.push('orc', 2, 8, 25);
 				break;
-				case 3:
+				case 11:
 					V.spawn.push('orc', 2, 10, 25);
 				break;
 				case 4:
@@ -159,19 +173,125 @@ var game = (function () {
 				case 10:
 					V.spawn.push('zombie', 10, 3, 180);
 				break;
+				case 3:
+					V.mainmenu=1;
+					document.getElementById("level2").className = "level2";
+				break;
+			}
+			break;
 
+			case 2:
+			switch(lvl){
+				case 0:
+					V.score=40;
+					V.lifes=10;
+				break;
+				case 1:
+					V.spawn.push('orc', 1, 4, 25);
+				break;
+				case 2:
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('man', 1, 4, 40);
+				break;
+				case 3:
+					V.mainmenu=1;
+					document.getElementById("level3").className = "level3";
+				break;
+			}
+			break;
+
+			case 3:
+			switch(lvl){
+				case 0:
+					V.score=400;
+					V.lifes=10;
+				break;
+				case 1:
+					V.spawn.push('dragon', 3, 4, 25);
+				break;
+				case 2:
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('man', 1, 4, 40);
+				break;
+				case 3:
+					V.mainmenu=1;
+					document.getElementById("level4").className = "level4";
+				break;
+			}
+			break;
+
+			case 4:
+			switch(lvl){
+				case 0:
+					V.score=20;
+					V.lifes=10;
+				break;
+				case 1:
+					V.spawn.push('orc', 1, 6, 25);
+				break;
+				case 2:
+					V.spawn.push('orc', 1, 8, 25);
+				break;
+				case 3:
+					V.mainmenu=1;
+					document.getElementById("level5").className = "level5";
+				break;
+			}
+			break;
+
+			case 5:
+			switch(lvl){
+				case 0:
+					V.score=100;
+					V.lifes=10;
+				break;
+				case 1:
+					V.spawn.push('worm', 1, 4, 25);
+				break;
+				case 2:
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('zombie', 2, 1, 40);
+				break;
+				case 3:
+					V.mainmenu=1;
+					document.getElementById("level6").className = "level6";
+				break;
+			}
+			break;
+
+			case 6:
+			switch(lvl){
+				case 0:
+					V.score=200;
+					V.lifes=10;
+				break;
+				case 1:
+					V.spawn.push('knight', 1, 4, 25);
+				break;
+				case 2:
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('man', 1, 4, 40);
+				break;
+				case 3:
+					V.mainmenu=1;
+				break;
+			}
+			break;
 		}
-
-
 	};
+
 	this.animationLoop = function(time){
 		requestAnimationFrame( animationLoop );
 		if(time-V.lastTime>=1000/V.fps){
 			V.lastTime = time;
 
-				V.ctx.clearRect(0,0,V.W, V.H);
-				Board.draw();
-				Menu.fill();
+				if(!V.mainmenu){
+					V.ctx.clearRect(0,0,V.W, V.H);
+					Board.draw();
+					Menu.fill();
+				}else{
+					document.getElementById("main-menu").style.display = 'block';
+				}
 				
 		};
 	};
@@ -179,7 +299,7 @@ var game = (function () {
 		var x = Math.floor(xx / (20 * V.sc));
 		var y = Math.floor(yy / (20 * V.sc));
 
-		//Board.addTower(x, y, what, check, 1);
+		
 		return Board.addTower(x, y, what, check, 1);
 	};
 	this.mouse = function(e){
@@ -191,6 +311,7 @@ var game = (function () {
 			Menu.upgrade(mx, my, Board.Towers[mx][my].type, Board.Towers[mx][my].TLvl);
 		}
 	};
+
 
 	return {
 		init: init,

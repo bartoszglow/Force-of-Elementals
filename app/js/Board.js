@@ -7,8 +7,8 @@ function B(V, size, cx, map){
 	this.startPos = [];
 	this.templates = [
 		[
-			'   X            ',
-			'   W            ',
+			'  RXR           ',
+			'  RWR           ',
 			'   W  SAAAAAA   ',
 			'   W  S     W   ',
 			'   W  DDS   W   ',
@@ -25,8 +25,8 @@ function B(V, size, cx, map){
 			'   W            ',
 			'   W            ',
 			'   W  SAAAAAA   ',
-			'   W  S     W   ',
-			'   W  S     W   ',
+			'   W  S RRR W   ',
+			'   W  S RRR W   ',
 			'   W  DDDS  W   ',
 			'   W     S  W   ',
 			'   W     S  W   ',
@@ -40,9 +40,9 @@ function B(V, size, cx, map){
 			'       WW       ',
 			'       WW       ',
 			'     DDWWAA     ',
+			'     W RR W     ',
 			'     W    W     ',
-			'     W    W     ',
-			'     W    W     ',
+			'     W RR W     ',
 			'     WAADDW     ',
 			'       WW       ',
 			'       WW       ',
@@ -52,21 +52,21 @@ function B(V, size, cx, map){
 			'                ',
 			'                ',
 			'                ',
-			'      SAAAAAA   ',
-			'      S     W   ',
-			'      S     W   ',
-			'   SSSS     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      X     Y   '
+			'      DDDDDDS   ',
+			'      W     S   ',
+			'      W     S   ',
+			'      W     S   ',
+			'      W  XAAA   ',
+			'      W         ',
+			'      W         ',
+			'      W         ',
+			'      Y         '
 		],
 		[
 			'       X        ',
 			'       W        ',
-			'       W        ',
-			'       W        ',
+			'       W     R  ',
+			'   R   W        ',
 			'  DDDS W SAAA   ',
 			'  W  S W S  W   ',
 			'  W  DDWAA  W   ',
@@ -77,18 +77,18 @@ function B(V, size, cx, map){
 			'     Y   Y      '
 		],
 		[
-			'                ',
-			'                ',
-			'                ',
-			'      SAAAAAA   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      SDDDDDW   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      S     W   ',
-			'      X     Y   '
+			'       X        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       W        ',
+			'       Y        '
 		],
 	];
 	this.elements = {
@@ -99,6 +99,7 @@ function B(V, size, cx, map){
 		'D':{FXmod:1,  	  type:'D'},
 		'X':{FXmod:1,  	  type:'X'},
 		'Y':{FXmod:1,  	  type:'W'},
+		'R':{FXmod:1,  	  type:'R'},
 	};
 	//mAin arr included grass and path
 	this.b = []; 
@@ -122,7 +123,6 @@ function B(V, size, cx, map){
 B.prototype.addTower = function(x, y, type, check, lvl){
 		
 	var cost = V[type]*lvl;
-
 	if(!this.Towers[x][y] && V.score>=cost){
 		if(type!='Earth'){
 			if(this.b[y][x].type=='G'){
@@ -134,7 +134,7 @@ B.prototype.addTower = function(x, y, type, check, lvl){
 				V.score-=cost;
 			};
 		}else{
-			if(this.b[y][x].type!='G'){
+			if(this.b[y][x].type!='G' && this.b[y][x].type!='R'){
 				if(check){
 					return true;
 				}
@@ -215,10 +215,13 @@ B.prototype.draw = function(){
 	 	this.Enemy = [];	
 
 	 	V.timer=-541;
+	 	
 	 	V.score += this.waves*10;
+	 	
+	 	waves(V.map, this.waves);
 	 	this.waves++;
-	 	waves(this.waves);
 	}
+
 	V.timer++;
 	if(V.spawn.length>=1){
 
@@ -237,14 +240,13 @@ B.prototype.draw = function(){
 			V.timer = 0;
 		}
 	}
-	
 };
 
 B.prototype.drawBg = function(){
 	for(var i=0; i<this.b.length; i++){
 		for(var j=0; j<this.b[i].length; j++){
 
-			if(this.b[i][j].type == 'G'){
+			if(this.b[i][j].type == 'G' || this.b[i][j].type == 'R'){
 				this.cx.fillStyle = "#5fc148";
 				this.cx.fillRect((j*20+2)*V.sc*this.size, (i*20+1)*V.sc*this.size, (20-3.5)*V.sc*this.size, (20-4)*V.sc*this.size);
 				this.cx.drawImage(
@@ -258,6 +260,14 @@ B.prototype.drawBg = function(){
 					40*V.sc/2*this.size,
 					50*V.sc/2*this.size
 				);
+				if(this.b[i][j].type == 'R'){
+					this.cx.fillStyle = "#ccccff";
+					this.cx.beginPath();
+					this.cx.arc(j*40*V.sc/2*this.size+10*V.sc*this.size, (i*40*V.sc/2-5*V.sc)*this.size+15*V.sc*this.size ,5*V.sc*this.size, 0 ,2*Math.PI);
+					this.cx.fill();
+					this.cx.closePath();
+
+				}
 
 			}else{
 				this.cx.fillStyle = "#bebf6a";
