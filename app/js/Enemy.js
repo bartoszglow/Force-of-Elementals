@@ -12,7 +12,7 @@ function E(V, x, y, type, lvl){
 	this.type = type;
 
 	// Lvl enemy relative with count wave
-	this.ELvl = lvl | 1;
+	this.ELvl = lvl;
 
 	// Indyvidual properties each enemy
 	// Ground/Air MoveSpeed Life Score=Money RiseLargeEnemy XCordinateFrame YCordinateFrame XCorFrameSize YCorFrameSize NumberOfFrame RotateForFlipSprite
@@ -22,7 +22,7 @@ function E(V, x, y, type, lvl){
 	this.life = this.types[type].life*this.ELvl;
 	this.hp = this.life;
 	this.score = this.types[type].score*this.ELvl;
-	this.rise = this.types[type].rise;
+	this.rise = this.types[type].rise*V.sc+this.ELvl/20;
 	this.FX = this.types[type].FX;
 	this.FY = this.types[type].FY;
 	this.FXS = this.types[type].FXS;
@@ -103,9 +103,9 @@ E.prototype.draw = function(){
 	//Create hp bar
 	if(this.hp < this.life){
 		V.ctx.fillStyle = 'rgba(250,10,10,0.5)';
-		V.ctx.fillRect(this.x-(this.FXS/3*V.sc*this.rise),this.y-(this.FYS*V.sc*this.rise),V.sc*10,1*V.sc);
+		V.ctx.fillRect(this.x-(this.FXS/3*this.rise),this.y-(this.FYS*this.rise),V.sc*10,1*V.sc);
 		V.ctx.fillStyle = 'rgba(0,240,100,0.9)';
-		V.ctx.fillRect(this.x-(this.FXS/3*V.sc*this.rise),this.y-(this.FYS*V.sc*this.rise),this.hp/this.life*V.sc*10,1*V.sc);
+		V.ctx.fillRect(this.x-(this.FXS/3*this.rise),this.y-(this.FYS*this.rise),this.hp/this.life*V.sc*10,1*V.sc);
 	}
 	//Income actual frame
 	if(this.frame < this.Fcount.length-1 && this.fRa >= this.fR){
@@ -130,13 +130,13 @@ E.prototype.draw = function(){
 		this.FYS,
 		-this.FXS,
 		-this.FYS,
-		this.FXS*V.sc*this.rise,
-		this.FYS*V.sc*this.rise
+		this.FXS*this.rise,
+		this.FYS*this.rise
 	);
 	V.ctx.restore(); 
 };
 E.prototype.hit = function(x,y){
-	if(this.x-this.FXS*V.sc/2<x && this.x+this.FXS*V.sc/2>x && this.y-this.FYS*V.sc/2<y && this.y+this.FYS*V.sc/2>y){
+	if(this.x-this.FXS*this.rise/2<x && this.x+this.FXS*this.rise/2>x && this.y-this.FYS*this.rise/2<y && this.y+this.FYS*this.rise/2>y){
 		// V.ctx_hit.save(); 
 		// V.ctx_hit.translate(this.x, this.y);
 		// V.ctx_hit.rotate((this.rotate+this.Frotate) * V.rad);
@@ -148,8 +148,8 @@ E.prototype.hit = function(x,y){
 		// 	this.FYS,
 		// 	-this.FXS,
 		// 	-this.FYS,
-		// 	this.FXS*V.sc*this.rise,
-		// 	this.FYS*V.sc*this.rise
+		// 	this.FXS*this.rise,
+		// 	this.FYS*this.rise
 		// );
 		// V.ctx_hit.restore(); 
 
