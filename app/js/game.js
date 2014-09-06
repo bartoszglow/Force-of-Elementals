@@ -67,7 +67,7 @@ var game = (function () {
 		}
 	};
 	this.levelchoose = function(e){
-		
+		//console.log(document.getElementById("main-menu").getElementsByClassName("level"+(1+1))[0].innerHTML)
 		switch(e.toElement.innerHTML){
 			case 'Level 1':
 				console.log('1');
