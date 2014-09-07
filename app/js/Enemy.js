@@ -32,8 +32,8 @@ function E(V, x, y, type, lvl){
 	this.distance=0;
 
 	// Coordinates relative to the center of mob, rotate count 0=left;
-	this.x = (x+this.FXS/2)*V.sc;
-	this.y = (y+this.FYS/2)*V.sc;
+	this.x = (x+this.FXS/4)*V.sc;
+	this.y = (y+this.FYS/4)*V.sc;
 	this.rotate = 90;
 	//actual frame, slow frame rate, slow frame rate actual
 	this.frame = 0;
@@ -64,7 +64,7 @@ E.prototype.move = function(arrB, arrT){
 				this.rotate-=2.5;
 			}
 			break;
-		case 'A'://
+		case 'A':
 			this.rotate==-270 ? this.rotate=-90 : this.rotate;
 			if(this.rotate!=0  && this.rotate<0 ){
 				this.rotate+=2.5;
@@ -80,6 +80,7 @@ E.prototype.move = function(arrB, arrT){
 				this.rotate-=2.5;
 			}
 			break;
+
 		case 'X':
 			V.lifes--;
 			V.score -= this.score;
@@ -87,6 +88,20 @@ E.prototype.move = function(arrB, arrT){
 			this.life=0;
 			Board.goldDraw();
 			break;
+
+		case 'Y':
+			this.rotate=90;
+			break;
+		case 'V':
+			this.rotate=-90;
+			break;
+		case '<':
+			this.rotate=0;
+			break;
+		case '>':
+			this.rotate=180;
+			break;
+
 	}
 		//earth tower
 		if(arrT[this.bx][this.by] && this.ground){
