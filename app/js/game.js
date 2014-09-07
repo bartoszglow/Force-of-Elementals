@@ -144,12 +144,12 @@ var game = (function () {
 			case 1:
 			switch(lvl){
 				case 0:
-					V.score=90;
+					V.score=100;
 					V.lifes=5;
 					V.countWaves=1;
 				break;
 				case 1:
-					V.spawn.push('orc', 1, 1, 25);
+					V.spawn.push('orc', 1, 5, 25);
 				break;
 				case 3:
 					V.spawn.push('orc', 1, 5, 15);
@@ -197,18 +197,73 @@ var game = (function () {
 			case 2:
 			switch(lvl){
 				case 0:
-					V.score=40;
+					V.score=100;
 					V.lifes=10;
 					V.countWaves=2;
 				break;
 				case 1:
-					V.spawn.push('orc', 1, 4, 25);
+					V.spawn.push('orc', 1, 10, 25);
+					V.spawn.push('orc', 2, 5, 30);
 				break;
 				case 2:
+					V.spawn.push('orc', 2, 10, 25);
+					V.spawn.push('man', 1, 5, 40);
+				break;
+				case 3:
+					V.spawn.push('orc', 2, 20, 25);
+					V.spawn.push('man', 3, 5, 40);
+				break;
+				case 4:
+					V.spawn.push('orc', 3, 20, 25);
+					V.spawn.push('man', 3, 10, 40);
+					V.spawn.push('orc', 6, 1, 100);
+				break;
+				case 5:
+					V.spawn.push('orc', 4, 10, 25);
+					V.spawn.push('orc', 5, 5, 25);
+					V.spawn.push('man', 5, 5, 40);
+				break;
+				case 6:
 					V.spawn.push('orc', 1, 8, 25);
 					V.spawn.push('man', 1, 4, 40);
 				break;
-				case 3:
+				case 7:
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('man', 1, 4, 40);
+				break;
+				case 8:
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('man', 1, 4, 40);
+				break;
+				case 9:
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('man', 1, 4, 40);
+				break;
+				case 10:
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('man', 1, 4, 40);
+				break;
+				case 11:
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('man', 1, 4, 40);
+				break;
+				case 12:
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('man', 1, 4, 40);
+				break;
+				case 13:
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('man', 1, 4, 40);
+				break;
+				case 14:
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('man', 1, 4, 40);
+				break;
+				case 15:
+					V.spawn.push('orc', 1, 8, 25);
+					V.spawn.push('man', 1, 4, 40);
+				break;
+				case 16:
 					this.animWin();
 					document.getElementById("level3").className = "level3";
 				break;

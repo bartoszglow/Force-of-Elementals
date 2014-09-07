@@ -4,8 +4,8 @@ function Bullet(V, type, lvl, x, y, a) {
 	this.V = V;
 
 	this.types = {
-		'Air':  {dmg:6, v:0.5, r:100, g:150, b:250, range:20},
-		'Earth':{dmg:2, v:1, r:020, g:255, b:20, range:0},
+		'Air':  {dmg:10, v:0.5, r:100, g:150, b:250, range:20},
+		'Earth':{dmg:0, v:1, r:020, g:255, b:20, range:0},
 		'Fire': {dmg:15, v:1.2, r:255, g:090, b:020, range:60},
 		'Water':{dmg:2, v:0.4, r:020, g:090, b:255, range:35}
 
@@ -13,7 +13,7 @@ function Bullet(V, type, lvl, x, y, a) {
 	};
 	this.type = type;
 	this.range = this.types[this.type].range;
-	this.dmg = this.types[this.type].dmg*lvl*2;
+	this.dmg = this.types[this.type].dmg*lvl*lvl;
 	this.lvl = lvl;
 	this.v = this.types[this.type].v;
 	this.r = this.types[this.type].r;
