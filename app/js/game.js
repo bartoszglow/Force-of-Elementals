@@ -143,13 +143,13 @@ var game = (function () {
 				case 0:
 					V.score=90;
 					V.lifes=10;
-					V.countWaves=10;
+					V.countWaves=1;
 					Board.addGold();
 				break;
 				case 1:
 					V.spawn.push('orc', 1, 5, 25);
 				break;
-				case 2:
+				case 3:
 					V.spawn.push('orc', 1, 5, 15);
 					V.spawn.push('orc', 5, 5, 25);
 				break;
@@ -185,7 +185,7 @@ var game = (function () {
 				case 10:
 					V.spawn.push('zombie', 10, 3, 180);
 				break;
-				case 11:
+				case 2:
 					V.mainmenu=1;
 					document.getElementById("level2").className = "level2";
 				break;
