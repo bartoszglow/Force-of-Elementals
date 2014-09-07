@@ -47,7 +47,6 @@ var game = (function () {
 
 		document.getElementById("game").appendChild(canvas_bg);
 		document.getElementById("game").appendChild(canvas);
-		
 
 		mainmenu();
 		Board = new B(V, 1, V.ctx_bg, 0);
@@ -306,6 +305,8 @@ var game = (function () {
 					V.ctx.clearRect(0,0,V.W, V.H);
 					Board.draw();
 					Menu.fill();
+									Menu.fireworks();
+
 
 				}else{
 					document.getElementById("main-menu").style.display = 'block';

@@ -49,7 +49,7 @@ function B(V, size, cx, map){
 			'       YY       '
 		],
 		[
-			' Y        R     ',
+			' V        R     ',
 			' S     RWDDDS R ',
 			' SR    DW   DS  ',
 			' S     W  R DS  ',
