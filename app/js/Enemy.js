@@ -82,11 +82,18 @@ E.prototype.move = function(arrB, arrT){
 			break;
 
 		case 'X':
-			V.lifes--;
-			V.score -= this.score;
-			this.hp=0;
-			this.life=0;
-			Board.goldDraw();
+			if(V.mainmenu==0){
+				V.ctx.beginPath();
+				V.ctx.lineWidth=20*V.sc;
+				V.ctx.strokeStyle = 'rgba(200,100,100,' + 0.4 + ')'
+	 			V.ctx.rect(0,0,V.W,V.H);
+	 			V.ctx.stroke();
+				V.lifes--;
+				V.score -= this.score;
+			}
+				this.hp=0;
+				this.life=0;
+				Board.goldDraw();
 			break;
 
 		case 'Y':

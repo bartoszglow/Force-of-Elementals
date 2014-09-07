@@ -107,6 +107,7 @@ function B(V, size, cx, map){
 	//mAin arr included grass and path
 	this.b = []; 
 
+	this.defeatAnimTimer=20;
 	this.Bullets = [];
 
 	this.Enemy = [];
@@ -219,9 +220,21 @@ B.prototype.draw = function(){
 	 		}
 	 	}
 	 }
-	 if(V.lifes<=0 && V.mainmenu==0){
-	 	V.mainmenu=1;
+
+	 //Animation on defeat
+	 if(V.lifes<=0 && V.mainmenu==0 && this.defeatAnimTimer>=0){
+	 	this.defeatAnimTimer--;
+	 	V.ctx.beginPath();
+		V.ctx.lineWidth=(30-this.defeatAnimTimer)*V.sc*9;
+		V.ctx.strokeStyle = 'rgba(200,150,100,' + (30-this.defeatAnimTimer)/35 + ')'
+	 	V.ctx.rect(0,0,V.W,V.H);
+	 	V.ctx.stroke();
+
+	 	if(this.defeatAnimTimer<=0){
+	 		V.mainmenu=1;
+	 	}
 	 }
+	
 	
 	if(this.Enemy.length==0 && !V.spawn.length && V.mainmenu==0){
 	 	this.Bullets = [];

@@ -123,6 +123,7 @@ var game = (function () {
 					Board.addGold();
 					V.timer=-901;
 					document.getElementById("main-menu").style.display = 'none';
+					//V.lifes=0;
 					
 				}
 		}, 40*i);		
@@ -161,11 +162,11 @@ var game = (function () {
 			switch(lvl){
 				case 0:
 					V.score=90;
-					V.lifes=10;
+					V.lifes=5;
 					V.countWaves=1;
 				break;
 				case 1:
-					V.spawn.push('orc', 1, 5, 25);
+					V.spawn.push('orc', 1, 10, 25);
 				break;
 				case 3:
 					V.spawn.push('orc', 1, 5, 15);
