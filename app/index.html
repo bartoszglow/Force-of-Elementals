@@ -145,6 +145,8 @@
 				z-index: 2000;
 				cursor: pointer;
 				text-shadow: 0px 0px 10px rgba(255,255,255,1);
+				width: 210px;
+				margin: 0.8em auto;
 			}
 			#main-menu h2 > div{
   				pointer-events: none;
@@ -152,8 +154,9 @@
 				transition: opacity .8s;
 				position: absolute;
 				top:0px;
+				left:0px;
 				width:70%;
-				max-height: 290px;
+				max-height: 280px;
 				margin: 10%;
 				padding: 0 5%;
 				border-radius: 10px;
@@ -169,10 +172,13 @@
 				top: 0px;
 				font-size: 19px;
 			}
+			#main-menu h2 > div article h2 {
+				margin-top: 5px;
+			}
 			#main-menu h2:hover > div article {
 				position: relative;
 				transition: all 15s cubic-bezier(0.755, -0.035, 0.880, 1.000);
-				top: -240px;
+				top: -230px;
 			}
 			#main-menu h2:hover > p {
 				opacity: 0.7;
