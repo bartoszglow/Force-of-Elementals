@@ -29,7 +29,7 @@ var game = (function () {
 		Air:60,
 		WaterR:40,
 		FireR:55,
-		AirR:20,
+		AirR:30,
 		canvas_map:[],
 		ctx_map:[],
 		MenuMap:[],
@@ -206,7 +206,7 @@ var game = (function () {
 			case 2:
 			switch(lvl){
 				case 0:
-					V.score=150;
+					V.score=550;
 					V.lifes=10;
 					V.countWaves=15;
 				break;
@@ -233,10 +233,10 @@ var game = (function () {
 					V.spawn.push('man', 5, 5, 40);
 				break;
 				case 6:
-					V.spawn.push('worm', 3, 10, 35);
+					V.spawn.push('worm', 2, 10, 35);
 				break;
 				case 7:
-					V.spawn.push('worm', 4, 5, 35);
+					V.spawn.push('worm', 3, 5, 35);
 					V.spawn.push('orc', 8, 4, 50);
 				break;
 				case 8:
@@ -244,11 +244,11 @@ var game = (function () {
 					V.spawn.push('man', 6, 10, 50);
 				break;
 				case 9:
-					V.spawn.push('worm', 5, 10, 35);
+					V.spawn.push('worm', 4, 10, 35);
 					V.spawn.push('man', 6, 10, 40);
 				break;
 				case 10:
-					V.spawn.push('worm', 10, 3, 80);
+					V.spawn.push('worm', 8, 3, 80);
 				break;
 				case 11:
 					V.spawn.push('orc', 6, 25, 30);
@@ -256,7 +256,7 @@ var game = (function () {
 				break;
 				case 12:
 					V.spawn.push('orc', 10, 10, 35);
-					V.spawn.push('worm', 10, 5, 50);
+					V.spawn.push('worm', 6, 5, 50);
 					V.spawn.push('orc', 10, 10, 35);
 				break;
 				case 13:
@@ -269,7 +269,7 @@ var game = (function () {
 				break;
 				case 15:
 					V.spawn.push('man', 15, 4, 100);
-					V.spawn.push('worm', 15, 2, 80);	
+					V.spawn.push('worm', 12, 2, 80);	
 				break;
 				case 16:
 					this.animWin();
@@ -405,7 +405,6 @@ var game = (function () {
 	this.drop = function(what, xx, yy, check) {
 		var x = Math.floor(xx / (20 * V.sc));
 		var y = Math.floor(yy / (20 * V.sc));
-		console.log('a')
 		if(what!='Earth' && xx>10*V.sc && xx<310*V.sc && yy>10*V.sc && yy<230*V.sc){
 			V.ctx_r.clearRect(0,0,V.W, V.H);
 			V.ctx_r.beginPath();
@@ -419,7 +418,7 @@ var game = (function () {
 	this.mouse = function(e){
 		var mx = Math.floor(e.offsetX/(20*V.sc));
 		var my = Math.floor(e.offsetY/(20*V.sc));
-
+		V.ctx_r.clearRect(0,0,V.W, V.H);
 		Menu.upgradeInfo.style.visibility = "hidden";
 		if(Board.Towers[mx][my] && V.fps!=0){
 			Menu.upgrade(mx, my, Board.Towers[mx][my].type, Board.Towers[mx][my].TLvl);

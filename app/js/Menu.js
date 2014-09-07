@@ -67,6 +67,13 @@ M.prototype.fill = function(){
 }
 M.prototype.upgrade = function(x, y, type, lvl){
 	var Tlvl = lvl + 1;
+	//Draw tower distance
+	if(type!='Earth'){
+		V.ctx_r.beginPath();
+		V.ctx_r.arc((x*20+10)*V.sc,(y*20+10)*V.sc,V[type+'R']*V.sc,0,2*Math.PI);
+		V.ctx_r.stroke();
+	}
+
 	this.upgradeInfo.getElementsByTagName("button")[0].style.background = '#88d98a';
 	this.upgradeInfo.getElementsByTagName("button")[1].style.background = '#d4745b';
 	this.upgradeInfo.getElementsByTagName("p")[0].innerHTML = type + ' element';
