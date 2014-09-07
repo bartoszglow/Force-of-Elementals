@@ -3,8 +3,10 @@ function M(V){
 	this.buttons = document.getElementsByClassName("buttons")[0].getElementsByTagName("button");
 	this.wavesInfo = document.getElementById("waves").getElementsByTagName("p");
 	this.upgradeInfo = document.getElementById("upgrade");
+	this.startButton = document.getElementById("waves").getElementsByTagName("button")[0];
 
 	var fps = V.fps;
+	this.fps = fps;
 
 	//Array for fireworks
 	this.all = [];
@@ -37,11 +39,10 @@ function M(V){
 	};
 
 	//Start next wave button
-	document.getElementById("waves").getElementsByTagName("button")[0].onclick = function(){
-
+	this.startButton.onclick = function(){
 		V.timer < -0 ? V.timer=-0 : V.timer;
 	}
-
+	
 }
 M.prototype.fill = function(){
 	document.getElementById("money").innerHTML = V.score+'$';
@@ -64,6 +65,14 @@ M.prototype.fill = function(){
 			}
 		}
 	}
+
+	//Change color speed button
+	if(this.fps<V.fps){
+		this.buttons[0].style.background= '#d4745b';
+	}else{
+		this.buttons[0].style.background= '#88d98a';
+	}
+
 }
 M.prototype.upgrade = function(x, y, type, lvl){
 	var Tlvl = lvl + 1;

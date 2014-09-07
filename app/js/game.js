@@ -122,6 +122,7 @@ var game = (function () {
 	};
 
 	this.levelchoose = function(e){
+		
 		//console.log(document.getElementById("main-menu").getElementsByClassName("level"+(1+1))[0].innerHTML)
 		switch(e.toElement.innerHTML){
 			case 'Level 1':
@@ -157,7 +158,7 @@ var game = (function () {
 					V.lifes=5;
 					V.countWaves=5;
 				break;
-				case 11:
+				case 1:
 					V.spawn.push('orc', 1, 5, 25);
 				break;
 				case 2:
@@ -196,7 +197,7 @@ var game = (function () {
 				case 10:
 					V.spawn.push('zombie', 10, 3, 180);
 				break;
-				case 1:
+				case 11:
 					this.animWin();
 					document.getElementById("level2").className = "level2";
 				break;
@@ -210,7 +211,7 @@ var game = (function () {
 					V.lifes=20;
 					V.countWaves=15;
 				break;
-				case 11:
+				case 1:
 					V.spawn.push('orc', 1, 10, 25);
 				break;
 				case 2:
@@ -218,8 +219,8 @@ var game = (function () {
 					V.spawn.push('man', 1, 5, 40);
 				break;
 				case 3:
-					V.spawn.push('orc', 1, 20, 25);
-					V.spawn.push('man', 2, 5, 40);
+					V.spawn.push('orc', 1, 25, 25);
+					V.spawn.push('man', 2, 4, 60);
 				break;
 				case 4:
 					V.spawn.push('orc', 2, 20, 25);
@@ -270,7 +271,7 @@ var game = (function () {
 					V.spawn.push('man', 10, 4, 100);
 					V.spawn.push('worm', 8, 2, 80);	
 				break;
-				case 1:
+				case 16:
 					this.animWin();
 					document.getElementById("level3").className = "level3";
 				break;

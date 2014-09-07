@@ -84,7 +84,7 @@ function B(V, size, cx, map){
 			'  DWR DS   RS   ',
 			'>DWW   DS RSSR  ',
 			'  R   R DS SSSA<',
-			'    R   RDDSSS  ',
+			'    R   RDDSSA  ',
 			'   SAAAA R SS   ',
 			'  RS R W R SAR  ',
 			'XAAA   WAAAA    ',
@@ -237,6 +237,7 @@ B.prototype.draw = function(){
 	
 	//End of wave
 	if(this.Enemy.length==0 && !V.spawn.length && V.mainmenu==0){
+		Menu.startButton.style.display = 'block';
 	 	this.Bullets = [];
 	 	this.Enemy = [];	
 
@@ -251,8 +252,8 @@ B.prototype.draw = function(){
 	//Spawner new enemy
 	V.timer++;
 	if(V.spawn.length>=1 && V.mainmenu==0){
-
 		if(V.timer>V.spawn[3]){
+			Menu.startButton.style.display = 'none';
 			if(V.spawn[2]==0){
 	
 				V.spawn = this.delete(V.spawn, 3);
