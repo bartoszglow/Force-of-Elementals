@@ -342,12 +342,15 @@
 			function allowDrop(ev) {
 				if(game.drop(ev.dataTransfer.getData("tower"), ev.offsetX, ev.offsetY, true)){
 			    	ev.preventDefault();
+				}else{
+					V.ctx_r.clearRect(0,0,V.W, V.H);
 				}
 			}
 
 			function drag(ev) {
 				if(V.fps!=0){
 			    	ev.dataTransfer.setData("tower", ev.target.id);
+			    	V.ctx_r.clearRect(0,0,V.W, V.H);
 				}
 			}
 			function drop(ev) {

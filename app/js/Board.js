@@ -229,7 +229,6 @@ B.prototype.draw = function(){
 		V.ctx.strokeStyle = 'rgba(200,150,100,' + (30-this.defeatAnimTimer)/35 + ')'
 	 	V.ctx.rect(0,0,V.W,V.H);
 	 	V.ctx.stroke();
-
 	 	if(this.defeatAnimTimer<=0){
 	 		V.mainmenu=1;
 	 	}
@@ -267,8 +266,8 @@ B.prototype.draw = function(){
 			V.timer = 0;
 		}
 	}
+	//Clear circle showed range
 };
-
 B.prototype.drawBg = function(){
 	for(var i=0; i<this.b.length; i++){
 		for(var j=0; j<this.b[i].length; j++){
