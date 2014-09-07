@@ -22,10 +22,14 @@ var game = (function () {
 		sprite: {},
 		ctx: {},
 		ctx_bg: {},
+		ctx_r: {},
 		Water:20,
 		Fire:30,
 		Earth:50,
 		Air:60,
+		WaterR:40,
+		FireR:55,
+		AirR:20,
 		canvas_map:[],
 		ctx_map:[],
 		MenuMap:[],
@@ -42,11 +46,14 @@ var game = (function () {
 		var canvas = document.createElement('canvas');				
 		V.ctx = canvas.getContext('2d');
 
+		var canvas_r = document.createElement('canvas');				
+		V.ctx_r = canvas_r.getContext('2d');
 
-		layout(canvas, canvas_bg);	
+		layout(canvas, canvas_bg, canvas_r);	
 
 		document.getElementById("game").appendChild(canvas_bg);
 		document.getElementById("game").appendChild(canvas);
+		document.getElementById("game").appendChild(canvas_r);
 
 		mainmenu();
 		Menu = new M(V);
@@ -71,7 +78,7 @@ var game = (function () {
 
 		}
 	};
-	this.layout = function(canvas, canvas_bg, canvas_menu){
+	this.layout = function(canvas, canvas_bg, canvas_r){
 		V.W = 320*V.sc;
 		V.H = 240*V.sc;
 		//canvas_hit.width = V.W;
@@ -80,6 +87,8 @@ var game = (function () {
 		canvas_bg.height = V.H;
 		canvas.width = V.W;
 		canvas.height = V.H;
+		canvas_r.width = V.W;
+		canvas_r.height = V.H;
 
 		V.ctx.imageSmoothingEnabled = false;
 		V.ctx.mozImageSmoothingEnabled = false;
@@ -148,10 +157,10 @@ var game = (function () {
 					V.lifes=5;
 					V.countWaves=1;
 				break;
-				case 1:
+				case 11:
 					V.spawn.push('orc', 1, 5, 25);
 				break;
-				case 3:
+				case 2:
 					V.spawn.push('orc', 1, 5, 15);
 					V.spawn.push('orc', 5, 5, 25);
 				break;
@@ -187,7 +196,7 @@ var game = (function () {
 				case 10:
 					V.spawn.push('zombie', 10, 3, 180);
 				break;
-				case 2:
+				case 1:
 					this.animWin();
 					document.getElementById("level2").className = "level2";
 				break;
@@ -197,7 +206,7 @@ var game = (function () {
 			case 2:
 			switch(lvl){
 				case 0:
-					V.score=100;
+					V.score=150;
 					V.lifes=10;
 					V.countWaves=2;
 				break;
@@ -224,44 +233,43 @@ var game = (function () {
 					V.spawn.push('man', 5, 5, 40);
 				break;
 				case 6:
-					V.spawn.push('orc', 1, 8, 25);
-					V.spawn.push('man', 1, 4, 40);
+					V.spawn.push('worm', 3, 10, 35);
 				break;
 				case 7:
-					V.spawn.push('orc', 1, 8, 25);
-					V.spawn.push('man', 1, 4, 40);
+					V.spawn.push('worm', 4, 5, 35);
+					V.spawn.push('orc', 8, 4, 50);
 				break;
 				case 8:
-					V.spawn.push('orc', 1, 8, 25);
-					V.spawn.push('man', 1, 4, 40);
+					V.spawn.push('orc', 6, 20, 30);
+					V.spawn.push('man', 6, 10, 50);
 				break;
 				case 9:
-					V.spawn.push('orc', 1, 8, 25);
-					V.spawn.push('man', 1, 4, 40);
+					V.spawn.push('worm', 5, 10, 35);
+					V.spawn.push('man', 6, 10, 40);
 				break;
 				case 10:
-					V.spawn.push('orc', 1, 8, 25);
-					V.spawn.push('man', 1, 4, 40);
+					V.spawn.push('worm', 10, 3, 80);
 				break;
 				case 11:
-					V.spawn.push('orc', 1, 8, 25);
-					V.spawn.push('man', 1, 4, 40);
+					V.spawn.push('orc', 6, 25, 30);
+					V.spawn.push('man', 8, 5, 40);
 				break;
 				case 12:
-					V.spawn.push('orc', 1, 8, 25);
-					V.spawn.push('man', 1, 4, 40);
+					V.spawn.push('orc', 10, 10, 35);
+					V.spawn.push('worm', 10, 5, 50);
+					V.spawn.push('orc', 10, 10, 35);
 				break;
 				case 13:
-					V.spawn.push('orc', 1, 8, 25);
-					V.spawn.push('man', 1, 4, 40);
+					V.spawn.push('man', 10, 10, 40);
 				break;
 				case 14:
-					V.spawn.push('orc', 1, 8, 25);
-					V.spawn.push('man', 1, 4, 40);
+					V.spawn.push('orc', 10, 16, 40);
+					V.spawn.push('man', 10, 12, 40);
+					V.spawn.push('worm', 10, 8, 40);
 				break;
 				case 15:
-					V.spawn.push('orc', 1, 8, 25);
-					V.spawn.push('man', 1, 4, 40);
+					V.spawn.push('man', 15, 4, 100);
+					V.spawn.push('worm', 15, 2, 80);	
 				break;
 				case 16:
 					this.animWin();
@@ -397,7 +405,12 @@ var game = (function () {
 	this.drop = function(what, xx, yy, check) {
 		var x = Math.floor(xx / (20 * V.sc));
 		var y = Math.floor(yy / (20 * V.sc));
-		
+		if(what!='Earth'){
+			V.ctx_r.clearRect(0,0,V.W, V.H);
+			V.ctx_r.beginPath();
+			V.ctx_r.arc((x*20+10)*V.sc,(y*20+10)*V.sc,V[what+'R']*V.sc,0,2*Math.PI);
+			V.ctx_r.stroke();
+		}
 		return Board.addTower(x, y, what, check, 1);
 	};
 	this.mouse = function(e){

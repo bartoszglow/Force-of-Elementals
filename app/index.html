@@ -340,7 +340,6 @@
 
 		<script>
 			function allowDrop(ev) {
-				
 				if(game.drop(ev.dataTransfer.getData("tower"), ev.offsetX, ev.offsetY, true)){
 			    	ev.preventDefault();
 				}
@@ -351,11 +350,10 @@
 			    	ev.dataTransfer.setData("tower", ev.target.id);
 				}
 			}
-
 			function drop(ev) {
 			    ev.preventDefault();
 			    game.drop(ev.dataTransfer.getData("tower"), ev.offsetX, ev.offsetY, false);
-
+			    V.ctx_r.clearRect(0,0,V.W, V.H);
 			}
 		</script>
 	</body>

@@ -4,7 +4,7 @@ function T(V, x, y, type, lvl){
 	this.types = {
 		'Air':  {reloaded: 30, r:100, g:150, b:250, range: 40, FX:32,  FY:0, FXS:15, FYS:15, RX:7.5, RY:7.5, AR:3},
 		'Earth':{reloaded: 10, r:140, g:155, b:20, range: 10, FX:47,  FY:0, FXS:14, FYS:14, RX:7, RY:7, AR:2},
-		'Fire': {reloaded: 25, r:255, g:090, b:020, range: 65, FX:25,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0},
+		'Fire': {reloaded: 25, r:255, g:090, b:020, range: 55, FX:25,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0},
 		'Water':{reloaded: 2,  r:020, g:090, b:255, range: 45, FX:18,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0}
 	};
 	this.x = x*V.sc*20;
