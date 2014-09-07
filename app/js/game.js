@@ -99,6 +99,7 @@ var game = (function () {
 			Board.drawBg();
 			delete Board;
 			delete Menu;
+			V.spawn.length = 0;
 			Menu = new M(V);
 			Board = new B(V, 1, V.ctx_bg, V.map-1);
 			
