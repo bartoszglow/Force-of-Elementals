@@ -83,6 +83,7 @@ E.prototype.move = function(arrB, arrT){
 
 		case 'X':
 			if(V.mainmenu==0){
+				//anim lost hp
 				V.ctx.beginPath();
 				V.ctx.lineWidth=20*V.sc;
 				V.ctx.strokeStyle = 'rgba(200,100,100,' + 0.4 + ')'

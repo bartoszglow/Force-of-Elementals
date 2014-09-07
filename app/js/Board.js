@@ -235,7 +235,7 @@ B.prototype.draw = function(){
 	 	}
 	 }
 	
-	
+	//End of wave
 	if(this.Enemy.length==0 && !V.spawn.length && V.mainmenu==0){
 	 	this.Bullets = [];
 	 	this.Enemy = [];	
@@ -248,6 +248,7 @@ B.prototype.draw = function(){
 	 	
 	}
 
+	//Spawner new enemy
 	V.timer++;
 	if(V.spawn.length>=1 && V.mainmenu==0){
 

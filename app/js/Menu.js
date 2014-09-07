@@ -95,8 +95,6 @@ M.prototype.upgrade = function(x, y, type, lvl){
 	}
 }
 M.prototype.fireworks = function(n){
-//	//TUTAJ PRZEROBILEM TO NA JAKIS NIBY DESZCZ
-
 	this.visible.length = 0;
 	for (var i=0; i<n; i++) {		//count of participle per frame
 			this.all.push({
@@ -134,7 +132,32 @@ M.prototype.fireworks = function(n){
 	}
 
 	this.all = this.visible.concat();
+}
+M.prototype.animCreating = function(i){
+	var i = i;
+	setTimeout(function(){
+			V.ctx_bg.fillStyle = 'rgba(203,229,225,0.1)'
+			V.ctx_bg.fillRect(0,0,V.W,V.H/20*i);
+			V.timer=-901;
+			if(i>30){
+				V.ctx_bg.clearRect(0,0,V.W,V.H);
+				Board.drawBg();
+				Board.addGold();
+				V.timer=-901;
+				if(V.mainmenu==0){
+					document.getElementById("main-menu").style.display = 'none';
+				}					
+			}
+	}, 40*i);		
+}
+M.prototype.animWin = function(i){
+	var i = i;
+	setTimeout(function(){
+			V.ctx_bg.fillStyle = 'rgba(183,209,255,'+(1-i/30)+')'
+			V.ctx_bg.fillRect(0,V.H/29*i,V.W,V.H/29);
 
-	
-
+   			if(i>=30){
+   				V.mainmenu=1;
+   			}
+	}, 40*i);		
 }

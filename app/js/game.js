@@ -104,30 +104,13 @@ var game = (function () {
 			Board = new B(V, 1, V.ctx_bg, V.map-1);
 			
 			for(var i=0; i<=31; i++){
-				this.animCreating(i);
+				Menu.animCreating(i);
 			}
 			
 			this.waves(V.map, 0)
 			document.getElementsByClassName("box")[0].addEventListener("mousedown", this.mouse, false);
 		}
 	};
-	this.animCreating = function(i){
-		var i = i;
-		setTimeout(function(){
-				V.ctx_bg.fillStyle = 'rgba(203,229,225,0.1)'
-				V.ctx_bg.fillRect(0,0,V.W,V.H/20*i);
-				V.timer=-901;
-				if(i>30){
-					V.ctx_bg.clearRect(0,0,V.W,V.H);
-					Board.drawBg();
-					Board.addGold();
-					V.timer=-901;
-					document.getElementById("main-menu").style.display = 'none';
-					//V.lifes=0;
-					
-				}
-		}, 40*i);		
-	}
 
 	this.levelchoose = function(e){
 		//console.log(document.getElementById("main-menu").getElementsByClassName("level"+(1+1))[0].innerHTML)
@@ -166,7 +149,7 @@ var game = (function () {
 					V.countWaves=1;
 				break;
 				case 1:
-					V.spawn.push('orc', 1, 10, 25);
+					V.spawn.push('orc', 1, 1, 25);
 				break;
 				case 3:
 					V.spawn.push('orc', 1, 5, 15);
@@ -205,7 +188,7 @@ var game = (function () {
 					V.spawn.push('zombie', 10, 3, 180);
 				break;
 				case 2:
-					V.mainmenu=1;
+					this.animWin();
 					document.getElementById("level2").className = "level2";
 				break;
 			}
@@ -226,7 +209,7 @@ var game = (function () {
 					V.spawn.push('man', 1, 4, 40);
 				break;
 				case 3:
-					V.mainmenu=1;
+					this.animWin();
 					document.getElementById("level3").className = "level3";
 				break;
 			}
@@ -247,7 +230,7 @@ var game = (function () {
 					V.spawn.push('man', 1, 4, 40);
 				break;
 				case 3:
-					V.mainmenu=1;
+					this.animWin();
 					document.getElementById("level4").className = "level4";
 				break;
 			}
@@ -267,7 +250,7 @@ var game = (function () {
 					V.spawn.push('orc', 1, 8, 25);
 				break;
 				case 3:
-					V.mainmenu=1;
+					this.animWin();
 					document.getElementById("level5").className = "level5";
 				break;
 			}
@@ -288,7 +271,7 @@ var game = (function () {
 					V.spawn.push('zombie', 2, 1, 40);
 				break;
 				case 3:
-					V.mainmenu=1;
+					this.animWin();
 					document.getElementById("level6").className = "level6";
 				break;
 			}
@@ -309,7 +292,11 @@ var game = (function () {
 					V.spawn.push('man', 1, 4, 40);
 				break;
 				case 3:
-					V.mainmenu=1;
+					this.animWin();
+					V.ctx_bg.fillStyle = 'red'
+					V.ctx_bg.font = 'italic '+12*V.sc+'pt Calibri';
+     				V.ctx_bg.fillText('CONGRATULATION!', 10*V.sc, 200*V.sc);
+     				V.ctx_bg.fillText('You passed all Levels!', 10*V.sc, 230*V.sc);		
 				break;
 			}
 			break;
@@ -367,7 +354,11 @@ var game = (function () {
 			Menu.upgrade(mx, my, Board.Towers[mx][my].type, Board.Towers[mx][my].TLvl);
 		}
 	};
-
+	this.animWin = function(){
+		for(var i=0; i<=30; i++){
+			Menu.animWin(i);
+		}
+	}
 
 	return {
 		init: init,
