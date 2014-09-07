@@ -154,25 +154,7 @@ E.prototype.draw = function(){
 };
 E.prototype.hit = function(x,y){
 	if(this.x-this.FXS*this.rise/2<x && this.x+this.FXS*this.rise/2>x && this.y-this.FYS*this.rise/2<y && this.y+this.FYS*this.rise/2>y){
-		// V.ctx_hit.save(); 
-		// V.ctx_hit.translate(this.x, this.y);
-		// V.ctx_hit.rotate((this.rotate+this.Frotate) * V.rad);
-		// V.ctx_hit.drawImage(
-		// 	V.sprite,
-		// 	this.FX+this.Fcount[this.frame]*this.FXS,
-		// 	this.FY,
-		// 	this.FXS,
-		// 	this.FYS,
-		// 	-this.FXS,
-		// 	-this.FYS,
-		// 	this.FXS*this.rise,
-		// 	this.FYS*this.rise
-		// );
-		// V.ctx_hit.restore(); 
-
-		//if(V.ctx_hit.getImageData(this.x,this.y,1,1).data[0]!=0){
 			return true
-		//}
 	}
 	return false
 	

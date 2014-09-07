@@ -119,9 +119,9 @@ function B(V, size, cx, map){
 		this.Towers[i] = new Array(12);
 	}
 	this.parse(this.templates[map]);
-	
-	this.drawBg();
-
+	if(size<1){
+		this.drawBg();
+	}
 	this.waves = 0;
 	this.count = 0;
 };
@@ -156,7 +156,7 @@ B.prototype.addTower = function(x, y, type, check, lvl){
 
 B.prototype.addEnemy = function(type, lvl){
 	var pos = this.startPos[V.rand(0,this.startPos.length-1)];
-	this.Enemy[this.Enemy.length] = new E(this.V, pos.x*V.sc, pos.y*V.sc, type, lvl);
+	this.Enemy[this.Enemy.length] = new E(this.V, pos.x, pos.y, type, lvl);
 
 };
 B.prototype.addGold = function(){
@@ -324,7 +324,7 @@ B.prototype.parse = function(arr){
 		for(var j=0; j<arr[i].length; j++){
 			this.b[i].push(this.elements[arr[i].charAt(j)==' ' ? 'grass' : arr[i].charAt(j)]);
 			if(arr[i].charAt(j)=='Y' || arr[i].charAt(j)=='V' || arr[i].charAt(j)=='<' || arr[i].charAt(j)=='>'){
-				this.startPos.push({x:j*10+3, y:i*10+5});
+				this.startPos.push({x:(j*10+2)*2, y:(i*10+3)*2});
 			}
 		}
 	}

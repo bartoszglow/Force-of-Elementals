@@ -49,7 +49,9 @@ var game = (function () {
 		document.getElementById("game").appendChild(canvas);
 
 		mainmenu();
+		Menu = new M(V);
 		Board = new B(V, 1, V.ctx_bg, 0);
+		Board.drawBg();
 
 		animationLoop();
 	};
@@ -89,24 +91,41 @@ var game = (function () {
 		V.ctx_bg.webkitImageSmoothingEnabled = false;
 	};
 	this.create = function(n){
-		V.fps=50;
-		V.timer=-601;
-		V.map=n;
-		V.mainmenu=0;
-		delete Board;
-		delete Menu;
-		Menu = new M(V);
-		Board = new B(V, 1, V.ctx_bg, V.map-1);
+		if(V.mainmenu==1){
+			V.fps=50;
+			V.map=n;
+			V.mainmenu=0;
 
-		document.getElementById("main-menu").style.display = 'none';
-
-		this.waves(V.map, 0)
-
-		document.getElementsByClassName("box")[0].addEventListener("mousedown", this.mouse, false);
-
-
-		
+			Board.drawBg();
+			delete Board;
+			delete Menu;
+			Menu = new M(V);
+			Board = new B(V, 1, V.ctx_bg, V.map-1);
+			
+			for(var i=0; i<=31; i++){
+				this.animCreating(i);
+			}
+			
+			this.waves(V.map, 0)
+			document.getElementsByClassName("box")[0].addEventListener("mousedown", this.mouse, false);
+		}
 	};
+	this.animCreating = function(i){
+		var i = i;
+		setTimeout(function(){
+				V.ctx_bg.fillStyle = 'rgba(203,229,225,0.1)'
+				V.ctx_bg.fillRect(0,0,V.W,V.H/20*i);
+				V.timer=-901;
+				if(i>30){
+					V.ctx_bg.clearRect(0,0,V.W,V.H);
+					Board.drawBg();
+					Board.addGold();
+					V.timer=-901;
+					document.getElementById("main-menu").style.display = 'none';
+					
+				}
+		}, 40*i);		
+	}
 
 	this.levelchoose = function(e){
 		//console.log(document.getElementById("main-menu").getElementsByClassName("level"+(1+1))[0].innerHTML)
@@ -143,7 +162,6 @@ var game = (function () {
 					V.score=90;
 					V.lifes=10;
 					V.countWaves=1;
-					Board.addGold();
 				break;
 				case 1:
 					V.spawn.push('orc', 1, 5, 25);
@@ -305,10 +323,9 @@ var game = (function () {
 					V.ctx.clearRect(0,0,V.W, V.H);
 					Board.draw();
 					Menu.fill();
-									Menu.fireworks();
-
 
 				}else{
+					V.fps=50;
 					document.getElementById("main-menu").style.display = 'block';
 					if(V.timer%V.rand(50,150)==0){
 						var n = V.rand(1,4);
@@ -328,6 +345,7 @@ var game = (function () {
 						}
 					}
 					V.ctx.clearRect(0,0,V.W, V.H);
+					Menu.fireworks(4);
 					Board.draw();
 				}			
 		};

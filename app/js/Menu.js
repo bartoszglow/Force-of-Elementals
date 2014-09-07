@@ -94,90 +94,47 @@ M.prototype.upgrade = function(x, y, type, lvl){
 		}
 	}
 }
-M.prototype.fireworks = function(){
+M.prototype.fireworks = function(n){
+//	//TUTAJ PRZEROBILEM TO NA JAKIS NIBY DESZCZ
 
-//@@
-//console.log('a')	//TUTAJ PRZEROBILEM TO NA JAKIS NIBY DESZCZ
+	this.visible.length = 0;
+	for (var i=0; i<n; i++) {		//count of participle per frame
+			this.all.push({
+			x:V.W*V.rand(5,95)/100,	//start x
+			y:V.H/10,				//start y
+			h:V.rand(2,3),			//size participle
+			speedX:V.rand(-100,100)/100,	//speed x
+			speedY:V.rand(0,300)/100,		//speed y
+			r:V.rand(0,255),		//red
+			g:V.rand(0,55),			//green
+			b:V.rand(0,55)			//blue
+		});
+			
+		
+	}
+	for (var i=0; i<this.all.length; i++) {
+		var part = this.all[i];
+		//
+		part.x += part.speedX;
+		part.y += part.speedY;
+		
+		V.ctx.fillStyle = 'rgba('+part.r+','+part.g+','+part.b+',1)';
+		
+	
+		part.speedY = part.speedY+0.06;
 
-					this.visible.length = 0;
-					for (var i=0; i<1; i++) {
-							this.all.push({
-							x:V.W*V.rand(1,10)/10,
-							y:V.H*V.rand(1,10)/10,// Żródło kwadratów zostaje przesunięte do gory.
-							h:V.rand(2,6),// Trochę mniejsze kwadraty będą lepiej wyglądały.
-							speedX:V.rand(-500,500)/100,
-							speedY:V.rand(-500,500)/100,
-							r:55,
-							g:V.rand(0,100),
-							b:V.rand(200,255)
-						});
-					}
-					for (var i=0; i<this.all.length; i++) {
-						var kwadrat = this.all[i];
-						//
-						V.ctx.fillStyle = 'rgba('+kwadrat.r+','+kwadrat.g+','+kwadrat.b+',1)';
-						//
-						kwadrat.x += kwadrat.speedX;
-						kwadrat.y += kwadrat.speedY;
-						// Stopniowe zwiększanie prędkości w kierunku dolnej krawędzie ekranu da nam efekt grawitacji.
-						kwadrat.speedY = kwadrat.speedY+0.06;
+		part.r = Math.min(255, part.r+2);
+		part.g = Math.min(255, part.g+2);
+		part.b = Math.min(255, part.b+2);
+		//
+		V.ctx.fillRect(part.x-part.h/2 ,part.y-part.h/2, part.h, part.h);
+		if((part.x+part.h/2>0 && part.x-part.h/2<V.W && part.y+part.h/2>0 && part.y-part.h/2<V.H) && (part.r!=255 || part.g!=255 || part.b!=255)){
+			this.visible.push(part)
+		}
+	}
 
-						// Stopniowo zmieniamy też kolor kwadratów. Będą się stawały coraz bielsze. Stosując Math.min upewniem się, że wartość pojedynczego kanału nie przekroczy 255.
-						kwadrat.r = Math.min(255, kwadrat.r+2);
-						kwadrat.g = Math.min(255, kwadrat.g+2);
-						kwadrat.b = Math.min(255, kwadrat.b+2);
-						//
-						V.ctx.fillRect(kwadrat.x-kwadrat.h/2 ,kwadrat.y-kwadrat.h/2, kwadrat.h, kwadrat.h);
-						// Jeśli kwadrat jest widoczny wrzuć go do tablicy z widocznymi kwadratami.
-						// Sprawdzam dwa czynniki. Położenie oraz kolor (całkiem białe kwadraty są również eliminowane)
-						if((kwadrat.x+kwadrat.h/2>0 && kwadrat.x-kwadrat.h/2<V.W && kwadrat.y+kwadrat.h/2>0 && kwadrat.y-kwadrat.h/2<V.H) && (kwadrat.r!=255 || kwadrat.g!=255 || kwadrat.b!=255)){
-							// widoczne są wrzucane do tablicy
-							this.visible.push(kwadrat)
-						}
-					}
-					// Przypisz kopię tablicy „this.visible” do „this.all”. Gdybyśmy nie przypisali kopii tylko oryginalną tablicę, to zmieniając tablicę „visible” zmienialibyśmy również tablicę „this.all” bo te dwie zmienne wskazywałyby na tą samą tablicę.
-					this.all = this.visible.concat();
+	this.all = this.visible.concat();
 
-					//@@@@@@@@@@@@@@@@@@@@@@@ TU SA TE FAJERWERKI odkomentuj jak chcesz zobaaczyc
-
-					// this.visible.length = 0;
-					// for (var i=0; i<15; i++) {
-					// 		this.all.push({
-					// 		x:V.W/2,
-					// 		y:V.H/4,// Żródło kwadratów zostaje przesunięte do gory.
-					// 		h:V.rand(2,6),// Trochę mniejsze kwadraty będą lepiej wyglądały.
-					// 		speedX:V.rand(-500,500)/100,
-					// 		speedY:V.rand(-500,500)/100,
-					// 		r:255,// Ustawiam czerony na maksa dla wszystkich kwadratów.
-					// 		g:V.rand(0,240),
-					// 		b:V.rand(0,100)
-					// 	});
-					// }
-					// for (var i=0; i<this.all.length; i++) {
-					// 	var kwadrat = this.all[i];
-					// 	//
-					// 	V.ctx_bg.fillStyle = 'rgba('+kwadrat.r+','+kwadrat.g+','+kwadrat.b+',1)';
-					// 	//
-					// 	kwadrat.x += kwadrat.speedX;
-					// 	kwadrat.y += kwadrat.speedY;
-					// 	// Stopniowe zwiększanie prędkości w kierunku dolnej krawędzie ekranu da nam efekt grawitacji.
-					// 	kwadrat.speedY = kwadrat.speedY+0.06;
-
-					// 	// Stopniowo zmieniamy też kolor kwadratów. Będą się stawały coraz bielsze. Stosując Math.min upewniem się, że wartość pojedynczego kanału nie przekroczy 255.
-					// 	kwadrat.r = Math.min(255, kwadrat.r+2);
-					// 	kwadrat.g = Math.min(255, kwadrat.g+2);
-					// 	kwadrat.b = Math.min(255, kwadrat.b+2);
-					// 	//
-					// 	V.ctx_bg.fillRect(kwadrat.x-kwadrat.h/2 ,kwadrat.y-kwadrat.h/2, kwadrat.h, kwadrat.h);
-					// 	// Jeśli kwadrat jest widoczny wrzuć go do tablicy z widocznymi kwadratami.
-					// 	// Sprawdzam dwa czynniki. Położenie oraz kolor (całkiem białe kwadraty są również eliminowane)
-					// 	if((kwadrat.x+kwadrat.h/2>0 && kwadrat.x-kwadrat.h/2<V.W && kwadrat.y+kwadrat.h/2>0 && kwadrat.y-kwadrat.h/2<V.H) && (kwadrat.r!=255 || kwadrat.g!=255 || kwadrat.b!=255)){
-					// 		// widoczne są wrzucane do tablicy
-					// 		this.visible.push(kwadrat)
-					// 	}
-					// }
-					// // Przypisz kopię tablicy „this.visible” do „this.all”. Gdybyśmy nie przypisali kopii tylko oryginalną tablicę, to zmieniając tablicę „visible” zmienialibyśmy również tablicę „this.all” bo te dwie zmienne wskazywałyby na tą samą tablicę.
-					// this.all = this.visible.concat();
 	
 
 }
