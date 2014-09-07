@@ -208,14 +208,14 @@ var game = (function () {
 				case 0:
 					V.score=150;
 					V.lifes=10;
-					V.countWaves=2;
+					V.countWaves=15;
 				break;
 				case 1:
 					V.spawn.push('orc', 1, 10, 25);
 					V.spawn.push('orc', 2, 5, 30);
 				break;
 				case 2:
-					V.spawn.push('orc', 2, 10, 25);
+					V.spawn.push('orc', 1, 20, 25);
 					V.spawn.push('man', 1, 5, 40);
 				break;
 				case 3:
@@ -224,8 +224,8 @@ var game = (function () {
 				break;
 				case 4:
 					V.spawn.push('orc', 3, 20, 25);
-					V.spawn.push('man', 3, 10, 40);
-					V.spawn.push('orc', 6, 1, 100);
+					V.spawn.push('man', 2, 10, 40);
+					V.spawn.push('orc', 5, 5, 100);
 				break;
 				case 5:
 					V.spawn.push('orc', 4, 10, 25);
@@ -405,11 +405,14 @@ var game = (function () {
 	this.drop = function(what, xx, yy, check) {
 		var x = Math.floor(xx / (20 * V.sc));
 		var y = Math.floor(yy / (20 * V.sc));
-		if(what!='Earth'){
+		console.log('a')
+		if(what!='Earth' && xx>10*V.sc && xx<310*V.sc && yy>10*V.sc && yy<230*V.sc){
 			V.ctx_r.clearRect(0,0,V.W, V.H);
 			V.ctx_r.beginPath();
 			V.ctx_r.arc((x*20+10)*V.sc,(y*20+10)*V.sc,V[what+'R']*V.sc,0,2*Math.PI);
 			V.ctx_r.stroke();
+		}else{
+			V.ctx_r.clearRect(0,0,V.W, V.H);
 		}
 		return Board.addTower(x, y, what, check, 1);
 	};
