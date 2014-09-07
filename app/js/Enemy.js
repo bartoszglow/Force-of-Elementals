@@ -3,7 +3,7 @@ function E(V, x, y, type, lvl){
 	this.V = V;
 	this.types = {
 		'zombie':{ground:1, speed: 0.4, life:500, score:4, rise:0.75, FX:0,  FY:21, FXS:17, FYS:12, Fcount:[0], frameRate:0, Frotate:0},
-		'orc':{ ground:1, speed: 1.1, life:50, score:1,  rise:1, FX:18, FY:22, FXS:5,  FYS:9,  Fcount:[0,1], frameRate:8, Frotate:0},
+		'orc':{ ground:1, speed: 1.1, life:80, score:1,  rise:1, FX:18, FY:22, FXS:5,  FYS:9,  Fcount:[0,1], frameRate:8, Frotate:0},
 		'dragon':{ground:0, speed: 1,   life:350, score:4, rise:0.9, FX:1,  FY:34, FXS:25, FYS:19, Fcount:[0,1], frameRate:16, Frotate:90},
 		'man':{ ground:1, speed: 0.9, life:200, score:1,  rise:1, FX:45, FY:19, FXS:8,  FYS:14,  Fcount:[0,1], frameRate:10, Frotate:90},
 		'knight':{  ground:1, speed: 0.6, life:1000, score:4,  rise:0.75, FX:46, FY:47, FXS:15,  FYS:15, Fcount:[0], frameRate:0, Frotate:-90},
@@ -19,7 +19,7 @@ function E(V, x, y, type, lvl){
 	this.ground = this.types[type].ground;
 	this.speed = this.types[type].speed*V.sc;
 	this.aSpeed = this.speed;
-	this.life = this.types[type].life*this.ELvl;
+	this.life = this.types[type].life*this.ELvl*2;
 	this.hp = this.life;
 	this.score = this.types[type].score*this.ELvl;
 	this.rise = this.types[type].rise*V.sc+this.ELvl/30;
@@ -90,7 +90,7 @@ E.prototype.move = function(arrB, arrT){
 	 			V.ctx.rect(0,0,V.W,V.H);
 	 			V.ctx.stroke();
 				V.lifes--;
-				V.score -= this.score;
+				V.score += Math.round(this.score/2);
 			}
 				this.hp=0;
 				this.life=0;
@@ -113,7 +113,7 @@ E.prototype.move = function(arrB, arrT){
 	}
 		//earth tower
 		if(arrT[this.bx][this.by] && this.ground){
-			this.aSpeed=this.speed/(arrT[this.bx][this.by].TLvl+1);
+			this.aSpeed=this.speed/((arrT[this.bx][this.by].TLvl+1)/1.5);
 		}
 
 	//calculate speed relative to angle

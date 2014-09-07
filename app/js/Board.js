@@ -230,6 +230,7 @@ B.prototype.draw = function(){
 	 	V.ctx.rect(0,0,V.W,V.H);
 	 	V.ctx.stroke();
 	 	if(this.defeatAnimTimer<=0){
+	 		V.life=0;
 	 		V.mainmenu=1;
 	 	}
 	 }
@@ -241,7 +242,7 @@ B.prototype.draw = function(){
 
 	 	V.timer=-601;
 	 	V.fps = 50;
-	 	V.score += this.waves*10;
+	 	V.score += this.waves*5;
 	 	this.waves++;
 	 	waves(V.map, this.waves);
 	 	

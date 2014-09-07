@@ -88,6 +88,7 @@ M.prototype.upgrade = function(x, y, type, lvl){
 		if(V.score>=(lvl+1)*V[type] && lvl<5 && V.fps!=0){
 			delete Board.Towers[x][y];
 			Board.addTower(x, y, type, 0, (lvl+1));
+			V.ctx_r.clearRect(0,0,V.W, V.H);
 			Menu.upgradeInfo.style.visibility = "hidden";
 		}
 	}
@@ -97,6 +98,7 @@ M.prototype.upgrade = function(x, y, type, lvl){
 			delete Board.Towers[x][y];
 			Board.clearBlock(x,y);
 			V.score+=(lvl*V[type]);
+			V.ctx_r.clearRect(0,0,V.W, V.H);
 			Menu.upgradeInfo.style.visibility = "hidden";
 		}
 	}
@@ -163,8 +165,9 @@ M.prototype.animWin = function(i){
 			V.ctx_bg.fillStyle = 'rgba(183,209,255,'+(1-i/30)+')'
 			V.ctx_bg.fillRect(0,V.H/29*i,V.W,V.H/29);
 
-   			if(i>=30){
-   				V.mainmenu=1;
-   			}
+				V.mainmenu=1;
+   			
+   				
+   			
 	}, 40*i);		
 }
