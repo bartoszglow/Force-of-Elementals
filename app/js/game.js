@@ -6,7 +6,7 @@ window.onload = function(){
 
 var game = (function () {
 	this.V = {
-		fps:50,
+		fps:40,
 		W:0,
 		H:0,
 		sc:2, //scale
@@ -101,7 +101,7 @@ var game = (function () {
 	};
 	this.create = function(n){
 		if(V.mainmenu==1){
-			V.fps=50;
+			V.fps=40;
 			V.map=n;
 			V.mainmenu=0;
 
@@ -501,7 +501,7 @@ var game = (function () {
 					Menu.fill();
 
 				}else{
-					V.fps=50;
+					V.fps=40;
 					document.getElementById("main-menu").style.display = 'block';
 					if(V.timer%V.rand(50,150)==0){
 						var n = V.rand(1,4);

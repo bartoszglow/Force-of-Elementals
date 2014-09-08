@@ -242,7 +242,7 @@ B.prototype.draw = function(){
 	 	this.Enemy = [];	
 
 	 	V.timer=-601;
-	 	V.fps = 50;
+	 	V.fps = 40;
 	 	V.score += this.waves*5;
 	 	this.waves++;
 	 	waves(V.map, this.waves);
