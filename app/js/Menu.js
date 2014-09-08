@@ -35,6 +35,7 @@ function M(V){
 
 	//Exit button
 	this.buttons[2].onclick = function(){
+		V.ctx_r.clearRect(0,0,V.W, V.H);
 		V.mainmenu=1;
 	};
 
