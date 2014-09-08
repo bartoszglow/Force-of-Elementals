@@ -4,10 +4,10 @@ function Bullet(V, type, lvl, x, y, a) {
 	this.V = V;
 
 	this.types = {
-		'Air':  {dmg:12, v:0.5, r:100, g:150, b:250, range:30},
+		'Air':  {dmg:7, v:0.5, r:100, g:150, b:250, range:30},
 		'Earth':{dmg:0, v:1, r:020, g:255, b:20, range:0},
-		'Fire': {dmg:15, v:1.3, r:255, g:090, b:020, range:55},
-		'Water':{dmg:1.5, v:0.8, r:020, g:090, b:255, range:40}
+		'Fire': {dmg:8, v:1.3, r:255, g:090, b:020, range:55},
+		'Water':{dmg:1, v:0.8, r:020, g:090, b:255, range:40}
 
 	
 	};

@@ -42,7 +42,7 @@ function M(V){
 	this.startButton.onclick = function(){
 		V.timer < -0 ? V.timer=-0 : V.timer;
 	}
-	
+
 }
 M.prototype.fill = function(){
 	document.getElementById("money").innerHTML = V.score+'$';
@@ -156,12 +156,12 @@ M.prototype.animCreating = function(i){
 	setTimeout(function(){
 			V.ctx_bg.fillStyle = 'rgba(203,229,225,0.1)'
 			V.ctx_bg.fillRect(0,0,V.W,V.H/20*i);
-			V.timer=-901;
+			V.timer=-1801;
 			if(i>30){
 				V.ctx_bg.clearRect(0,0,V.W,V.H);
 				Board.drawBg();
 				Board.addGold();
-				V.timer=-901;
+				V.timer=-1801;
 				if(V.mainmenu==0){
 					document.getElementById("main-menu").style.display = 'none';
 				}					

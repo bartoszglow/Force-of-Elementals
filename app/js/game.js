@@ -23,10 +23,10 @@ var game = (function () {
 		ctx: {},
 		ctx_bg: {},
 		ctx_r: {},
-		Water:20,
-		Fire:30,
-		Earth:50,
-		Air:60,
+		Water:10,
+		Fire:15,
+		Earth:25,
+		Air:30,
 		WaterR:40,
 		FireR:55,
 		AirR:35,
@@ -122,7 +122,7 @@ var game = (function () {
 	};
 
 	this.levelchoose = function(e){
-		
+
 		//console.log(document.getElementById("main-menu").getElementsByClassName("level"+(1+1))[0].innerHTML)
 		switch(e.toElement.innerHTML){
 			case 'Level 1':
@@ -154,48 +154,45 @@ var game = (function () {
 			case 1:
 			switch(lvl){
 				case 0:
-					V.score=150;
-					V.lifes=5;
-					V.countWaves=5;
+					V.score=60;
+					V.lifes=10;
+					V.countWaves=10;
 				break;
 				case 1:
-					V.spawn.push('orc', 1, 5, 25);
+					V.spawn.push('orc', 1, 4, 40);
 				break;
 				case 2:
-					V.spawn.push('orc', 1, 5, 15);
-					V.spawn.push('orc', 5, 5, 25);
+					V.spawn.push('orc', 1, 5, 40);
 				break;
 				case 3:
-					for(var i = 0; i < 5; i++) {
-						V.spawn.push('orc', 1, 2, 15);
-						V.spawn.push('orc', 10, 1, 25);
-					}
+					V.spawn.push('orc', 1, 10, 35);
+					V.spawn.push('orc', 2, 1, 60);		
 				break;
 				case 4:
-					V.spawn.push('orc', 3, 10, 15);
-					V.spawn.push('man', 1, 10, 25);
+					V.spawn.push('man', 1, 5, 50);
 				break;
 				case 5:
-					V.spawn.push('orc', 1, 30, 5);
-					V.spawn.push('man', 2, 10, 25);
-					V.spawn.push('orc', 3, 15, 15);
+					V.spawn.push('orc', 2, 10, 45);
+					V.spawn.push('man', 1, 5, 55);
 				break;
 				case 6:
-					V.spawn.push('man', 3, 10, 25);
-					V.spawn.push('orc', 4, 15, 15);
+					V.spawn.push('man', 1, 5, 45);
+					V.spawn.push('orc', 1, 25, 35);
 				break;
 				case 7:
-					V.spawn.push('knight', 3, 8, 40);
+					V.spawn.push('orc', 3, 25, 30);
 				break;
 				case 8:
-					V.spawn.push('knight', 4, 6, 40);
+					V.spawn.push('man', 2, 10, 40);
+					V.spawn.push('orc', 4, 20, 35);
 				break;
 				case 9:
-					V.spawn.push('orc', 6, 20, 25);
-					V.spawn.push('dragon', 3, 8, 70);
+					V.spawn.push('orc', 5, 25, 25);
+					V.spawn.push('man', 3, 10, 50);
+					V.spawn.push('man', 2, 20, 45);
 				break;
 				case 10:
-					V.spawn.push('zombie', 10, 3, 180);
+					V.spawn.push('worm', 4, 1, 50);
 				break;
 				case 11:
 					this.animWin();
@@ -260,16 +257,17 @@ var game = (function () {
 					V.spawn.push('orc', 6, 20, 35);
 				break;
 				case 13:
-					V.spawn.push('man', 7, 10, 40);
+					V.spawn.push('man', 8, 10, 40);
 				break;
 				case 14:
 					V.spawn.push('orc', 10, 16, 30);
-					V.spawn.push('man', 6, 12, 40);
+					V.spawn.push('man', 7, 12, 40);
 					V.spawn.push('worm', 6, 8, 40);
 				break;
 				case 15:
-					V.spawn.push('man', 10, 4, 100);
-					V.spawn.push('worm', 8, 2, 80);	
+					V.spawn.push('man', 12, 4, 100);
+					V.spawn.push('worm', 9, 2, 80);	
+					V.spawn.push('dragon', 8, 1, 150);	
 				break;
 				case 16:
 					this.animWin();
@@ -283,7 +281,7 @@ var game = (function () {
 				case 0:
 					V.score=1000;
 					V.lifes=1;
-					V.countWaves=15;
+					V.countWaves=10;
 				break;
 				case 1:
 					V.spawn.push('man', 5, 10, 40);
@@ -297,10 +295,10 @@ var game = (function () {
 					V.spawn.push('man', 6, 10, 40);
 				break;
 				case 4:
-					V.spawn.push('worm', 5, 30, 50);
+					V.spawn.push('worm', 4, 30, 50);
 				break;
 				case 5:
-					V.spawn.push('dragon', 4, 10, 40);
+					V.spawn.push('dragon', 3, 10, 80);
 				break;
 				case 6:
 					V.spawn.push('orc', 12, 20, 25);
@@ -308,37 +306,19 @@ var game = (function () {
 				break;
 				case 7:
 					V.spawn.push('orc', 12, 30, 25);
-					V.spawn.push('dragon', 5, 10, 50);
+					V.spawn.push('dragon', 4, 10, 50);
 				break;
 				case 8:
-					V.spawn.push('worm', 7, 30, 50);
+					V.spawn.push('worm', 5, 30, 50);
 				break;
 				case 9:
 					V.spawn.push('man', 10, 20, 25);
-					V.spawn.push('dragon', 6, 5, 50);
+					V.spawn.push('dragon', 5, 5, 50);
 				break;
 				case 10:
 					V.spawn.push('dragon', 8, 8, 100);
 				break;
 				case 11:
-					V.spawn.push('orc', 12, 30, 25);
-					V.spawn.push('man', 10, 20, 40);
-				break;
-				case 12:
-					V.spawn.push('worm', 10, 25, 35);
-				break;
-				case 13:
-					V.spawn.push('man', 12, 15, 35);
-					V.spawn.push('dragon', 10, 20, 50);
-				break;
-				case 14:
-					V.spawn.push('orc', 15, 30, 25);
-				break;
-				case 15:
-					V.spawn.push('orc', 30, 5, 25);
-					V.spawn.push('dragon', 15, 2, 40);
-				break;
-				case 16:
 					this.animWin();
 					document.getElementById("level4").className = "level4";
 				break;
