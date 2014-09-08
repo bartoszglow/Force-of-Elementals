@@ -345,7 +345,7 @@ B.prototype.parse = function(arr){
 	}
 };
 B.prototype.goldDraw = function(){
-	this.Golds = this.delete(this.Golds, 0);
+	this.Golds = this.delete(this.Golds, this.Golds.length-1);
 	this.clearBlock(this.gold.j,this.gold.i);
 	for (var i = 0; i<this.Golds.length; i++){
 		this.Golds[i].draw();
