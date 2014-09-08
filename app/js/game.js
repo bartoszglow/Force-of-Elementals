@@ -393,18 +393,71 @@ var game = (function () {
 			case 5:
 			switch(lvl){
 				case 0:
-					V.score=100;
-					V.lifes=10;
-					V.countWaves=2;
+					V.score=20000;
+					V.lifes=5;
+					V.countWaves=10;
 				break;
 				case 1:
-					V.spawn.push('worm', 1, 4, 25);
+					V.spawn.push('man', 1, 10, 35);
+					V.spawn.push('dragon', 1, 2, 55);
+					V.spawn.push('man', 1, 10, 35);
+					V.score+=100;
 				break;
 				case 2:
-					V.spawn.push('orc', 1, 8, 25);
-					V.spawn.push('zombie', 2, 1, 40);
+					V.spawn.push('zombie', 1, 2, 65);
+					V.spawn.push('dragon', 1, 8, 40);
+					V.spawn.push('zombie', 1, 2, 65);
+					V.score+=100;
 				break;
 				case 3:
+					V.spawn.push('knight', 1, 2, 75);
+					V.spawn.push('dragon', 2, 8, 40);
+					V.spawn.push('knight', 1, 2, 75);
+					V.score+=100;
+				break;
+				case 4:
+					V.spawn.push('worm', 3, 8, 40);
+					V.spawn.push('zombie', 1, 10, 40);
+					V.spawn.push('knight', 1, 2, 75);
+					V.score+=100;
+				break;
+				case 5:
+					V.spawn.push('orc', 10, 30, 25);
+					V.spawn.push('dragon', 4, 10, 40);
+					V.spawn.push('orc', 10, 30, 25);
+					V.score+=100;
+				break;
+				case 6:
+					V.spawn.push('man', 8, 30, 35);
+					V.spawn.push('knight', 4, 2, 250);
+					V.score+=100;
+				break;
+				case 7:
+					V.spawn.push('orc', 14, 30, 25);
+					V.spawn.push('zombie', 4, 10, 45);
+					V.spawn.push('dragon', 5, 20, 35);
+					V.spawn.push('knight', 5, 2, 250);
+					V.score+=100;
+				break;
+				case 8:
+					V.spawn.push('worm', 11, 30, 35);
+					V.spawn.push('man', 10, 15, 140);
+					V.spawn.push('man', 30, 4, 140);
+					V.score+=100;
+				break;
+				case 9:
+					V.spawn.push('orc', 15, 30, 25);
+					V.spawn.push('knight', 5, 8, 45);
+					V.spawn.push('dragon', 8, 10, 40);
+					V.score+=100;
+				break;
+				case 10:
+					V.spawn.push('zombie', 15, 1, 140);
+					V.spawn.push('dragon', 15, 1, 140);
+					V.spawn.push('knight', 15, 1, 140);
+					V.score+=500;
+				break;
+				case 11:
 					this.animWin();
 					document.getElementById("level6").className = "level6";
 				break;
@@ -430,7 +483,7 @@ var game = (function () {
 					V.ctx_bg.fillStyle = 'red'
 					V.ctx_bg.font = 'italic '+12*V.sc+'pt Calibri';
      				V.ctx_bg.fillText('CONGRATULATION!', 10*V.sc, 200*V.sc);
-     				V.ctx_bg.fillText('You passed all Levels!', 10*V.sc, 230*V.sc);		
+     				V.ctx_bg.fillText('You beat all Levels!', 10*V.sc, 230*V.sc);		
 				break;
 			}
 			break;

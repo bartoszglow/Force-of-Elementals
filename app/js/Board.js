@@ -72,8 +72,8 @@ function B(V, size, cx, map){
 			'  W   SAAA SAA  ',
 			'  W   S  W S W  ',
 			'  WR  S RWAARW  ',
-			'  AAAAA   R  W  ',
-			'  RAAA       W  ',
+			'  WAAAA   R  W  ',
+			'  RWAA       W  ',
 			'     R       Y  '
 		],
 		[
