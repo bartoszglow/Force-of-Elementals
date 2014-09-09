@@ -237,7 +237,7 @@ B.prototype.draw = function(){
 	 }
 	
 	//End of wave
-	if(this.Enemy.length==0 && !V.spawn.length && V.mainmenu==0){
+	if(this.Enemy.length==0 && !V.s.length && V.mainmenu==0){
 		Menu.startButton.style.display = 'block';
 	 	this.Bullets = [];
 	 	this.Enemy = [];	
@@ -250,21 +250,21 @@ B.prototype.draw = function(){
 	 	
 	}
 
-	//Spawner new enemy
+	//Ser new enemy
 	V.timer++;
-	if(V.spawn.length>=1 && V.mainmenu==0){
-		if(V.timer>V.spawn[3]){
+	if(V.s.length>=1 && V.mainmenu==0){
+		if(V.timer>V.s[3]){
 			Menu.startButton.style.display = 'none';
-			if(V.spawn[2]==0){
+			if(V.s[2]==0){
 	
-				V.spawn = this.delete(V.spawn, 3);
-				V.spawn = this.delete(V.spawn, 2);
-				V.spawn = this.delete(V.spawn, 1);
-				V.spawn = this.delete(V.spawn, 0);
+				V.s = this.delete(V.s, 3);
+				V.s = this.delete(V.s, 2);
+				V.s = this.delete(V.s, 1);
+				V.s = this.delete(V.s, 0);
 			}else{
 
-				this.addEnemy(V.spawn[0], V.spawn[1]);
-				V.spawn[2]--;		
+				this.addEnemy(V.s[0], V.s[1]);
+				V.s[2]--;		
 			}
 			V.timer = 0;
 		}

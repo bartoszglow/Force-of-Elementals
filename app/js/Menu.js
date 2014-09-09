@@ -25,6 +25,7 @@ function M(V){
 	//Pause button
 	this.buttons[1].onclick = function(){
 		if(V.fps>0){
+			Menu.upgradeInfo.style.visibility = "hidden";
 			V.ctx.fillStyle = 'rgba(0,0,0,0.2)';
 			V.ctx.fillRect(0,0,V.W,V.H);
 			V.fps = 0;
@@ -35,6 +36,7 @@ function M(V){
 
 	//Exit button
 	this.buttons[2].onclick = function(){
+		Menu.upgradeInfo.style.visibility = "hidden";
 		V.ctx_r.clearRect(0,0,V.W, V.H);
 		V.mainmenu=1;
 	};
@@ -62,7 +64,7 @@ M.prototype.fill = function(){
 
 		if(V.timer<=0){
 			for(var i=0, j=1; i<16; i+=4, j++){	
-				V.spawn.length<=i ? this.wavesInfo[j].innerHTML = ' ' : this.wavesInfo[j].innerHTML = V.spawn[i] + ' (' + V.spawn[i+1] + ') ' + V.spawn[i+2];
+				V.s.length<=i ? this.wavesInfo[j].innerHTML = ' ' : this.wavesInfo[j].innerHTML = V.s[i] + ' (' + V.s[i+1] + ') ' + V.s[i+2];
 			}
 		}
 	}
@@ -78,11 +80,9 @@ M.prototype.fill = function(){
 M.prototype.upgrade = function(x, y, type, lvl){
 	var Tlvl = lvl + 1;
 	//Draw tower distance
-	if(type!='Earth'){
-		V.ctx_r.beginPath();
-		V.ctx_r.arc((x*20+10)*V.sc,(y*20+10)*V.sc,V[type+'R']*V.sc,0,2*Math.PI);
-		V.ctx_r.stroke();
-	}
+	V.ctx_r.beginPath();
+	V.ctx_r.arc((x*20+10)*V.sc,(y*20+10)*V.sc,V[type+'R']*V.sc,0,2*Math.PI);
+	V.ctx_r.stroke();
 
 	this.upgradeInfo.getElementsByTagName("button")[0].style.background = '#88d98a';
 	this.upgradeInfo.getElementsByTagName("button")[1].style.background = '#d4745b';
