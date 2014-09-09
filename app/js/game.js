@@ -154,7 +154,7 @@ var game = (function () {
 			case 1:
 			switch(lvl){
 				case 0:
-					V.score=60;
+					V.score=80;
 					V.lifes=10;
 					V.countWaves=10;
 				break;
@@ -180,7 +180,7 @@ var game = (function () {
 					V.spawn.push('orc', 1, 25, 35);
 				break;
 				case 7:
-					V.spawn.push('orc', 3, 25, 30);
+					V.spawn.push('orc', 3, 25, 40);
 				break;
 				case 8:
 					V.spawn.push('man', 2, 10, 40);
@@ -192,7 +192,7 @@ var game = (function () {
 					V.spawn.push('man', 2, 20, 45);
 				break;
 				case 10:
-					V.spawn.push('worm', 4, 1, 50);
+					V.spawn.push('worm', 5, 2, 50);
 				break;
 				case 11:
 					this.animWin();
@@ -267,7 +267,7 @@ var game = (function () {
 				case 15:
 					V.spawn.push('man', 12, 4, 100);
 					V.spawn.push('worm', 9, 2, 80);	
-					V.spawn.push('dragon', 8, 1, 150);	
+					V.spawn.push('dragon', 6, 1, 150);	
 				break;
 				case 16:
 					this.animWin();
@@ -298,7 +298,7 @@ var game = (function () {
 					V.spawn.push('worm', 4, 30, 50);
 				break;
 				case 5:
-					V.spawn.push('dragon', 3, 10, 80);
+					V.spawn.push('dragon', 2, 10, 80);
 				break;
 				case 6:
 					V.spawn.push('orc', 12, 20, 25);
@@ -313,10 +313,10 @@ var game = (function () {
 				break;
 				case 9:
 					V.spawn.push('man', 10, 20, 25);
-					V.spawn.push('dragon', 5, 5, 50);
+					V.spawn.push('dragon', 5, 10, 50);
 				break;
 				case 10:
-					V.spawn.push('zombie', 8, 1, 100);
+					V.spawn.push('zombie', 8, 2, 100);
 				break;
 				case 11:
 					this.animWin();
@@ -380,8 +380,7 @@ var game = (function () {
 					V.spawn.push('zombie', 10, 20, 65);
 				break;
 				case 12:
-					V.spawn.push('knight', 10, 1, 55);
-					V.spawn.push('knight', 10, 1, 255);
+					V.spawn.push('knight', 12, 4, 150);
 				break;
 				case 13:
 					this.animWin();

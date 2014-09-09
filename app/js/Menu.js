@@ -160,6 +160,7 @@ M.prototype.animCreating = function(i){
 			V.timer=-1801;
 			if(i>30){
 				V.ctx_bg.clearRect(0,0,V.W,V.H);
+				V.ctx_r.clearRect(0,0,V.W, V.H);
 				Board.drawBg();
 				Board.addGold();
 				V.timer=-1801;
@@ -174,6 +175,7 @@ M.prototype.animWin = function(i){
 	setTimeout(function(){
 			V.ctx_bg.fillStyle = 'rgba(183,209,255,'+(1-i/30)+')'
 			V.ctx_bg.fillRect(0,V.H/29*i,V.W,V.H/29);
+			V.ctx_r.clearRect(0,0,V.W, V.H);
 
 				V.mainmenu=1;
    			

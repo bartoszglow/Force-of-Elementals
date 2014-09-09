@@ -230,6 +230,7 @@ B.prototype.draw = function(){
 	 	V.ctx.rect(0,0,V.W,V.H);
 	 	V.ctx.stroke();
 	 	if(this.defeatAnimTimer<=0){
+	 		V.ctx_r.clearRect(0,0,V.W, V.H);
 	 		V.life=0;
 	 		V.mainmenu=1;
 	 	}
