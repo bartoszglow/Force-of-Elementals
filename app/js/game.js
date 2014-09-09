@@ -298,7 +298,7 @@ var game = (function () {
 					V.spawn.push('worm', 4, 30, 50);
 				break;
 				case 5:
-					V.spawn.push('dragon', 2, 10, 80);
+					V.spawn.push('dragon', 3, 12, 60);
 				break;
 				case 6:
 					V.spawn.push('orc', 12, 20, 25);
@@ -309,11 +309,11 @@ var game = (function () {
 					V.spawn.push('dragon', 4, 10, 50);
 				break;
 				case 8:
-					V.spawn.push('worm', 5, 30, 50);
+					V.spawn.push('worm', 6, 30, 50);
 				break;
 				case 9:
-					V.spawn.push('man', 10, 20, 25);
-					V.spawn.push('dragon', 5, 10, 50);
+					V.spawn.push('man', 12, 20, 25);
+					V.spawn.push('dragon', 6, 10, 50);
 				break;
 				case 10:
 					V.spawn.push('zombie', 8, 2, 100);
