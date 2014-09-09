@@ -85,7 +85,7 @@ function B(V, size, cx, map){
 			'>DWW   DS RSSR  ',
 			'  R   R DS SSSA<',
 			'    R   RDDSSA  ',
-			'   SAAAA R SS   ',
+			'   SAAAA RDSS   ',
 			'  RS R W R SAR  ',
 			'XAAA   WAAAA    ',
 			'   R   R    R   '
@@ -242,7 +242,7 @@ B.prototype.draw = function(){
 	 	this.Bullets = [];
 	 	this.Enemy = [];	
 
-	 	V.timer=-601;
+	 	V.timer=-901;
 	 	V.fps = 40;
 	 	V.score += this.waves*5;
 	 	this.waves++;

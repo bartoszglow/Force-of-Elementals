@@ -22,7 +22,7 @@ function E(V, x, y, type, lvl){
 	this.life = this.types[type].life*this.ELvl*2;
 	this.hp = this.life;
 	this.score = this.types[type].score*this.ELvl;
-	this.rise = this.types[type].rise*V.sc+this.ELvl/30;
+	this.rise = this.types[type].rise*V.sc+this.ELvl/20;
 	this.FX = this.types[type].FX;
 	this.FY = this.types[type].FY;
 	this.FXS = this.types[type].FXS;
