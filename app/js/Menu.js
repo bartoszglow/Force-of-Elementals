@@ -16,29 +16,38 @@ function M(V){
 	this.buttons[0].onclick = function(){
 		if(V.fps == fps){
 			V.fps = 2*fps;
+			Menu.buttons[0].style.background= '#d4745b';
 			
-		}else{
+		}else if(V.fps != 0){
 			V.fps = fps;
+			Menu.buttons[0].style.background= '#88d98a';
 		}
 	};
 
 	//Pause button
 	this.buttons[1].onclick = function(){
 		if(V.fps>0){
+			Menu.buttons[0].style.background= '#88d98a';
+			Menu.buttons[1].style.background= '#d4745b';
 			Menu.upgradeInfo.style.visibility = "hidden";
 			V.ctx.fillStyle = 'rgba(0,0,0,0.2)';
 			V.ctx.fillRect(0,0,V.W,V.H);
 			V.fps = 0;
 		}else{
 			V.fps=fps;
+			Menu.buttons[1].style.background= '#88d98a';
 		}
 	};
 
 	//Exit button
 	this.buttons[2].onclick = function(){
-		Menu.upgradeInfo.style.visibility = "hidden";
-		V.ctx_r.clearRect(0,0,V.W, V.H);
-		V.mainmenu=1;
+		if(V.fps!=0){
+			Menu.buttons[0].style.background= '#88d98a';
+			Menu.upgradeInfo.style.visibility = "hidden";
+			document.getElementById("waves").style.visibility = "hidden";
+			V.ctx_r.clearRect(0,0,V.W, V.H);
+			V.mainmenu=1;
+		}
 	};
 
 	//Start next wave button
@@ -68,14 +77,6 @@ M.prototype.fill = function(){
 			}
 		}
 	}
-
-	//Change color speed button
-	if(this.fps<V.fps){
-		this.buttons[0].style.background= '#d4745b';
-	}else{
-		this.buttons[0].style.background= '#88d98a';
-	}
-
 }
 M.prototype.upgrade = function(x, y, type, lvl){
 	var Tlvl = lvl + 1;
@@ -159,12 +160,13 @@ M.prototype.animCreating = function(i){
 			V.ctx_bg.fillRect(0,0,V.W,V.H/20*i);
 			V.timer=-1801;
 			if(i>30){
+				document.getElementById("waves").style.visibility = "visible";
 				V.ctx_bg.clearRect(0,0,V.W,V.H);
 				V.ctx_r.clearRect(0,0,V.W, V.H);
 				Board.drawBg();
 				Board.addGold();
 				V.timer=-1801;
-				if(V.mainmenu==0){
+				if(V.mainmenu==0){	
 					document.getElementById("main-menu").style.display = 'none';
 				}					
 			}
@@ -178,8 +180,9 @@ M.prototype.animWin = function(i){
 			V.ctx_r.clearRect(0,0,V.W, V.H);
 
 				V.mainmenu=1;
-   			
-   				
-   			
+				if(i==1){
+					Menu.buttons[0].style.background= '#88d98a';
+					Menu.buttons[1].style.background= '#88d98a';
+				}
 	}, 40*i);		
 }
