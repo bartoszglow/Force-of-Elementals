@@ -234,6 +234,7 @@ B.prototype.draw = function(){
 	 		V.life=0;
 	 		V.mainmenu=1;
 	 		document.getElementById("waves").style.visibility = "hidden";
+	 		Menu.upgradeInfo.style.visibility = "hidden";
 	 		Menu.buttons[0].style.background= '#88d98a';
 	 	}
 	 }

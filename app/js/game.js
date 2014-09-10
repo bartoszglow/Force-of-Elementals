@@ -162,7 +162,7 @@ var game = (function () {
 				case 1:
 					V.s.push('orc', 1, 4, 40);
 				break;
-				case 2:
+				case 21:
 					V.s.push('orc', 1, 5, 40);
 				break;
 				case 3:
@@ -195,7 +195,7 @@ var game = (function () {
 				case 10:
 					V.s.push('worm', 5, 2, 50);
 				break;
-				case 11:
+				case 2:
 					this.animWin();
 					document.getElementById("level2").className = "level2";
 				break;

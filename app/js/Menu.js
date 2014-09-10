@@ -167,7 +167,7 @@ M.prototype.animCreating = function(i){
 				Board.addGold();
 				V.timer=-1801;
 				if(V.mainmenu==0){	
-					document.getElementById("main-menu").style.display = 'none';
+				document.getElementById("main-menu").style.display = 'none';
 				}					
 			}
 	}, 40*i);		
@@ -181,6 +181,8 @@ M.prototype.animWin = function(i){
 
 				V.mainmenu=1;
 				if(i==1){
+					document.getElementById("waves").style.visibility = "hidden";
+					Menu.upgradeInfo.style.visibility = "hidden";
 					Menu.buttons[0].style.background= '#88d98a';
 					Menu.buttons[1].style.background= '#88d98a';
 				}
