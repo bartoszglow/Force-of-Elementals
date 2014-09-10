@@ -247,6 +247,8 @@ B.prototype.draw = function(){
 
 	 	V.timer=-901;
 	 	V.fps = 40;
+	 	Menu.buttons[0].style.background= '#88d98a';
+	 	
 	 	V.score += this.waves*5;
 	 	this.waves++;
 	 	waves(V.map, this.waves);
