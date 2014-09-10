@@ -545,20 +545,23 @@ var game = (function () {
 					V.ctx.clearRect(0,0,V.W, V.H);
 					Board.draw();
 					Menu.fill();
-
 				}else{
 					V.fps=40;
 					document.getElementById("main-menu").style.display = 'block';
-					if(V.timer%V.rand(50,150)==0){
+					if(V.timer%V.rand(50,100)==0){
+						V.timer = 0;
 						var n = V.rand(1,4);
 						switch(n){
 							case 1:
 							Board.addEnemy('orc', 2);
 							break;
 							case 2:
-							Board.addEnemy('man', 2);
+							Board.addEnemy('orc', 2);
 							break;
 							case 3:
+							Board.addEnemy('man', 2);
+							break;
+							case 4:
 							Board.addEnemy('dragon', 2);
 							break;							
 						}
