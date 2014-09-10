@@ -556,9 +556,6 @@ var game = (function () {
 							Board.addEnemy('orc', 2);
 							break;
 							case 2:
-							Board.addEnemy('orc', 2);
-							break;
-							case 2:
 							Board.addEnemy('man', 2);
 							break;
 							case 3:
