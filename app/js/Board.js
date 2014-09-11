@@ -101,8 +101,8 @@ function B(V, size, cx, map){
 		'<':{FXmod:1,  	  type:'<'},//left start
 		'V':{FXmod:1,  	  type:'V'},//down start
 		'Y':{FXmod:1,  	  type:'Y'},//up start
-		'X':{FXmod:1,  	  type:'X'},
-		'R':{FXmod:1,  	  type:'R'},
+		'X':{FXmod:1,  	  type:'X'},//finish
+		'R':{FXmod:1,  	  type:'R'},//stone
 	};
 	//mAin arr included grass and path
 	this.b = []; 
@@ -248,7 +248,7 @@ B.prototype.draw = function(){
 	 	V.timer=-901;
 	 	V.fps = 40;
 	 	Menu.buttons[0].style.background= '#88d98a';
-	 	
+
 	 	V.score += this.waves*5;
 	 	this.waves++;
 	 	waves(V.map, this.waves);

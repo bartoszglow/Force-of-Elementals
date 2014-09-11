@@ -1,11 +1,11 @@
 
 function T(V, x, y, type, lvl){
 	this.V = V;
-	this.types = {
-		'Air':  {reloaded: 30, r:100, g:150, b:250, range: 35, FX:32,  FY:0, FXS:15, FYS:15, RX:7.5, RY:7.5, AR:3},
-		'Earth':{reloaded: 10, r:140, g:155, b:20, range: 10, FX:47,  FY:0, FXS:14, FYS:14, RX:7, RY:7, AR:2},
-		'Fire': {reloaded: 25, r:255, g:090, b:020, range: 55, FX:25,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0},
-		'Water':{reloaded: 2,  r:020, g:090, b:255, range: 40, FX:18,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0}
+	this.tr = {//reload, red, green, blue, range,
+		'Air':  {rel: 30, r:100, g:150, b:250, ra: 35, FX:32,  FY:0, FXS:15, FYS:15, RX:7.5, RY:7.5, AR:3},
+		'Earth':{rel: 10, r:140, g:155, b:20, ra: 10, FX:47,  FY:0, FXS:14, FYS:14, RX:7, RY:7, AR:2},
+		'Fire': {rel: 25, r:255, g:090, b:020, ra: 55, FX:25,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0},
+		'Water':{rel: 2,  r:020, g:090, b:255, ra: 40, FX:18,  FY:0, FXS:7, FYS:20, RX:3.5, RY:16.5, AR:0}
 	};
 	this.x = x*V.sc*20;
 	this.y = y*V.sc*20;
@@ -13,23 +13,23 @@ function T(V, x, y, type, lvl){
 	this.angle = 0;
 	
 	this.type = type;
-	this.reloaded = this.types[this.type].reloaded;
-	this.aReloaded = this.reloaded;
-	this.r = this.types[this.type].r;
-	this.g = this.types[this.type].g;
-	this.b = this.types[this.type].b;
-	this.range = this.types[this.type].range;
-	this.aRange =0;
-	this.FX = this.types[type].FX;
-	this.FY = this.types[type].FY;
-	this.FXS = this.types[type].FXS;
-	this.FYS = this.types[type].FYS;
-	this.RX = this.types[type].RX;
-	this.RY = this.types[type].RY;
-	this.AR = this.types[type].AR; //auto rotate
+	this.rel = this.tr[type].rel;
+	this.aRel = this.rel;
+	this.r = this.tr[type].r;
+	this.g = this.tr[type].g;
+	this.b = this.tr[type].b;
+	this.ra = this.tr[type].ra;
+	this.aRa = 0;
+	this.FX = this.tr[type].FX;
+	this.FY = this.tr[type].FY;
+	this.FXS = this.tr[type].FXS;
+	this.FYS = this.tr[type].FYS;
+	this.RX = this.tr[type].RX;
+	this.RY = this.tr[type].RY;
+	this.AR = this.tr[type].AR; //auto rotate
 	this.aAR = 0;
 
-	//Rysowanie podstawy działa
+	//Draw base of tower
 	if(this.type!='Earth'){
 		V.ctx_bg.fillStyle = "rgba("+this.r+","+this.g+","+this.b+","+this.TLvl*0.2+")";
 		V.ctx_bg.fillRect(this.x+1*V.sc, this.y+1*V.sc, 18*V.sc, 18*V.sc);
@@ -66,7 +66,7 @@ function T(V, x, y, type, lvl){
 };
 
 T.prototype.draw = function() { 
-	//Rysowanie działka uwzgledniając kąt
+	//Draw only turret
 	V.ctx.save(); 
 	V.ctx.translate(this.x+10*V.sc, this.y+10*V.sc);
 	V.ctx.rotate((this.angle) * V.rad);
@@ -90,8 +90,8 @@ T.prototype.shoot = function(enemy) {
 	for(var i=0; i<enemy.length; i++){
 		this.sY=Math.round((this.y+10*V.sc)-enemy[i].y);
 		this.sX=Math.round((this.x+10*V.sc)-enemy[i].x);
-		this.aRange = Math.round(Math.sqrt(this.sX*this.sX+this.sY*this.sY))/V.sc;
-		if(this.aRange<=this.range){	
+		this.aRa = Math.round(Math.sqrt(this.sX*this.sX+this.sY*this.sY))/V.sc;
+		if(this.aRa<=this.ra){	
 			if(killMe > -1) {
 				if(enemy[killMe].distance < enemy[i].distance){ 
 					killMe = i;
@@ -111,13 +111,13 @@ T.prototype.shoot = function(enemy) {
 		this.aAR > 10 ? this.aAR-=0.2 : (this.aAR > 0 ? this.aAR-=0.1 : this.aAR);
 	}
 
-	if(killMe>-1) {
+	if(killMe>-1 && this.type != 'Earth') {
 		this.AR ? this.aAR+=0.2 : this.angle = Math.round(Math.atan2(sY,sX)/V.rad-90);
-		if(this.aReloaded >= this.reloaded){
-			this.aReloaded=0;		
+		if(this.aRel >= this.rel){
+			this.aRel=0;		
 			return true;
 		}
-		this.aReloaded++;
+		this.aRel++;
 	}
 };
 

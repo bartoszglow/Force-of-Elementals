@@ -1,13 +1,13 @@
 
 function E(V, x, y, type, lvl){
 	this.V = V;
-	this.types = {
-		'zombie':{ground:1, speed: 0.6, life:1000, score:8, rise:0.75, FX:0,  FY:21, FXS:17, FYS:12, Fcount:[0], frameRate:0, Frotate:0},
-		'orc':{ ground:1, speed: 1.1, life:60, score:1,  rise:1, FX:18, FY:22, FXS:5,  FYS:9,  Fcount:[0,1], frameRate:8, Frotate:0},
-		'dragon':{ground:0, speed: 1,   life:800, score:6, rise:0.9, FX:1,  FY:34, FXS:25, FYS:19, Fcount:[0,1], frameRate:16, Frotate:90},
-		'man':{ ground:1, speed: 0.9, life:200, score:2,  rise:1, FX:45, FY:19, FXS:8,  FYS:14,  Fcount:[0,1], frameRate:10, Frotate:90},
-		'knight':{  ground:1, speed: 0.9, life:1500, score:10,  rise:0.75, FX:46, FY:47, FXS:15,  FYS:15, Fcount:[0], frameRate:0, Frotate:-90},
-		'worm':{  ground:1, speed: 1.1, life:400, score:3,  rise:1, FX:29, FY:22, FXS:14,  FYS:9, Fcount:[0], frameRate:0, Frotate:180},
+	this.types = {//ground, ... ,frameCount, frameRate, frameRotate
+		'zombie':{gr:1, speed: 0.6, life:1000, score:8, rise:0.75, FX:0,  FY:21, FXS:17, FYS:12, fC:[0], fR:0, Frot:0},
+		'orc':{ gr:1, speed: 1.1, life:60, score:1,  rise:1, FX:18, FY:22, FXS:5,  FYS:9,  fC:[0,1], fR:8, Frot:0},
+		'dragon':{gr:0, speed: 1,   life:800, score:6, rise:0.9, FX:1,  FY:34, FXS:25, FYS:19, fC:[0,1], fR:16, Frot:90},
+		'man':{ gr:1, speed: 0.9, life:200, score:2,  rise:1, FX:45, FY:19, FXS:8,  FYS:14,  fC:[0,1], fR:10, Frot:90},
+		'knight':{  gr:1, speed: 0.9, life:1500, score:10,  rise:0.75, FX:46, FY:47, FXS:15,  FYS:15, fC:[0], fR:0, Frot:-90},
+		'worm':{  gr:1, speed: 1.1, life:400, score:3,  rise:1, FX:29, FY:22, FXS:14,  FYS:9, fC:[0], fR:0, Frot:180},
 	};
 	this.type = type;
 
@@ -15,8 +15,8 @@ function E(V, x, y, type, lvl){
 	this.ELvl = lvl;
 
 	// Indyvidual properties each enemy
-	// Ground/Air MoveSpeed Life Score=Money RiseLargeEnemy XCordinateFrame YCordinateFrame XCorFrameSize YCorFrameSize NumberOfFrame RotateForFlipSprite
-	this.ground = this.types[type].ground;
+	// Gr/Air MoveSpeed Life Score=Money RiseLargeEnemy XCordinateFrame YCordinateFrame XCorFrameSize YCorFrameSize NumberOfFrame RotateForFlipSprite
+	this.gr = this.types[type].gr;
 	this.speed = this.types[type].speed*V.sc;
 	this.aSpeed = this.speed;
 	this.life = this.types[type].life*this.ELvl*2;
@@ -27,8 +27,8 @@ function E(V, x, y, type, lvl){
 	this.FY = this.types[type].FY;
 	this.FXS = this.types[type].FXS;
 	this.FYS = this.types[type].FYS;
-	this.Fcount = this.types[type].Fcount;
-	this.Frotate = this.types[type].Frotate;
+	this.fC = this.types[type].fC;
+	this.Frot = this.types[type].Frot;
 	this.distance=0;
 
 	// Coordinates relative to the center of mob, rotate count 0=left;
@@ -37,7 +37,7 @@ function E(V, x, y, type, lvl){
 	this.rotate = 90;
 	//actual frame, slow frame rate, slow frame rate actual
 	this.frame = 0;
-	this.fR = this.types[type].frameRate;
+	this.fR = this.types[type].fR;
 	this.fRa = 0;
 };
 
@@ -112,7 +112,7 @@ E.prototype.move = function(arrB, arrT){
 
 	}
 		//earth tower
-		if(arrT[this.bx][this.by] && this.ground){
+		if(arrT[this.bx][this.by] && this.gr){
 			this.aSpeed=this.speed/((arrT[this.bx][this.by].TLvl+1)/1.5);
 		}
 
@@ -133,23 +133,23 @@ E.prototype.draw = function(){
 		V.ctx.fillRect(this.x-(this.FXS/3*this.rise),this.y-(this.FYS*this.rise),this.hp/this.life*V.sc*10,1*V.sc);
 	}
 	//Income actual frame
-	if(this.frame < this.Fcount.length-1 && this.fRa >= this.fR){
+	if(this.frame < this.fC.length-1 && this.fRa >= this.fR){
 		this.frame++;
 		this.fRa=0;
 	}else {
 		this.fRa++;
 	}
-	if(this.frame == this.Fcount.length-1 && this.fRa >= this.fR){
+	if(this.frame == this.fC.length-1 && this.fRa >= this.fR){
 		this.frame=0;
 		this.fRa=0;
 	}
 	//Draw on canvas enemy
 	V.ctx.save(); 
 	V.ctx.translate(this.x, this.y);
-	V.ctx.rotate((this.rotate+this.Frotate) * V.rad);
+	V.ctx.rotate((this.rotate+this.Frot) * V.rad);
 	V.ctx.drawImage(
 		V.sprite,
-		this.FX+this.Fcount[this.frame]*this.FXS,
+		this.FX+this.fC[this.frame]*this.FXS,
 		this.FY,
 		this.FXS,
 		this.FYS,
