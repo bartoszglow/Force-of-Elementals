@@ -114,6 +114,7 @@ M.prototype.upgrade = function(x, y, type, lvl){
 		}
 	}
 }
+//fireworks animation playing on menu
 M.prototype.fireworks = function(n){
 	this.visible.length = 0;
 	for (var i=0; i<n; i++) {		//count of participle per frame
@@ -153,6 +154,7 @@ M.prototype.fireworks = function(n){
 
 	this.all = this.visible.concat();
 }
+//animation lunch on creating lvl
 M.prototype.animCreating = function(i){
 	var i = i;
 	setTimeout(function(){
@@ -172,6 +174,7 @@ M.prototype.animCreating = function(i){
 			}
 	}, 40*i);		
 }
+//animation launch if win
 M.prototype.animWin = function(i){
 	var i = i;
 	setTimeout(function(){

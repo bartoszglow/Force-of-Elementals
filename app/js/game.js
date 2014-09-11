@@ -1,7 +1,9 @@
 window.onload = function(){
 	V.sprite = new Image();
-	V.sprite.src = 'assets/sprite.gif';
+	V.sprite.src = 'assets/sprite.png';
+	setTimeout(function(){
 	V.sprite.onload = game.init();
+	}, 50);		
 };
 
 var game = (function () {

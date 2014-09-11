@@ -15,7 +15,7 @@ function E(V, x, y, type, lvl){
 	this.ELvl = lvl;
 
 	// Indyvidual properties each enemy
-	// Gr/Air MoveSpeed Life Score=Money RiseLargeEnemy XCordinateFrame YCordinateFrame XCorFrameSize YCorFrameSize NumberOfFrame RotateForFlipSprite
+	// Ground/Air MoveSpeed Life Score=Money RiseLargeEnemy XCordinateFrame YCordinateFrame XCorFrameSize YCorFrameSize NumberOfFrame RotateForFlipSprite
 	this.gr = this.types[type].gr;
 	this.speed = this.types[type].speed*V.sc;
 	this.aSpeed = this.speed;

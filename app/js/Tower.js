@@ -85,6 +85,7 @@ T.prototype.draw = function() {
 };
 
 T.prototype.shoot = function(enemy) { 
+	//Shoot test in range
 	var killMe;
 	var sY, sX;
 	for(var i=0; i<enemy.length; i++){

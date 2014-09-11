@@ -170,6 +170,7 @@ B.prototype.delete = function(arr,arrIndex){
 	return arr.slice(0,arrIndex).concat(arr.slice(arrIndex + 1));
 };
 B.prototype.draw = function(){
+	//Tower draw
 	for (var i = 0; i < 16; i++) {	   	
 	    for(var j=0; j<12; j++){
 	    	if(this.Towers[i][j]){
@@ -188,7 +189,7 @@ B.prototype.draw = function(){
 	    }
 	 }
 
-
+	 //bullets physics launcher
  	 for(var i=0; i<this.Bullets.length; i++){
  		this.Bullets[i].draw();
  		for(var j=0; j<this.Enemy.length; j++){
@@ -203,7 +204,7 @@ B.prototype.draw = function(){
 				break;}	
  		}	
 	 }
-
+	 //enemy physics laucher
 	 for(var i=0; i<this.Enemy.length; i++){
 	 	if(this.Enemy[i].hp > 0){
 	 	this.Enemy[i].move(this.b, this.Towers);
@@ -276,6 +277,8 @@ B.prototype.draw = function(){
 	}
 	//Clear circle showed range
 };
+
+//Drawing maps on background
 B.prototype.drawBg = function(){
 	for(var i=0; i<this.b.length; i++){
 		for(var j=0; j<this.b[i].length; j++){
