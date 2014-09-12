@@ -319,7 +319,7 @@ var game = (function () {
 					V.s.push('dragon', 6, 10, 50);
 				break;
 				case 10:
-					V.s.push('zombie', 8, 2, 100);
+					V.s.push('zombie', 10, 2, 100);
 				break;
 				case 11:
 					this.animWin();
