@@ -117,8 +117,9 @@ background: linear-gradient(to bottom, rgba(173,235,255,1) 0%,rgba(150,209,255,1
 				top:50px;
 				left:10px;
 				display: block;
-				width: 111px;
-				background-color: lightgray;
+				width: 109px;
+				background-color: lightblue;
+				border: 1px solid gray;
 				border-radius: 5px;
 				text-align: center;
 				padding: 10px;
@@ -186,8 +187,8 @@ background: linear-gradient(to bottom, rgba(173,235,255,1) 0%,rgba(150,209,255,1
 				left:0px;
 				width:70%;
 				max-height: 280px;
-				margin: 10%;
-				padding: 0 5%;
+				margin: 10% 20px;
+				padding: 0 3%;
 				border-radius: 10px;
 				border: 2px solid black;
 				box-shadow: 0px 0px 10px rgba(0,0,0,1);
@@ -204,10 +205,12 @@ background: linear-gradient(to bottom, rgba(173,235,255,1) 0%,rgba(150,209,255,1
 			#main-menu h2 > div article h2 {
 				margin-top: 5px;
 			}
-			#main-menu h2:hover > div article {
+			#main-menu h2:hover > div article.how-to-play {
 				position: relative;
 				transition: all 15s cubic-bezier(0.755, -0.035, 0.880, 1.000);
 				top: -230px;
+			}
+			#main-menu h2:hover > div article.credits {
 			}
 			#main-menu h2:hover > p {
 				opacity: 0.7;
@@ -333,7 +336,7 @@ background: linear-gradient(to bottom, rgba(173,235,255,1) 0%,rgba(150,209,255,1
 			<h2>
 				<p>How to play</p>
 				<div>
-					<article> 
+					<article class="how-to-play"> 
 						<h2>How to play</h2> 
 						<span>
 							<p>The goal of "Force of the Elementals" is to stop enemies from stealing your gold.</p>
@@ -355,15 +358,18 @@ background: linear-gradient(to bottom, rgba(173,235,255,1) 0%,rgba(150,209,255,1
 				</div>
 			</h2>
 			<h2>
-				<p>Authors</p>
+				<p>Credits</p>
 				<div>
-					<article> 
+					<article class="credits"> 
 						<h2>Authors</h2> 
 						<span>
 							<br>
-							<p>Matusz Glowacki  mateuszglowas@gmail.com</p>
+							<p>Matusz Glowacki  mateuszglowas@cieniok.ru</p>
 							<br>
-							<p>Bartosz Glowacki  twojmail@cieniok.ru</p>
+							<p>Bartosz Glowacki  bartosz.glow@gmail.com</p>
+							<br>
+							<br>
+							<p>Game was prepared for <a href="http://js13kgames.com/">js13kGames</a> compo.</p>
 							<br>
 						<span> 
 					</article>
