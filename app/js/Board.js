@@ -130,25 +130,27 @@ function B(V, size, cx, map){
 B.prototype.addTower = function(x, y, type, check, lvl){
 		
 	var cost = V[type]*lvl;
-	if(!this.Towers[x][y] && V.score>=cost){
-		if(type!='Earth'){
-			if(this.b[y][x].type=='G'){
-				if(check){
-					return true;
-				}				
-				this.Towers[x][y] = new T(this.V, x, y, type, lvl);
-				this.Towers[x][y].draw(x, y);
-				V.score-=cost;
-			};
-		}else{
-			if(this.b[y][x].type!='G' && this.b[y][x].type!='R'){
-				if(check){
-					return true;
-				}
-				this.Towers[x][y] = new T(this.V, x, y, type, lvl);
-				this.Towers[x][y].draw(x, y);
-				V.score-=cost;
-			};
+	if(x<16 && y<12){
+		if(!this.Towers[x][y] && V.score>=cost){
+			if(type!='Earth'){
+				if(this.b[y][x].type=='G'){
+					if(check){
+						return true;
+					}				
+					this.Towers[x][y] = new T(this.V, x, y, type, lvl);
+					this.Towers[x][y].draw(x, y);
+					V.score-=cost;
+				};
+			}else{
+				if(this.b[y][x].type!='G' && this.b[y][x].type!='R'){
+					if(check){
+						return true;
+					}
+					this.Towers[x][y] = new T(this.V, x, y, type, lvl);
+					this.Towers[x][y].draw(x, y);
+					V.score-=cost;
+				};
+			}
 		}
 	}else{
 		return false;

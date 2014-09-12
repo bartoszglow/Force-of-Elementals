@@ -360,9 +360,9 @@ var game = (function () {
 					V.score+=250;
 				break;
 				case 7:
-					V.s.push('zombie', 3, 4, 45);
-					V.s.push('worm', 4, 15, 40);
-					V.s.push('dragon', 3, 10, 55);
+					V.s.push('zombie', 3, 4, 65);
+					V.s.push('worm', 4, 15, 50);
+					V.s.push('dragon', 3, 10, 60);
 				break;
 				case 8:
 					V.s.push('man', 6, 20, 45);
@@ -374,7 +374,7 @@ var game = (function () {
 					V.s.push('dragon', 6, 15, 45);
 				break;
 				case 10:
-					V.s.push('worm', 10, 30, 35);
+					V.s.push('worm', 10, 30, 55);
 					V.s.push('zombie', 6, 10, 45);
 					V.s.push('dragon', 6, 15, 25);
 					V.score+=250;
@@ -454,8 +454,8 @@ var game = (function () {
 					V.score+=100;
 				break;
 				case 10:
-					V.s.push('zombie', 15, 1, 140);
-					V.s.push('dragon', 15, 1, 140);
+					V.s.push('zombie', 15, 2, 140);
+					V.s.push('dragon', 15, 2, 140);
 					V.s.push('knight', 15, 1, 140);
 					V.score+=500;
 				break;

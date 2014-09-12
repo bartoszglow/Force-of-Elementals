@@ -13,20 +13,20 @@ function T(V, x, y, type, lvl){
 	this.angle = 0;
 	
 	this.type = type;
-	this.rel = this.tr[type].rel;
+	this.rel = this.tr[this.type].rel;
 	this.aRel = this.rel;
-	this.r = this.tr[type].r;
-	this.g = this.tr[type].g;
-	this.b = this.tr[type].b;
-	this.ra = this.tr[type].ra;
+	this.r = this.tr[this.type].r;
+	this.g = this.tr[this.type].g;
+	this.b = this.tr[this.type].b;
+	this.ra = this.tr[this.type].ra;
 	this.aRa = 0;
-	this.FX = this.tr[type].FX;
-	this.FY = this.tr[type].FY;
-	this.FXS = this.tr[type].FXS;
-	this.FYS = this.tr[type].FYS;
-	this.RX = this.tr[type].RX;
-	this.RY = this.tr[type].RY;
-	this.AR = this.tr[type].AR; //auto rotate
+	this.FX = this.tr[this.type].FX;
+	this.FY = this.tr[this.type].FY;
+	this.FXS = this.tr[this.type].FXS;
+	this.FYS = this.tr[this.type].FYS;
+	this.RX = this.tr[this.type].RX;
+	this.RY = this.tr[this.type].RY;
+	this.AR = this.tr[this.type].AR; //auto rotate
 	this.aAR = 0;
 
 	//Draw base of tower

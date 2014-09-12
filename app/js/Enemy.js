@@ -90,7 +90,6 @@ E.prototype.move = function(arrB, arrT){
 	 			V.ctx.rect(0,0,V.W,V.H);
 	 			V.ctx.stroke();
 				V.lifes--;
-				V.score -= Math.round(this.score/2);
 			}
 				this.hp=0;
 				this.life=0;
