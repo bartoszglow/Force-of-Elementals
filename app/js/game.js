@@ -529,9 +529,9 @@ var game = (function () {
 				case 11:
 					this.animWin();
 					V.ctx_bg.fillStyle = 'red'
-					V.ctx_bg.font = 'italic '+12*V.sc+'pt Calibri';
-     				V.ctx_bg.fillText('CONGRATULATION!', 10*V.sc, 200*V.sc);
-     				V.ctx_bg.fillText('You beat all Levels!', 10*V.sc, 230*V.sc);		
+					V.ctx_bg.font = 'italic '+8*V.sc+'pt Calibri';
+     				V.ctx_bg.fillText('CONGRATULATION!', 5*V.sc, 200*V.sc);
+     				V.ctx_bg.fillText('You beat all Levels!', 5*V.sc, 230*V.sc);		
 				break;
 			}
 			break;
