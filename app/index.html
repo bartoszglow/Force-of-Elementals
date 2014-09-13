@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="icon" type="image/png" href="favicon.png" />
 		<title>Force of Elementals</title>
 		<style> 
 			body{
@@ -372,8 +373,10 @@ background: linear-gradient(to bottom, rgba(173,235,255,1) 0%,rgba(150,209,255,1
 		</div>
 
 		<script>
+			var type;
+
 			function allowDrop(ev) {
-				if(game.drop(ev.dataTransfer.getData("tower"), ev.offsetX, ev.offsetY, true)){
+				if(game.drop(type, ev.offsetX, ev.offsetY, true)){
 			    	ev.preventDefault();
 				}else{
 					V.ctx_r.clearRect(0,0,V.W, V.H);
@@ -383,13 +386,13 @@ background: linear-gradient(to bottom, rgba(173,235,255,1) 0%,rgba(150,209,255,1
 
 			function drag(ev) {
 				if(V.fps!=0){
-			    	ev.dataTransfer.setData("tower", ev.target.id);
+			    	type = ev.target.id;
 			    	V.ctx_r.clearRect(0,0,V.W, V.H);
 				}
 			}
 			function drop(ev) {
 			    ev.preventDefault();
-			    game.drop(ev.dataTransfer.getData("tower"), ev.offsetX, ev.offsetY, false);
+			    game.drop(type, ev.offsetX, ev.offsetY, false);
 			    V.ctx_r.clearRect(0,0,V.W, V.H);
 			}
 		</script>
