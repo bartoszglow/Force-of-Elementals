@@ -101,6 +101,7 @@ M.prototype.upgrade = function(x, y, type, lvl){
 			Board.addTower(x, y, type, 0, (lvl+1));
 			V.ctx_r.clearRect(0,0,V.W, V.H);
 			Menu.upgradeInfo.style.visibility = "hidden";
+			Menu.upgrade(x, y, type, lvl+1);
 		}
 	}
 	//Sell button

@@ -31,7 +31,7 @@ function B(V, size, cx, map){
 			'  DW  DS   R W  ',
 			'  WR   DS   DW  ',
 			'  WAA   DDDDW   ',
-			' R  W   R       ',
+			' R  W   RWWW    ',
 			'    Y        R  '
 		],
 		[

@@ -1,6 +1,6 @@
 window.onload = function(){
 	V.sprite = new Image();
-	V.sprite.src = 'assets/sprite.png';
+	V.sprite.src = 'sprite.png';
 	setTimeout(function(){
 	V.sprite.onload = game.init();
 	}, 50);		
@@ -158,11 +158,17 @@ var game = (function () {
 			switch(lvl){
 				case 0:
 					V.score=80;
-					V.lifes=10;
+					V.lifes=15;
 					V.countWaves=10;
 				break;
 				case 1:
-					V.s.push('orc', 1, 4, 40);
+					//V.s.push('orc', 1, 4, 40);
+					V.s.push('orc', 1, 1, 40);
+					V.s.push('man', 1, 1, 40);
+					V.s.push('worm', 1, 1, 40);
+					V.s.push('zombie', 1, 1, 40);
+					V.s.push('knight', 1, 1, 40);
+					V.s.push('dragon', 1, 1, 40);
 				break;
 				case 2:
 					V.s.push('orc', 1, 5, 40);
@@ -208,11 +214,17 @@ var game = (function () {
 			switch(lvl){
 				case 0:
 					V.score=200;
-					V.lifes=20;
+					V.lifes=15;
 					V.countWaves=15;
 				break;
 				case 1:
-					V.s.push('orc', 1, 10, 25);
+					//V.s.push('orc', 1, 10, 25);
+										V.s.push('orc', 1, 1, 40);
+					V.s.push('man', 1, 1, 40);
+					V.s.push('worm', 1, 1, 40);
+					V.s.push('zombie', 1, 1, 40);
+					V.s.push('knight', 1, 1, 40);
+					V.s.push('dragon', 1, 1, 40);
 				break;
 				case 2:
 					V.s.push('orc', 1, 20, 25);
@@ -287,7 +299,13 @@ var game = (function () {
 					V.countWaves=10;
 				break;
 				case 1:
-					V.s.push('man', 5, 10, 40);
+					//V.s.push('man', 5, 10, 40);
+										V.s.push('orc', 1, 1, 40);
+					V.s.push('man', 1, 1, 40);
+					V.s.push('worm', 1, 1, 40);
+					V.s.push('zombie', 1, 1, 40);
+					V.s.push('knight', 1, 1, 40);
+					V.s.push('dragon', 1, 1, 40);
 				break;
 				case 2:
 					V.s.push('orc', 10, 10, 25);
@@ -336,7 +354,13 @@ var game = (function () {
 					V.countWaves=12;
 				break;
 				case 1:
-					V.s.push('orc', 2, 30, 40);
+					//V.s.push('orc', 2, 30, 40);
+										V.s.push('orc', 1, 1, 40);
+					V.s.push('man', 1, 1, 40);
+					V.s.push('worm', 1, 1, 40);
+					V.s.push('zombie', 1, 1, 40);
+					V.s.push('knight', 1, 1, 40);
+					V.s.push('dragon', 1, 1, 40);
 				break;
 				case 2:
 					V.s.push('orc', 3, 20, 40);
@@ -400,10 +424,16 @@ var game = (function () {
 					V.countWaves=10;
 				break;
 				case 1:
-					V.s.push('man', 1, 10, 35);
-					V.s.push('dragon', 1, 2, 55);
-					V.s.push('man', 1, 10, 35);
+					//V.s.push('man', 1, 10, 35);
+					//V.s.push('dragon', 1, 2, 55);
+					//V.s.push('man', 1, 10, 35);
 					V.score+=100;
+										V.s.push('orc', 1, 1, 40);
+					V.s.push('man', 1, 1, 40);
+					V.s.push('worm', 1, 1, 40);
+					V.s.push('zombie', 1, 1, 40);
+					V.s.push('knight', 1, 1, 40);
+					V.s.push('dragon', 1, 1, 40);
 				break;
 				case 2:
 					V.s.push('zombie', 1, 2, 65);
@@ -474,8 +504,14 @@ var game = (function () {
 					V.countWaves=10;
 				break;
 				case 1:
-					V.s.push('orc', 1, 30, 25);
-					V.s.push('orc', 5, 5, 55);
+					//V.s.push('orc', 1, 30, 25);
+					//V.s.push('orc', 5, 5, 55);
+										V.s.push('orc', 1, 1, 40);
+					V.s.push('man', 1, 1, 40);
+					V.s.push('worm', 1, 1, 40);
+					V.s.push('zombie', 1, 1, 40);
+					V.s.push('knight', 1, 1, 40);
+					V.s.push('dragon', 1, 1, 40);
 				break;
 				case 2:
 					V.s.push('man', 1, 25, 30);
@@ -575,17 +611,19 @@ var game = (function () {
 		};
 	};
 	this.drop = function(what, xx, yy, check) {
-		var x = Math.floor(xx / (20 * V.sc));
-		var y = Math.floor(yy / (20 * V.sc));
-		if(xx>10*V.sc && xx<310*V.sc && yy>10*V.sc && yy<230*V.sc){
-			V.ctx_r.clearRect(0,0,V.W, V.H);
-			V.ctx_r.beginPath();
-			V.ctx_r.arc((x*20+10)*V.sc,(y*20+10)*V.sc,V[what+'R']*V.sc,0,2*Math.PI);
-			V.ctx_r.stroke();
-		}else{
-			V.ctx_r.clearRect(0,0,V.W, V.H);
+		if(V.fps != 0){
+			var x = Math.floor(xx / (20 * V.sc));
+			var y = Math.floor(yy / (20 * V.sc));
+			if(xx>10*V.sc && xx<310*V.sc && yy>10*V.sc && yy<230*V.sc){
+				V.ctx_r.clearRect(0,0,V.W, V.H);
+				V.ctx_r.beginPath();
+				V.ctx_r.arc((x*20+10)*V.sc,(y*20+10)*V.sc,V[what+'R']*V.sc,0,2*Math.PI);
+				V.ctx_r.stroke();
+			}else{
+				V.ctx_r.clearRect(0,0,V.W, V.H);
+			}
+			return Board.addTower(x, y, what, check, 1);
 		}
-		return Board.addTower(x, y, what, check, 1);
 	};
 	this.mouse = function(e){
 		var mx = Math.floor(e.offsetX/(20*V.sc));

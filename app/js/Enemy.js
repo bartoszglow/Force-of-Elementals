@@ -3,11 +3,11 @@ function E(V, x, y, type, lvl){
 	this.V = V;
 	this.types = {//ground, ... ,frameCount, frameRate, frameRotate
 		'zombie':{gr:1, speed: 0.6, life:1000, score:8, rise:0.75, FX:0,  FY:21, FXS:17, FYS:12, fC:[0], fR:0, Frot:0},
-		'orc':{ gr:1, speed: 1.1, life:60, score:1,  rise:1, FX:18, FY:22, FXS:5,  FYS:9,  fC:[0,1], fR:8, Frot:0},
-		'dragon':{gr:0, speed: 1,   life:800, score:6, rise:0.9, FX:1,  FY:34, FXS:25, FYS:19, fC:[0,1], fR:16, Frot:90},
+		'orc':{ gr:1, speed: 1, life:60, score:1,  rise:1, FX:18, FY:22, FXS:5,  FYS:9,  fC:[0,1], fR:8, Frot:0},
+		'dragon':{gr:0, speed: 0.9,   life:800, score:6, rise:0.9, FX:1,  FY:34, FXS:25, FYS:19, fC:[0,1], fR:16, Frot:90},
 		'man':{ gr:1, speed: 0.9, life:200, score:2,  rise:1, FX:45, FY:19, FXS:8,  FYS:14,  fC:[0,1], fR:10, Frot:90},
-		'knight':{  gr:1, speed: 0.9, life:1500, score:10,  rise:0.75, FX:46, FY:47, FXS:15,  FYS:15, fC:[0], fR:0, Frot:-90},
-		'worm':{  gr:1, speed: 1.1, life:400, score:3,  rise:1, FX:29, FY:22, FXS:14,  FYS:9, fC:[0], fR:0, Frot:180},
+		'knight':{  gr:1, speed: 0.8, life:1500, score:10,  rise:0.75, FX:46, FY:47, FXS:15,  FYS:15, fC:[0], fR:0, Frot:-90},
+		'worm':{  gr:1, speed: 1, life:400, score:3,  rise:1, FX:29, FY:22, FXS:14,  FYS:9, fC:[0], fR:0, Frot:180},
 	};
 	this.type = type;
 
@@ -112,7 +112,7 @@ E.prototype.move = function(arrB, arrT){
 	}
 		//earth tower
 		if(arrT[this.bx][this.by] && this.gr){
-			this.aSpeed=this.speed/((arrT[this.bx][this.by].TLvl+1)/1.5);
+			this.aSpeed=this.speed/((arrT[this.bx][this.by].TLvl/2+0.8));
 		}
 
 	//calculate speed relative to angle
