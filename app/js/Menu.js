@@ -7,6 +7,9 @@ function M(V){
 
 	var fps = V.fps;
 	this.fps = fps;
+	this.up = 0;
+	this.cost = 0;
+	this.level = 0;
 
 	//Array for fireworks
 	this.all = [];
@@ -42,6 +45,7 @@ function M(V){
 	//Exit button
 	this.buttons[2].onclick = function(){
 		if(V.fps!=0){
+			Menu.up = 0;
 			Menu.buttons[0].style.background= '#88d98a';
 			Menu.upgradeInfo.style.visibility = "hidden";
 			document.getElementById("waves").style.visibility = "hidden";
@@ -77,6 +81,13 @@ M.prototype.fill = function(){
 			}
 		}
 	}
+
+	//change up color
+	if(this.up){
+		if(this.cost<=V.score && this.level!=5){
+		this.upgradeInfo.getElementsByTagName("button")[0].style.background = '#88d98a';
+		}
+	}
 }
 M.prototype.upgrade = function(x, y, type, lvl){
 	var Tlvl = lvl + 1;
@@ -84,19 +95,20 @@ M.prototype.upgrade = function(x, y, type, lvl){
 	V.ctx_r.beginPath();
 	V.ctx_r.arc((x*20+10)*V.sc,(y*20+10)*V.sc,V[type+'R']*V.sc,0,2*Math.PI);
 	V.ctx_r.stroke();
-
-	this.upgradeInfo.getElementsByTagName("button")[0].style.background = '#88d98a';
+	this.cost = (lvl+1)*V[type];
+	this.level = lvl;
+	this.upgradeInfo.getElementsByTagName("button")[0].style.background = '#c8d98a';
 	this.upgradeInfo.getElementsByTagName("button")[1].style.background = '#d4745b';
-	this.upgradeInfo.getElementsByTagName("p")[0].innerHTML = type + ' element';
+	this.upgradeInfo.getElementsByTagName("p")[0].innerHTML = type + 'Element';
 	this.upgradeInfo.getElementsByTagName("p")[1].innerHTML = 'Lvl ' + (lvl+1) + ' cost ' + (lvl+1)*V[type] + '$';
 	lvl == 5 ? this.upgradeInfo.getElementsByTagName("p")[1].innerHTML = 'MAX' : lvl;
 	this.upgradeInfo.getElementsByTagName("p")[2].innerHTML = '&nbsp Return ' + lvl*V[type] +'$ &nbsp';
 	this.upgradeInfo.style.visibility = "visible";
-
+	Menu.up = 1;
 	//Upgrade button
 	this.upgradeInfo.getElementsByTagName("button")[0].onclick = function(){
-
 		if(V.score>=(lvl+1)*V[type] && lvl<5 && V.fps!=0){
+			Menu.up = 0;
 			delete Board.Towers[x][y];
 			Board.addTower(x, y, type, 0, (lvl+1));
 			V.ctx_r.clearRect(0,0,V.W, V.H);
@@ -107,6 +119,7 @@ M.prototype.upgrade = function(x, y, type, lvl){
 	//Sell button
 	this.upgradeInfo.getElementsByTagName("button")[1].onclick = function(){
 		if(V.fps!=0){
+			Menu.up = 0;
 			delete Board.Towers[x][y];
 			Board.clearBlock(x,y);
 			V.score+=(lvl*V[type]);
@@ -164,6 +177,7 @@ M.prototype.animCreating = function(i){
 			V.timer=-1801;
 			if(i>30){
 				document.getElementById("waves").style.visibility = "visible";
+				Menu.up = 0;
 				V.ctx_bg.clearRect(0,0,V.W,V.H);
 				V.ctx_r.clearRect(0,0,V.W, V.H);
 				Board.drawBg();
@@ -185,6 +199,7 @@ M.prototype.animWin = function(i){
 
 				V.mainmenu=1;
 				if(i==1){
+					Menu.up = 0;
 					document.getElementById("waves").style.visibility = "hidden";
 					Menu.upgradeInfo.style.visibility = "hidden";
 					Menu.buttons[0].style.background= '#88d98a';

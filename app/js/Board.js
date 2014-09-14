@@ -136,7 +136,7 @@ B.prototype.addTower = function(x, y, type, check, lvl){
 				if(this.b[y][x].type=='G'){
 					if(check){
 						return true;
-					}				
+					}			
 					this.Towers[x][y] = new T(this.V, x, y, type, lvl);
 					this.Towers[x][y].draw(x, y);
 					V.score-=cost;

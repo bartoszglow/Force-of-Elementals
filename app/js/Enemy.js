@@ -112,7 +112,7 @@ E.prototype.move = function(arrB, arrT){
 	}
 		//earth tower
 		if(arrT[this.bx][this.by] && this.gr){
-			this.aSpeed=this.speed/((arrT[this.bx][this.by].TLvl/2+0.8));
+			this.aSpeed=this.speed/((arrT[this.bx][this.by].TLvl/2+1));
 		}
 
 	//calculate speed relative to angle

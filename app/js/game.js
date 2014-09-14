@@ -162,13 +162,7 @@ var game = (function () {
 					V.countWaves=10;
 				break;
 				case 1:
-					//V.s.push('orc', 1, 4, 40);
-					V.s.push('orc', 1, 1, 40);
-					V.s.push('man', 1, 1, 40);
-					V.s.push('worm', 1, 1, 40);
-					V.s.push('zombie', 1, 1, 40);
-					V.s.push('knight', 1, 1, 40);
-					V.s.push('dragon', 1, 1, 40);
+					V.s.push('orc', 1, 4, 40);
 				break;
 				case 2:
 					V.s.push('orc', 1, 5, 40);
@@ -218,13 +212,7 @@ var game = (function () {
 					V.countWaves=15;
 				break;
 				case 1:
-					//V.s.push('orc', 1, 10, 25);
-										V.s.push('orc', 1, 1, 40);
-					V.s.push('man', 1, 1, 40);
-					V.s.push('worm', 1, 1, 40);
-					V.s.push('zombie', 1, 1, 40);
-					V.s.push('knight', 1, 1, 40);
-					V.s.push('dragon', 1, 1, 40);
+					V.s.push('orc', 1, 10, 25);
 				break;
 				case 2:
 					V.s.push('orc', 1, 20, 25);
@@ -295,17 +283,11 @@ var game = (function () {
 			switch(lvl){
 				case 0:
 					V.score=1000;
-					V.lifes=1;
+					V.lifes=5;
 					V.countWaves=10;
 				break;
 				case 1:
-					//V.s.push('man', 5, 10, 40);
-										V.s.push('orc', 1, 1, 40);
-					V.s.push('man', 1, 1, 40);
-					V.s.push('worm', 1, 1, 40);
-					V.s.push('zombie', 1, 1, 40);
-					V.s.push('knight', 1, 1, 40);
-					V.s.push('dragon', 1, 1, 40);
+					V.s.push('man', 5, 10, 40);
 				break;
 				case 2:
 					V.s.push('orc', 10, 10, 25);
@@ -354,13 +336,7 @@ var game = (function () {
 					V.countWaves=12;
 				break;
 				case 1:
-					//V.s.push('orc', 2, 30, 40);
-										V.s.push('orc', 1, 1, 40);
-					V.s.push('man', 1, 1, 40);
-					V.s.push('worm', 1, 1, 40);
-					V.s.push('zombie', 1, 1, 40);
-					V.s.push('knight', 1, 1, 40);
-					V.s.push('dragon', 1, 1, 40);
+					V.s.push('orc', 2, 30, 40);
 				break;
 				case 2:
 					V.s.push('orc', 3, 20, 40);
@@ -419,21 +395,15 @@ var game = (function () {
 			case 5:
 			switch(lvl){
 				case 0:
-					V.score=200;
+					V.score=250;
 					V.lifes=5;
 					V.countWaves=10;
 				break;
 				case 1:
-					//V.s.push('man', 1, 10, 35);
-					//V.s.push('dragon', 1, 2, 55);
-					//V.s.push('man', 1, 10, 35);
+					V.s.push('man', 1, 10, 35);
+					V.s.push('dragon', 1, 2, 55);
+					V.s.push('man', 1, 10, 35);
 					V.score+=100;
-										V.s.push('orc', 1, 1, 40);
-					V.s.push('man', 1, 1, 40);
-					V.s.push('worm', 1, 1, 40);
-					V.s.push('zombie', 1, 1, 40);
-					V.s.push('knight', 1, 1, 40);
-					V.s.push('dragon', 1, 1, 40);
 				break;
 				case 2:
 					V.s.push('zombie', 1, 2, 65);
@@ -504,14 +474,8 @@ var game = (function () {
 					V.countWaves=10;
 				break;
 				case 1:
-					//V.s.push('orc', 1, 30, 25);
-					//V.s.push('orc', 5, 5, 55);
-										V.s.push('orc', 1, 1, 40);
-					V.s.push('man', 1, 1, 40);
-					V.s.push('worm', 1, 1, 40);
-					V.s.push('zombie', 1, 1, 40);
-					V.s.push('knight', 1, 1, 40);
-					V.s.push('dragon', 1, 1, 40);
+					V.s.push('orc', 1, 30, 25);
+					V.s.push('orc', 5, 5, 55);
 				break;
 				case 2:
 					V.s.push('man', 1, 25, 30);
